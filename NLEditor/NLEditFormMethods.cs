@@ -278,7 +278,7 @@ namespace NLEditor
 [Classic 8 - 10 of each]
 Climber=10
 Floater=10
-Timebomber=10
+Bomber=10
 Blocker=10
 Builder=10
 Basher=10
@@ -288,19 +288,12 @@ Digger=10
 [Classic 8 - 20 of each]
 Climber=20
 Floater=20
-Timebomber=20
+Bomber=20
 Blocker=20
 Builder=20
 Basher=20
 Miner=20
-Digger=20
-
-[NL Exclusive - 10 of each]
-Ballooner=10
-Grenader=10
-Spearer=10
-Freezer=10
-Ladderer=10";
+Digger=20";
 
                     // Ensure the directory exists
                     string directory = Path.GetDirectoryName(C.AppPathCustomSkillsets);

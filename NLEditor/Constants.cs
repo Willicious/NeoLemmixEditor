@@ -200,26 +200,26 @@ namespace NLEditor
         {
             SaveReq, TimeLimit,
             SkillTotal, SkillTypes, SkillEachLimit,
-            SkillWalker, SkillJumper, SkillShimmier, SkillBallooner,
+            SkillWalker, SkillJumper, SkillShimmier,
             SkillSlider, SkillClimber, SkillSwimmer, SkillFloater, SkillGlider,
-            SkillDisarmer, SkillTimebomber, SkillBomber, SkillFreezer, SkillStoner,
+            SkillDisarmer, SkillBomber, SkillStoner,
             SkillBlocker,
-            SkillLadderer, SkillPlatformer, SkillBuilder, SkillStacker,
-            SkillSpearer, SkillGrenader, SkillLaserer,
-            SkillBasher, SkillFencer, SkillMiner, SkillDigger, SkillCloner,
+            SkillPlatformer, SkillBuilder, SkillStacker,
+            SkillLaserer, SkillBasher, SkillFencer, SkillMiner, SkillDigger,
+            SkillCloner,
             UseOnlySkill
         }
         public static Array TalismanReqArray => Enum.GetValues(typeof(C.TalismanReq));
 
         public static readonly List<string> TalismanSkills = new List<string>()
         {
-            "Walker", "Jumper", "Shimmier", "Ballooner",
+            "Walker", "Jumper", "Shimmier",
             "Slider", "Climber", "Swimmer", "Floater", "Glider", 
-            "Disarmer", "Timebomber", "Bomber", "Freezer", "Stoner",
+            "Disarmer", "Bomber", "Stoner",
             "Blocker",
-            "Ladderer", "Platformer", "Builder", "Stacker",
-            "Spearer", "Grenader", "Laserer",
-            "Basher", "Fencer", "Miner", "Digger", "Cloner"
+            "Platformer", "Builder", "Stacker",
+            "Laserer", "Basher", "Fencer", "Miner", "Digger",
+            "Cloner"
         };
 
         public static readonly Dictionary<TalismanReq, string> TalismanReqText = new Dictionary<TalismanReq, string>()
@@ -231,24 +231,18 @@ namespace NLEditor
             { TalismanReq.SkillWalker, "Limit Walkers" },
             { TalismanReq.SkillJumper, "Limit Jumpers" },
             { TalismanReq.SkillShimmier, "Limit Shimmiers" },
-            { TalismanReq.SkillBallooner, "Limit Ballooners" },
             { TalismanReq.SkillSlider, "Limit Sliders" },
             { TalismanReq.SkillClimber, "Limit Climbers" },
             { TalismanReq.SkillSwimmer, "Limit Swimmers" },
             { TalismanReq.SkillFloater, "Limit Floaters" },
             { TalismanReq.SkillGlider, "Limit Gliders" },
             { TalismanReq.SkillDisarmer, "Limit Disarmers" },
-            { TalismanReq.SkillTimebomber, "Limit Timebombers" },
             { TalismanReq.SkillBomber, "Limit Bombers" },
-            { TalismanReq.SkillFreezer, "Limit Freezers" },
             { TalismanReq.SkillStoner, "Limit Stoners" },
             { TalismanReq.SkillBlocker, "Limit Blockers" },
-            { TalismanReq.SkillLadderer, "Limit Ladderers" },
             { TalismanReq.SkillPlatformer, "Limit Platformers" },
             { TalismanReq.SkillBuilder, "Limit Builders" },
             { TalismanReq.SkillStacker, "Limit Stackers" },
-            { TalismanReq.SkillSpearer, "Limit Spearers" },
-            { TalismanReq.SkillGrenader, "Limit Grenaders" },
             { TalismanReq.SkillLaserer, "Limit Laserers" },
             { TalismanReq.SkillBasher, "Limit Bashers" },
             { TalismanReq.SkillFencer, "Limit Fencers" },
@@ -257,9 +251,6 @@ namespace NLEditor
             { TalismanReq.SkillCloner, "Limit Cloners" },
             { TalismanReq.SkillEachLimit, "Limit All Skills" },
             { TalismanReq.UseOnlySkill, "Using only the Skill" }
-            //{ TalismanReq.OnlyOneWorker, "One Worker Lem" }, //bookmark
-            //{ TalismanReq.RRMin, "RR Minimum" }, //bookmark
-            //{ TalismanReq.RRMax, "RR Maximum" }  //bookmark
         };
 
         public static readonly Dictionary<TalismanReq, string> TalismanKeys = new Dictionary<TalismanReq, string>()
@@ -268,16 +259,14 @@ namespace NLEditor
           { TalismanReq.SkillTotal, "SKILL_LIMIT" }, { TalismanReq.SkillTypes, "SKILL_TYPE_LIMIT" },
           { TalismanReq.SkillWalker, "WALKER_LIMIT" },
           { TalismanReq.SkillJumper, "JUMPER_LIMIT" }, { TalismanReq.SkillShimmier, "SHIMMIER_LIMIT" },
-          { TalismanReq.SkillBallooner, "BALLOONER_LIMIT" },
           { TalismanReq.SkillSlider, "SLIDER_LIMIT" }, { TalismanReq.SkillClimber, "CLIMBER_LIMIT"},
           { TalismanReq.SkillSwimmer, "SWIMMER_LIMIT"}, { TalismanReq.SkillFloater, "FLOATER_LIMIT" },
           { TalismanReq.SkillGlider, "GLIDER_LIMIT" }, { TalismanReq.SkillDisarmer, "DISARMER_LIMIT" },
-          { TalismanReq.SkillTimebomber, "TIMEBOMBER_LIMIT" }, { TalismanReq.SkillBomber, "BOMBER_LIMIT" },
-          { TalismanReq.SkillFreezer, "FREEZER_LIMIT"}, { TalismanReq.SkillStoner, "STONER_LIMIT"},
+          { TalismanReq.SkillBomber, "BOMBER_LIMIT" },
+          { TalismanReq.SkillStoner, "STONER_LIMIT"},
           { TalismanReq.SkillBlocker, "BLOCKER_LIMIT"},
-          { TalismanReq.SkillLadderer, "LADDERER_LIMIT" }, { TalismanReq.SkillPlatformer, "PLATFORMER_LIMIT" },
+          { TalismanReq.SkillPlatformer, "PLATFORMER_LIMIT" },
           { TalismanReq.SkillBuilder, "BUILDER_LIMIT" }, { TalismanReq.SkillStacker, "STACKER_LIMIT" },
-          { TalismanReq.SkillSpearer, "SPEARER_LIMIT" }, { TalismanReq.SkillGrenader, "GRENADER_LIMIT" },
           { TalismanReq.SkillLaserer, "LASERER_LIMIT" },
           { TalismanReq.SkillBasher, "BASHER_LIMIT" }, { TalismanReq.SkillMiner, "MINER_LIMIT" },
           { TalismanReq.SkillDigger, "DIGGER_LIMIT" }, { TalismanReq.SkillFencer, "FENCER_LIMIT" },

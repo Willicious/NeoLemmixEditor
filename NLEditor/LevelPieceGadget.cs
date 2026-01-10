@@ -238,36 +238,23 @@ namespace NLEditor
                     {
                         return C.PermaSkills.Contains(skill)
 
-                            || skill.In(C.Skill.Zombie, C.Skill.Neutral)
-
-                            || skill.In(C.Skill.Rival) && !NLEditForm.isNeoLemmixOnly;
+                            || skill.In(C.Skill.Zombie, C.Skill.Neutral);
                     }
                 case C.OBJ.LEMMING:
                     {
                         return C.PermaSkills.Contains(skill)
 
-                            || skill.In(C.Skill.Blocker, C.Skill.Shimmier, C.Skill.Zombie, C.Skill.Neutral)
-
-                            || skill.In(C.Skill.Ballooner, C.Skill.Rival) && !NLEditForm.isNeoLemmixOnly;
+                            || skill.In(C.Skill.Blocker, C.Skill.Shimmier, C.Skill.Zombie, C.Skill.Neutral);
                     }
                 case C.OBJ.PICKUP:
                 case C.OBJ.SKILL_ASSIGNER:
                     {
                         return !skill.In(C.Skill.Zombie, C.Skill.Rival, C.Skill.Neutral)
 
-                           && (!C.SuperLemmixSkills.Contains(skill) || !NLEditForm.isNeoLemmixOnly)
-
-                           && (!skill.In(C.Skill.Stoner) || NLEditForm.isNeoLemmixOnly)
-
                            && (!(ObjType == C.OBJ.SKILL_ASSIGNER) || C.PermaSkills.Contains(skill) ||
                                skill.In(C.Skill.Walker, C.Skill.Jumper, C.Skill.Shimmier, C.Skill.Ballooner,
                                         C.Skill.Blocker, C.Skill.Spearer, C.Skill.Laserer, C.Skill.Grenader,
                                         C.Skill.Cloner));
-                    }
-                case C.OBJ.EXIT:
-                case C.OBJ.EXIT_LOCKED:
-                    {
-                        return skill == C.Skill.Rival && !NLEditForm.isNeoLemmixOnly;
                     }
                 case C.OBJ.PERMASKILL_ADD:
                     {

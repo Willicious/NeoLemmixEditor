@@ -1043,25 +1043,6 @@ Ladderer=10";
             allTabsExpanded = false;
         }
 
-
-        /// <summary>
-        /// Checks for presence of Neo/SuperLemmix.exe in Editor's base folder and set isNeoLemmixOnly
-        /// </summary>
-        public void DetectLemmixVersions()
-        {
-            string baseFolder = AppDomain.CurrentDomain.BaseDirectory;
-
-            bool isNeoLemmixDetected = File.Exists(C.AppPathNeoLemmix) || File.Exists(C.AppPathNeoLemmixCE);
-            bool isSuperLemmixDetected = File.Exists(C.AppPathSuperLemmix);
-
-            var curMode = curSettings.CurrentEditorMode;
-
-            isNeoLemmixOnly =
-               ((curMode == Settings.EditorMode.Auto && isNeoLemmixDetected && !isSuperLemmixDetected)
-              || curMode == Settings.EditorMode.NeoLemmix)
-              && curMode != Settings.EditorMode.SuperLemmix;
-        }
-
         /// <summary>
         /// If the level changed, displays a message box and asks whether to save the current level.  
         /// </summary>
@@ -1278,23 +1259,15 @@ Ladderer=10";
             string enginePath;
             string engineName;
 
-            if (isNeoLemmixOnly)
-            { 
-                if (File.Exists(C.AppPathNeoLemmixCE))
-                {
-                    enginePath = C.AppPathNeoLemmixCE;
-                    engineName = "NeoLemmixCE.exe";
-                }
-                else
-                {
-                    enginePath = C.AppPathNeoLemmix;
-                    engineName = "NeoLemmix.exe";
-                }
+            if (File.Exists(C.AppPathNeoLemmixCE))
+            {
+                enginePath = C.AppPathNeoLemmixCE;
+                engineName = "NeoLemmixCE.exe";
             }
             else
             {
-                enginePath = C.AppPathSuperLemmix;
-                engineName = "SuperLemmix.exe";
+                enginePath = C.AppPathNeoLemmix;
+                engineName = "NeoLemmix.exe";
             }
 
             if (!System.IO.File.Exists(enginePath))
@@ -2448,14 +2421,9 @@ Ladderer=10";
                 .ToList();
             numericUpDowns = numericUpDowns.OrderBy(x => random.Next()).ToList();
 
-            int maxSkills;
+            int maxSkills = 10;
 
-            if (isNeoLemmixOnly)
-                maxSkills = 10;
-            else
-                maxSkills = 14;
-
-            // Select up to 14 skills and populate them with a number between minValue and maxValue
+            // Select up to 10 skills and populate them with a number between minValue and maxValue
             List<NumericUpDown> selectedControls = numericUpDowns.Take(maxSkills).ToList();
             foreach (var numBox in selectedControls)
             {

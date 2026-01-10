@@ -12,7 +12,6 @@ namespace NLEditor
     /// </summary>
     partial class NLEditForm
     {
-        public EditorMode previousEditorMode;
         private int pieceBrowserTop = 26;
 
         /// <summary>
@@ -390,42 +389,6 @@ namespace NLEditor
             {
                 check_Lvl_Invincibility.Visible = false;
             }
-        }
-
-        /// <summary>
-        /// Sets non-updating controls according to Lemmix version/user preferences
-        /// </summary>
-        public void UpdateLemmixVersionFeatures()
-        {
-            if (CurLevel != null)
-                CurLevel.Format = isNeoLemmixOnly ? "NeoLemmix" : "SuperLemmix";
-
-            lbl_Skill_Stoner.Enabled = isNeoLemmixOnly;
-            lbl_Skill_Stoner.Visible = isNeoLemmixOnly;
-            lbl_Skill_Freezer.Enabled = !isNeoLemmixOnly;
-            lbl_Skill_Freezer.Visible = !isNeoLemmixOnly;
-
-            num_Ski_Stoner.Visible = isNeoLemmixOnly;
-            num_Ski_Stoner.Enabled = isNeoLemmixOnly;
-            num_Ski_Freezer.Enabled = !isNeoLemmixOnly;
-            num_Ski_Freezer.Visible = !isNeoLemmixOnly;
-
-            check_Piece_Stoner.Visible = isNeoLemmixOnly;
-            check_Piece_Freezer.Visible = !isNeoLemmixOnly;
-
-            lbl_Skill_Ballooner.Enabled = !isNeoLemmixOnly;
-            lbl_Skill_Timebomber.Enabled = !isNeoLemmixOnly;
-            lbl_Skill_Ladderer.Enabled = !isNeoLemmixOnly;
-            lbl_Skill_Spearer.Enabled = !isNeoLemmixOnly;
-            lbl_Skill_Grenader.Enabled = !isNeoLemmixOnly;
-
-            num_Ski_Ballooner.Enabled = !isNeoLemmixOnly;
-            num_Ski_Timebomber.Enabled = !isNeoLemmixOnly;
-            num_Ski_Ladderer.Enabled = !isNeoLemmixOnly;
-            num_Ski_Spearer.Enabled = !isNeoLemmixOnly;
-            num_Ski_Grenader.Enabled = !isNeoLemmixOnly;
-
-            check_Lvl_Superlemming.Enabled = !isNeoLemmixOnly;
         }
 
         /// <summary>

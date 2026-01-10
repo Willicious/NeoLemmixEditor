@@ -30,3 +30,4 @@ NLEditor.vshost.exe.manifest
 NLEditor/NLEditor_TemporaryKey.pfx
 .vs/
 NLEditor/NLEditor.csproj.user
+*.json

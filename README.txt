@@ -1,9 +1,7 @@
-SuperLemmix Editor by William James.
+NeoLemmix Editor by William James, Namida Verasche and Stephan Neupert.
 
-Based on NeoLemmix Editor by Stephan Neupert and Namida Verasche.
-
-This is an application to create new levels for SuperLemmix and NeoLemmix or modify old ones.
-Levels must be in .nxlv format and the Editor should be present in a Super/NeoLemmix
+This is an application to create new levels for NeoLemmix or modify old ones.
+Levels must be in .nxlv format and the Editor should be present in a NeoLemmix
 installation folder with "styles", "sketches" and "levels" folder present.
 
 Compile information for the Editor:
@@ -15,6 +13,6 @@ Any bugs, feature requests and support issues are currently handled via the Lemm
   
   www.lemmingsforums.net
 
-Visit the SuperLemmix board there for more information. My nickname there is WillLem.
+Visit the NeoLemmix board there for more information.
 
 Copyright: CC BY-NC 4.0 (2017)

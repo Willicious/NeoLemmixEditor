@@ -47,10 +47,8 @@ namespace NLEditor
 
             lblAuthor.Top = lblSuperLemmixEditor.Bottom + padding;
             lblAuthor.Left = GetCenter(lblAuthor);
-            lblBasedOn.Top = lblAuthor.Bottom;
-            lblBasedOn.Left = GetCenter(lblBasedOn);
 
-            lblThanksTo.Top = lblBasedOn.Bottom + padding;
+            lblThanksTo.Top = lblAuthor.Bottom + padding;
             lblThanksTo.Left = GetCenter(lblThanksTo);
             lblDMA.Top = lblThanksTo.Bottom;
             lblDMA.Left = GetCenter(lblDMA);

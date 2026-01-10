@@ -44,7 +44,6 @@ namespace NLEditor
             this.lblDMA = new System.Windows.Forms.Label();
             this.lblLFCommunity = new System.Windows.Forms.Label();
             this.linkLF = new System.Windows.Forms.LinkLabel();
-            this.lblBasedOn = new System.Windows.Forms.Label();
             this.picturePadding = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).BeginInit();
@@ -141,11 +140,11 @@ namespace NLEditor
             // lblAuthor
             // 
             this.lblAuthor.AutoSize = true;
-            this.lblAuthor.Location = new System.Drawing.Point(569, 612);
+            this.lblAuthor.Location = new System.Drawing.Point(453, 629);
             this.lblAuthor.Name = "lblAuthor";
-            this.lblAuthor.Size = new System.Drawing.Size(200, 20);
+            this.lblAuthor.Size = new System.Drawing.Size(422, 20);
             this.lblAuthor.TabIndex = 11;
-            this.lblAuthor.Text = "By William James (WillLem)";
+            this.lblAuthor.Text = "By William James, Namida Verasche and Stephan Neupert";
             // 
             // lblThanksTo
             // 
@@ -187,15 +186,6 @@ namespace NLEditor
             this.linkLF.Text = "www.lemmingsforums.net";
             this.linkLF.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLF_LinkClicked);
             // 
-            // lblBasedOn
-            // 
-            this.lblBasedOn.AutoSize = true;
-            this.lblBasedOn.Location = new System.Drawing.Point(349, 634);
-            this.lblBasedOn.Name = "lblBasedOn";
-            this.lblBasedOn.Size = new System.Drawing.Size(614, 20);
-            this.lblBasedOn.TabIndex = 18;
-            this.lblBasedOn.Text = "Based on the NeoLemmix Editor by Stephan Neupert (Nepster) and Namida Verasche";
-            // 
             // picturePadding
             // 
             this.picturePadding.BackColor = System.Drawing.SystemColors.ControlDark;
@@ -215,7 +205,6 @@ namespace NLEditor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 811);
-            this.Controls.Add(this.lblBasedOn);
             this.Controls.Add(this.pictureClimber);
             this.Controls.Add(this.linkLF);
             this.Controls.Add(this.lblLFCommunity);
@@ -262,7 +251,6 @@ namespace NLEditor
         private Label lblDMA;
         private Label lblLFCommunity;
         private LinkLabel linkLF;
-        private Label lblBasedOn;
         private PictureBox picturePadding;
     }
 }

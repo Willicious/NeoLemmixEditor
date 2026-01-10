@@ -26,12 +26,12 @@ namespace NLEditor.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowAboutSLXWindowAtStartup {
+        public bool ShowAboutNLWindowAtStartup {
             get {
-                return ((bool)(this["ShowAboutSLXWindowAtStartup"]));
+                return ((bool)(this["ShowAboutNLWindowAtStartup"]));
             }
             set {
-                this["ShowAboutSLXWindowAtStartup"] = value;
+                this["ShowAboutNLWindowAtStartup"] = value;
             }
         }
         

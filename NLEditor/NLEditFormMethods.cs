@@ -19,7 +19,7 @@ namespace NLEditor
          * -------------------------------------------------------- */
 
         /// <summary>
-        /// Reads the user's settings from the file SLXEditorSettings.ini and applies these options.
+        /// Reads the user's settings from the file NLEditorSettings.ini and applies these options.
         /// </summary>
         private void InitializeSettings()
         {
@@ -273,7 +273,7 @@ namespace NLEditor
                 if (!File.Exists(C.AppPathCustomSkillsets))
                 {
                     // Create the .ini file with default skillsets
-                    string defaultContent = @"# SLXEditor Custom Skillsets
+                    string defaultContent = @"# NLEditor Custom Skillsets
 
 [Classic 8 - 10 of each]
 Climber=10
@@ -295,7 +295,7 @@ Basher=20
 Miner=20
 Digger=20
 
-[SLX Exclusive - 10 of each]
+[NL Exclusive - 10 of each]
 Ballooner=10
 Grenader=10
 Spearer=10
@@ -344,7 +344,7 @@ Ladderer=10";
         }
 
         /// <summary>
-        /// Returns all skillset names (INI section headers) from the given SLXCustomSkillsets.ini file.
+        /// Returns all skillset names (INI section headers) from the given NLCustomSkillsets.ini file.
         /// </summary>
         private static string[] GetSkillsetNames(string filePath)
         {
@@ -1219,7 +1219,7 @@ Ladderer=10";
                     cleanseMsg += "\n\nLevels with no exits:\n\n";
                     cleanseMsg += string.Join("\n", levelsWithNoExits.Select(Path.GetFileName));
                 }
-                string reportPath = Path.Combine(targetFolder, "SLXEditorCleanseReport.txt");
+                string reportPath = Path.Combine(targetFolder, "NLEditorCleanseReport.txt");
 
                 // Save report and show message
                 string fullReport =
@@ -2362,11 +2362,11 @@ Ladderer=10";
                 timerAutosave.Stop();
         }
 
-        private void ShowAboutSLXEditor()
+        private void ShowAboutNLEditor()
         {
-            using (var aboutSLXEditor = new FormAboutSLXEditor())
+            using (var aboutNLEditor = new FormAboutNLEditor())
             {
-                aboutSLXEditor.ShowDialog(this);
+                aboutNLEditor.ShowDialog(this);
             }
         }
 
@@ -2588,7 +2588,7 @@ Ladderer=10";
             AddHotkey(HotkeyConfig.HotkeyToggleAllTabs, () => ToggleExpandedTabs());
             AddHotkey(HotkeyConfig.HotkeyOpenSettings, () => settingsToolStripMenuItem_Click(null, null));
             AddHotkey(HotkeyConfig.HotkeyOpenConfigHotkeys, () => hotkeysToolStripMenuItem_Click(null, null));
-            AddHotkey(HotkeyConfig.HotkeyOpenAboutSLX, () => ShowAboutSLXEditor());
+            AddHotkey(HotkeyConfig.HotkeyOpenAboutNL, () => ShowAboutNLEditor());
             AddHotkey(HotkeyConfig.HotkeySelectPieces, () => {/* deliberately does nothing */});
             AddHotkey(HotkeyConfig.HotkeyDragToScroll, () => dragToScrollPressed = true);
             AddHotkey(HotkeyConfig.HotkeyDragHorizontally, () => dragHorizontallyPressed = true);
@@ -2787,7 +2787,7 @@ Ladderer=10";
                 HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyOpenConfigHotkeys);
 
             aboutToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyOpenAboutSLX);
+                HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyOpenAboutNL);
         }
     }
 }

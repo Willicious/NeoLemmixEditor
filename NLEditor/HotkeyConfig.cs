@@ -38,7 +38,7 @@ namespace NLEditor
         public static Keys HotkeyToggleAllTabs;
         public static Keys HotkeyOpenSettings;
         public static Keys HotkeyOpenConfigHotkeys;
-        public static Keys HotkeyOpenAboutSLX;
+        public static Keys HotkeyOpenAboutNL;
         public static Keys HotkeySelectPieces;
         public static Keys HotkeyDragToScroll;
         public static Keys HotkeyDragHorizontally;
@@ -308,7 +308,7 @@ namespace NLEditor
             // Final check: If "HotkeySelectPieces" was missing entirely, flag it
             if (!foundHotkeySelectPieces)
             {
-                invalidKey = "HotkeySelectPieces is missing from SLXEditorHotkeys.ini";
+                invalidKey = "HotkeySelectPieces is missing from NLEditorHotkeys.ini";
                 return true;
             }
 
@@ -322,7 +322,7 @@ namespace NLEditor
 
             if (ValidateHotkeyIniFile(lines, out string invalidKey))
             {
-                MessageBox.Show($"Invalid or duplicate key detected in SLXEditorHotkeys.ini\n\n" +
+                MessageBox.Show($"Invalid or duplicate key detected in NLEditorHotkeys.ini\n\n" +
                                 $"{invalidKey}\n\n" +
                                 $"The default hotkeys will be loaded instead",
                                 "Hotkey Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -392,8 +392,8 @@ namespace NLEditor
                     HotkeyOpenSettings = ParseHotkeyString(line.Substring("HotkeyOpenSettings=".Length));
                 if (line.StartsWith("HotkeyOpenConfigHotkeys="))
                     HotkeyOpenConfigHotkeys = ParseHotkeyString(line.Substring("HotkeyOpenConfigHotkeys=".Length));
-                if (line.StartsWith("HotkeyOpenAboutSLX="))
-                    HotkeyOpenAboutSLX = ParseHotkeyString(line.Substring("HotkeyOpenAboutSLX=".Length));
+                if (line.StartsWith("HotkeyOpenAboutNL="))
+                    HotkeyOpenAboutNL = ParseHotkeyString(line.Substring("HotkeyOpenAboutNL=".Length));
                 if (line.StartsWith("HotkeySelectPieces="))
                     HotkeySelectPieces = Keys.LButton; // Just in case)
                 if (line.StartsWith("HotkeyDragToScroll="))
@@ -591,7 +591,7 @@ namespace NLEditor
                 $"HotkeyToggleAllTabs={FormatHotkeyString(HotkeyToggleAllTabs)}",
                 $"HotkeyOpenSettings={FormatHotkeyString(HotkeyOpenSettings)}",
                 $"HotkeyOpenConfigHotkeys={FormatHotkeyString(HotkeyOpenConfigHotkeys)}",
-                $"HotkeyOpenAboutSLX={FormatHotkeyString(HotkeyOpenAboutSLX)}",
+                $"HotkeyOpenAboutNL={FormatHotkeyString(HotkeyOpenAboutNL)}",
                 $"HotkeySelectPieces={FormatHotkeyString(HotkeySelectPieces)}",
                 $"HotkeyDragToScroll={FormatHotkeyString(HotkeyDragToScroll)}",
                 $"HotkeyDragHorizontally={FormatHotkeyString(HotkeyDragHorizontally)}",
@@ -705,7 +705,7 @@ namespace NLEditor
             HotkeyToggleAllTabs = Keys.Control | Keys.F10;
             HotkeyOpenSettings = Keys.F10;
             HotkeyOpenConfigHotkeys = Keys.F11;
-            HotkeyOpenAboutSLX = Keys.Control | Keys.F11;
+            HotkeyOpenAboutNL = Keys.Control | Keys.F11;
             HotkeySelectPieces = Keys.LButton;
             HotkeyDragToScroll = Keys.RButton;
             HotkeyDragHorizontally = Keys.Control | Keys.Alt | Keys.LButton;
@@ -810,7 +810,7 @@ namespace NLEditor
             HotkeyToggleAllTabs = Keys.Control | Keys.F10;
             HotkeyOpenSettings = Keys.F10;
             HotkeyOpenConfigHotkeys = Keys.F11;
-            HotkeyOpenAboutSLX = Keys.Control | Keys.F11;
+            HotkeyOpenAboutNL = Keys.Control | Keys.F11;
             HotkeySelectPieces = Keys.LButton;
             HotkeyDragToScroll = Keys.RButton;
             HotkeyDragHorizontally = Keys.Control | Keys.Alt | Keys.LButton;

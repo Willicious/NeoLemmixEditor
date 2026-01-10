@@ -11,9 +11,9 @@ using System.Windows.Forms.VisualStyles;
 
 namespace NLEditor
 {
-    public partial class FormAboutSLXEditor : Form
+    public partial class FormAboutNLEditor : Form
     {
-        public FormAboutSLXEditor()
+        public FormAboutNLEditor()
         {
             int GetCenter(Control component)
             {
@@ -59,16 +59,16 @@ namespace NLEditor
 
             check_ShowThisWindow.Top = linkLF.Bottom + padding;
             check_ShowThisWindow.Left = GetCenter(check_ShowThisWindow);
-            check_ShowThisWindow.Checked = Properties.Settings.Default.ShowAboutSLXWindowAtStartup;
+            check_ShowThisWindow.Checked = Properties.Settings.Default.ShowAboutNLWindowAtStartup;
         }
 
         private void Check_ShowThisWindow_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ShowAboutSLXWindowAtStartup = check_ShowThisWindow.Checked;
+            Properties.Settings.Default.ShowAboutNLWindowAtStartup = check_ShowThisWindow.Checked;
             Properties.Settings.Default.Save();
         }
 
-        private void FormAboutSLXEditor_KeyDown(object sender, KeyEventArgs e)
+        private void FormAboutNLEditor_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
             {
@@ -146,7 +146,7 @@ namespace NLEditor
             richTextBox.AppendText(" - When playtesting, the game .exe doesn't open if validation has failed (i.e. the user chose not to save anyway, and instead clicked \"Edit Level\")\n");
 
             WriteBoldText(richTextBox, "• Custom Skillsets");
-            richTextBox.AppendText(" - It's now possible to apply custom preset skillsets using SLXCustomSkillsets.ini\n");
+            richTextBox.AppendText(" - It's now possible to apply custom preset skillsets using NLCustomSkillsets.ini\n");
 
             WriteBoldText(richTextBox, "• UI - Highlight Grouped Pieces");
             richTextBox.AppendText(" - It's now possible to highlight all grouped pieces\n");
@@ -351,7 +351,7 @@ namespace NLEditor
             richTextBox.AppendText(" - Dialog now adds a default title if the Title field is empty\n");
 
             WriteBoldText(richTextBox, "• Bugfix - Character Limits");
-            richTextBox.AppendText(" - Character limits increased to SLX Player UI limits: Title (62), Author (60), Talisman TItle (85)\n");
+            richTextBox.AppendText(" - Character limits increased to NL Player UI limits: Title (62), Author (60), Talisman TItle (85)\n");
 
             WriteBoldText(richTextBox, "• Bugfix - UI");
             richTextBox.AppendText(" - All secondary windows can now be closed using the [Esc] key\n");
@@ -360,7 +360,7 @@ namespace NLEditor
             richTextBox.AppendText(" - Confirmation dialog is now shown before proceeding with the cleanse\n");
 
             WriteBoldText(richTextBox, "• Maximum Lemmings Count");
-            richTextBox.AppendText(" - 999 is now the maximum number of lemmings supported by the Editor; this is to match SLX Player skill panel display\n");
+            richTextBox.AppendText(" - 999 is now the maximum number of lemmings supported by the Editor; this is to match NL Player skill panel display\n");
 
             WriteBoldText(richTextBox, "• Skillset Features");
             richTextBox.AppendText(" - Added buttons for Random Skillset and Set All Skills To Zero\n");
@@ -392,7 +392,7 @@ namespace NLEditor
             // Version 2.7.X features
             WriteBoldText(richTextBox, "\nVersion 2.7.X\n");
             WriteBoldText(richTextBox, "• Cleanse Levels");
-            richTextBox.AppendText(" - Added \"Cleanse Levels\" menu item - this automatically re-saves all levels in a specified pack to ensure compatibility with SLX\n");
+            richTextBox.AppendText(" - Added \"Cleanse Levels\" menu item - this automatically re-saves all levels in a specified pack to ensure compatibility with NL\n");
 
             WriteBoldText(richTextBox, "• Pickup Skills");
             richTextBox.AppendText(" - Improved Pickup Skill graphics so that the icon is displayed more clearly\n");

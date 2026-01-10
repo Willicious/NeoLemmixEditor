@@ -2,7 +2,7 @@
 
 namespace NLEditor
 {
-    partial class FormAboutSLXEditor
+    partial class FormAboutNLEditor
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace NLEditor
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAboutSLXEditor));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAboutNLEditor));
             this.lblWhatsNew = new System.Windows.Forms.Label();
             this.pictureFloater = new System.Windows.Forms.PictureBox();
             this.pictureClimber = new System.Windows.Forms.PictureBox();
@@ -198,7 +198,7 @@ namespace NLEditor
             this.picturePadding.TabIndex = 17;
             this.picturePadding.TabStop = false;
             // 
-            // FormAboutSLXEditor
+            // FormAboutNLEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -223,11 +223,11 @@ namespace NLEditor
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormAboutSLXEditor";
+            this.Name = "FormAboutNLEditor";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "About NeoLemmix Editor";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAboutSLXEditor_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAboutNLEditor_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePadding)).EndInit();

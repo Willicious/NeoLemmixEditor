@@ -565,7 +565,7 @@ namespace NLEditor
 
             textFile.WriteLine("# ----------------------------- ");
             textFile.WriteLine($"#        {curLevel.Format} Level      ");
-            textFile.WriteLine("#   Created with SLXEditor " + C.Version);
+            textFile.WriteLine("#   Created with NLEditor " + C.Version);
             textFile.WriteLine("# ----------------------------- ");
             textFile.WriteLine(" ");
             textFile.WriteLine("#        Level info             ");

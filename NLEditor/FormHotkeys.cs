@@ -311,13 +311,13 @@ namespace NLEditor
             {
                 lblEditedSaved.ForeColor = Color.MediumSeaGreen;
                 lblEditedSaved.Text = "Hotkey Configuration saved successfully!";
-                this.Text = "SLX Editor - Hotkey Configuration";
+                this.Text = "NL Editor - Hotkey Configuration";
             }
             else
             {
                 lblEditedSaved.ForeColor = Color.DarkViolet;
                 lblEditedSaved.Text = "Hotkey Configuration edited...";
-                this.Text = "SLX Editor - Hotkey Configuration - [Edited]";
+                this.Text = "NL Editor - Hotkey Configuration - [Edited]";
             }  
         }
 
@@ -746,8 +746,8 @@ namespace NLEditor
                     case "HotkeyOpenConfigHotkeys":
                         HotkeyConfig.HotkeyOpenConfigHotkeys = parsedKey;
                         break;
-                    case "HotkeyOpenAboutSLX":
-                        HotkeyConfig.HotkeyOpenAboutSLX = parsedKey;
+                    case "HotkeyOpenAboutNL":
+                        HotkeyConfig.HotkeyOpenAboutNL = parsedKey;
                         break;
                     case "HotkeySelectPieces":
                         HotkeyConfig.HotkeySelectPieces = Keys.LButton; // Just in case

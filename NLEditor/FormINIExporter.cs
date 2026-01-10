@@ -575,7 +575,7 @@ namespace NLEditor
                     MessageBox.Show(
                         $"Warning: Some pieces are not linked to a corresponding piece in '{selectedStyle}':\n\n" +
                         string.Join(Environment.NewLine, unlinkedPieces) + "\n\n" +
-                        "Please ensure these pieces are linked in SLXEditorINITranslationTables.ini",
+                        "Please ensure these pieces are linked in NLEditorINITranslationTables.ini",
                         "Unlinked Pieces",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);

@@ -270,9 +270,9 @@
             this.checkAutoPinSLXStyles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkAutoPinSLXStyles.Location = new System.Drawing.Point(596, 353);
             this.checkAutoPinSLXStyles.Name = "checkAutoPinSLXStyles";
-            this.checkAutoPinSLXStyles.Size = new System.Drawing.Size(239, 24);
+            this.checkAutoPinSLXStyles.Size = new System.Drawing.Size(225, 24);
             this.checkAutoPinSLXStyles.TabIndex = 20;
-            this.checkAutoPinSLXStyles.Text = "AutoPin SuperLemmix Styles";
+            this.checkAutoPinSLXStyles.Text = "AutoPin NeoLemmix Styles";
             this.checkAutoPinSLXStyles.UseVisualStyleBackColor = true;
             this.checkAutoPinSLXStyles.CheckedChanged += new System.EventHandler(this.checkAutoPinSLXStyles_CheckedChanged);
             // 

@@ -113,7 +113,7 @@
             "Open Hotkey Configuration",
             "HotkeyOpenConfigHotkeys"}, -1);
             System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Open \"About SuperLemmix Editor\"",
+            "Open \"About NeoLemmix Editor\"",
             "HotkeyOpenAboutSLX"}, -1);
             System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem(new string[] {
             "Select/Drag Pieces",

@@ -38,7 +38,7 @@ namespace NLEditor
             this.lblPreviousUpdates = new System.Windows.Forms.Label();
             this.richTextBox_PreviousUpdates = new System.Windows.Forms.RichTextBox();
             this.richTextBox_WhatsNew = new System.Windows.Forms.RichTextBox();
-            this.lblSuperLemmixEditor = new System.Windows.Forms.Label();
+            this.lblNeoLemmixEditor = new System.Windows.Forms.Label();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.lblThanksTo = new System.Windows.Forms.Label();
             this.lblDMA = new System.Windows.Forms.Label();
@@ -127,15 +127,15 @@ namespace NLEditor
             this.richTextBox_WhatsNew.TabIndex = 9;
             this.richTextBox_WhatsNew.Text = "What\'s new...";
             // 
-            // lblSuperLemmixEditor
+            // lblNeoLemmixEditor
             // 
-            this.lblSuperLemmixEditor.AutoSize = true;
-            this.lblSuperLemmixEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSuperLemmixEditor.Location = new System.Drawing.Point(521, 585);
-            this.lblSuperLemmixEditor.Name = "lblSuperLemmixEditor";
-            this.lblSuperLemmixEditor.Size = new System.Drawing.Size(302, 25);
-            this.lblSuperLemmixEditor.TabIndex = 10;
-            this.lblSuperLemmixEditor.Text = "SuperLemmix Editor (Version)";
+            this.lblNeoLemmixEditor.AutoSize = true;
+            this.lblNeoLemmixEditor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNeoLemmixEditor.Location = new System.Drawing.Point(521, 585);
+            this.lblNeoLemmixEditor.Name = "lblNeoLemmixEditor";
+            this.lblNeoLemmixEditor.Size = new System.Drawing.Size(283, 25);
+            this.lblNeoLemmixEditor.TabIndex = 10;
+            this.lblNeoLemmixEditor.Text = "NeoLemmix Editor (Version)";
             // 
             // lblAuthor
             // 
@@ -210,7 +210,7 @@ namespace NLEditor
             this.Controls.Add(this.lblLFCommunity);
             this.Controls.Add(this.lblThanksTo);
             this.Controls.Add(this.lblAuthor);
-            this.Controls.Add(this.lblSuperLemmixEditor);
+            this.Controls.Add(this.lblNeoLemmixEditor);
             this.Controls.Add(this.richTextBox_WhatsNew);
             this.Controls.Add(this.richTextBox_PreviousUpdates);
             this.Controls.Add(this.lblPreviousUpdates);
@@ -226,7 +226,7 @@ namespace NLEditor
             this.Name = "FormAboutSLXEditor";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "About SuperLemmix Editor";
+            this.Text = "About NeoLemmix Editor";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormAboutSLXEditor_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).EndInit();
@@ -245,7 +245,7 @@ namespace NLEditor
         private Label lblPreviousUpdates;
         private RichTextBox richTextBox_PreviousUpdates;
         private RichTextBox richTextBox_WhatsNew;
-        private Label lblSuperLemmixEditor;
+        private Label lblNeoLemmixEditor;
         private Label lblAuthor;
         private Label lblThanksTo;
         private Label lblDMA;

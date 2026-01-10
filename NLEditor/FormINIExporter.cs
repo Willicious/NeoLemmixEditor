@@ -145,7 +145,7 @@ namespace NLEditor
 
             // Add level stats
             sb.AppendLine($"# LVL {Path.GetFileName(filePath)}");
-            sb.AppendLine($"# Exported from SuperLemmix Editor Version {C.Version}");
+            sb.AppendLine($"# Exported from NeoLemmix Editor Version {C.Version}");
             sb.AppendLine($"# Original .nxlv ID {ini.ID} Version {ini.Version}");
             sb.AppendLine("# RetroLemmini Level");
             sb.AppendLine();

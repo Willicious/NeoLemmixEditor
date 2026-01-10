@@ -33,7 +33,7 @@ namespace NLEditor
             picturePadding.Left = richTextBox_WhatsNew.Right;
             pictureClimber.Left = richTextBox_WhatsNew.Right;
 
-            lblWhatsNew.Text = "What's New in SuperLemmix Editor"; //+ C.Version;
+            lblWhatsNew.Text = "What's New in NeoLemmix Editor"; //+ C.Version;
             lblWhatsNew.Top = topMargin;
             lblWhatsNew.Left = GetCenter(lblWhatsNew);
             WriteWhatsNewText();
@@ -41,11 +41,11 @@ namespace NLEditor
             lblPreviousUpdates.Left = GetCenter(lblPreviousUpdates);
             WritePreviousUpdatesText();
 
-            lblSuperLemmixEditor.Text = "SuperLemmix Editor (Version " + C.Version + ")";
-            lblSuperLemmixEditor.Top = richTextBox_PreviousUpdates.Bottom + padding;
-            lblSuperLemmixEditor.Left = GetCenter(lblSuperLemmixEditor);
+            lblNeoLemmixEditor.Text = "NeoLemmix Editor (Version " + C.Version + ")";
+            lblNeoLemmixEditor.Top = richTextBox_PreviousUpdates.Bottom + padding;
+            lblNeoLemmixEditor.Left = GetCenter(lblNeoLemmixEditor);
 
-            lblAuthor.Top = lblSuperLemmixEditor.Bottom + padding;
+            lblAuthor.Top = lblNeoLemmixEditor.Bottom + padding;
             lblAuthor.Left = GetCenter(lblAuthor);
 
             lblThanksTo.Top = lblAuthor.Bottom + padding;
@@ -210,9 +210,6 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• Bugfix - Piece Search");
             richTextBox.AppendText(" - Working directory is now always set to that of the .exe, so pieces will always be correctly found even if opening the Editor via a .nxlv level file\n");
-
-            WriteBoldText(richTextBox, "• Bugfix - Level Validation");
-            richTextBox.AppendText(" -  Validate Level now shows correct skill limit amount depending on Editor mode (10 for NeoLemmix, 14 for SuperLemmix)\n");
 
             WriteBoldText(richTextBox, "• Level Validation");
             richTextBox.AppendText(" - Level Validation is now run automatically when attempting to save a level. The dialog is shown if there are any issues, and the level can then be edited to fix the issues or saved anyway\n");

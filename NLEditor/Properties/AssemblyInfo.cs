@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SLXEditor")]
-[assembly: AssemblyDescription("An editor for SuperLemmix.")]
+[assembly: AssemblyDescription("An editor for NeoLemmix.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Stephan Neupert, Namida Verasche & William James")]
 [assembly: AssemblyProduct("SLXEditor")]

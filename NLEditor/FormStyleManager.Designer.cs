@@ -272,7 +272,7 @@
             this.checkAutoPinOGStyles.Name = "checkAutoPinOGStyles";
             this.checkAutoPinOGStyles.Size = new System.Drawing.Size(225, 24);
             this.checkAutoPinOGStyles.TabIndex = 20;
-            this.checkAutoPinOGStyles.Text = "AutoPin NeoLemmix Styles";
+            this.checkAutoPinOGStyles.Text = "AutoPin OG Styles";
             this.checkAutoPinOGStyles.UseVisualStyleBackColor = true;
             this.checkAutoPinOGStyles.CheckedChanged += new System.EventHandler(this.checkAutoPinOGStyles_CheckedChanged);
             // 

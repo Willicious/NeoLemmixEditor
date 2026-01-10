@@ -128,11 +128,11 @@
     <Compile Include="FormHotkeys.Designer.cs">
       <DependentUpon>FormHotkeys.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAboutSLXEditor.cs">
+    <Compile Include="FormAboutNLEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAboutSLXEditor.Designer.cs">
-      <DependentUpon>FormAboutSLXEditor.cs</DependentUpon>
+    <Compile Include="FormAboutNLEditor.Designer.cs">
+      <DependentUpon>FormAboutNLEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="INITranslationTables.cs" />
     <Compile Include="LevelPieceBase.cs" />
@@ -225,8 +225,8 @@
       <DependentUpon>FormTalisman.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAboutSLXEditor.resx">
-      <DependentUpon>FormAboutSLXEditor.cs</DependentUpon>
+    <EmbeddedResource Include="FormAboutNLEditor.resx">
+      <DependentUpon>FormAboutNLEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NLEditForm.resx">
       <DependentUpon>NLEditForm.cs</DependentUpon>

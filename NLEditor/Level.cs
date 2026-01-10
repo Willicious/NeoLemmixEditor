@@ -16,7 +16,6 @@ namespace NLEditor
         /// <param name="mainStyle"></param>
         public Level(Style mainStyle = null)
         {
-            this.Format = "NeoLemmix";
             this.Title = "";
             this.Author = "";
             this.MainStyle = mainStyle;
@@ -56,7 +55,6 @@ namespace NLEditor
             this.Talismans = new List<Talisman>();
         }
 
-        public string Format { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
         public Style MainStyle { get; set; }
@@ -116,7 +114,6 @@ namespace NLEditor
         public Level Clone()
         {
             Level newLevel = new Level(this.MainStyle);
-            newLevel.Format = string.Copy(this.Format);
             newLevel.Title = string.Copy(this.Title);
             newLevel.Author = string.Copy(this.Author);
             newLevel.MusicFile = string.Copy(this.MusicFile);
@@ -166,7 +163,6 @@ namespace NLEditor
         public bool Equals(Level otherLevel)
         {
             if (otherLevel == null
-                || !this.Format.Equals(otherLevel.Format)
                 || !this.Title.Equals(otherLevel.Title)
                 || !this.Author.Equals(otherLevel.Author)
                 || !((this.MainStyle == null && otherLevel.MainStyle == null) ||

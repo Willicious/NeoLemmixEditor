@@ -550,7 +550,7 @@ namespace NLEditor
             TextWriter textFile = new StreamWriter(filePath, true);
 
             textFile.WriteLine("# ----------------------------- ");
-            textFile.WriteLine($"#        {curLevel.Format} Level      ");
+            textFile.WriteLine($"#        NeoLemmix Level       ");
             textFile.WriteLine("#   Created with NLEditor " + C.Version);
             textFile.WriteLine("# ----------------------------- ");
             textFile.WriteLine(" ");

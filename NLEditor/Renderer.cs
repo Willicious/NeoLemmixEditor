@@ -813,18 +813,16 @@ namespace NLEditor
         {
             switch (skill)
             {
-                case C.Skill.Rival: return 0;
-                case C.Skill.Neutral: return 1;
-                case C.Skill.Zombie: return 2;
-                case C.Skill.Shimmier: return 3;
-                case C.Skill.Ballooner: return 4;
-                case C.Skill.Slider: return 5;
-                case C.Skill.Climber: return 6;
-                case C.Skill.Swimmer: return 7;
-                case C.Skill.Floater: return 8;
-                case C.Skill.Glider: return 9;
-                case C.Skill.Disarmer: return 10;
-                case C.Skill.Blocker: return 11;
+                case C.Skill.Neutral: return 0;
+                case C.Skill.Zombie: return 1;
+                case C.Skill.Shimmier: return 2;
+                case C.Skill.Slider: return 3;
+                case C.Skill.Climber: return 4;
+                case C.Skill.Swimmer: return 5;
+                case C.Skill.Floater: return 6;
+                case C.Skill.Glider: return 7;
+                case C.Skill.Disarmer: return 8;
+                case C.Skill.Blocker: return 9;
 
                 default: return -1; // Handle unknown skills
             }

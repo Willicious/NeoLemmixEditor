@@ -444,12 +444,9 @@ Ladderer=10";
             CurLevel.SpawnInterval = decimal.ToInt32(num_Lvl_SI.Value);
             CurLevel.ReleaseRate = decimal.ToInt32(num_Lvl_RR.Value);
             CurLevel.IsSpawnRateFix = check_Lvl_LockSR.Checked;
-            CurLevel.IsSuperlemming = check_Lvl_Superlemming.Checked;
             CurLevel.TimeLimit = decimal.ToInt32(num_Lvl_TimeMin.Value) * 60
                                     + decimal.ToInt32(num_Lvl_TimeSec.Value);
             CurLevel.IsNoTimeLimit = check_Lvl_InfTime.Checked;
-            CurLevel.IsInvincibility = check_Lvl_Invincibility.Checked;
-           
 
             string idText = txt_LevelID.Text;
             if (idText.Length < 16)
@@ -516,8 +513,6 @@ Ladderer=10";
                 num_Lvl_TimeMin.Value = CurLevel.TimeLimit / 60;
                 num_Lvl_TimeSec.Value = CurLevel.TimeLimit % 60;
                 check_Lvl_InfTime.Checked = CurLevel.IsNoTimeLimit;
-                check_Lvl_Superlemming.Checked = CurLevel.IsSuperlemming;
-                check_Lvl_Invincibility.Checked = CurLevel.IsInvincibility;
 
                 txt_LevelID.Text = CurLevel.LevelID.ToString("X16");
 
@@ -1988,13 +1983,11 @@ Ladderer=10";
 
         private void UpdateSpecialLemmingCounter()
         {
-            CurLevel.GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int rivalCount, out int neutralCount);
+            CurLevel.GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int neutralCount);
             string newText =
                 normalCount.ToString() + " Normal";
             if (zombieCount > 0)
                 newText += ", " + zombieCount.ToString() + " Zombie";
-            if (rivalCount > 0)
-                newText += ", " + rivalCount.ToString() + " Rival";
             if (neutralCount > 0)
                 newText += ", " + neutralCount.ToString() + " Neutral";
 

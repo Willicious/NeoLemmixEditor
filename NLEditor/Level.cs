@@ -44,8 +44,6 @@ namespace NLEditor
             this.IsSpawnRateFix = false;
             this.TimeLimit = 0;
             this.IsNoTimeLimit = true;
-            this.IsSuperlemming = false;
-            this.IsInvincibility = true;
 
             this.SkillSet = new Dictionary<C.Skill, int>();
             foreach (C.Skill skill in C.SkillArray)
@@ -103,8 +101,6 @@ namespace NLEditor
         public bool IsSpawnRateFix { get; set; }
         public int TimeLimit { get; set; }
         public bool IsNoTimeLimit { get; set; }
-        public bool IsSuperlemming { get; set; }
-        public bool IsInvincibility { get; set; }
 
         public Dictionary<C.Skill, int> SkillSet { get; set; }
 
@@ -149,8 +145,6 @@ namespace NLEditor
             newLevel.IsSpawnRateFix = this.IsSpawnRateFix;
             newLevel.TimeLimit = this.TimeLimit;
             newLevel.IsNoTimeLimit = this.IsNoTimeLimit;
-            newLevel.IsSuperlemming = this.IsSuperlemming;
-            newLevel.IsInvincibility = this.IsInvincibility;
 
             newLevel.SkillSet = new Dictionary<C.Skill, int>();
             foreach (C.Skill skill in C.SkillArray)
@@ -194,8 +188,6 @@ namespace NLEditor
                 || this.SpawnInterval != otherLevel.SpawnInterval
                 || this.ReleaseRate != otherLevel.ReleaseRate
                 || this.IsSpawnRateFix != otherLevel.IsSpawnRateFix
-                || this.IsSuperlemming != otherLevel.IsSuperlemming
-                || this.IsInvincibility != otherLevel.IsInvincibility
                 || this.IsNoTimeLimit != otherLevel.IsNoTimeLimit
                 || (this.TimeLimit != otherLevel.TimeLimit && !this.IsNoTimeLimit)
                 || this.Talismans.Count != otherLevel.Talismans.Count
@@ -728,14 +720,6 @@ namespace NLEditor
             System.Diagnostics.Debug.Assert(pickup != null && pickup.ObjType == C.OBJ.PICKUP, "Set pickup skill count, but first selected piece is not a pickup object!");
 
             pickup.SetPickupSkillCount(value);
-        }
-
-        public void SetCountdownLength(int value)
-        {
-            GadgetPiece gadget = (GadgetPiece)SelectionList().First();
-            System.Diagnostics.Debug.Assert(gadget != null && new[] { C.OBJ.RADIATION, C.OBJ.SLOWFREEZE }.Contains(gadget.ObjType), "Set countdown length, but first selected piece is not able to have this value!");
-
-            gadget.SetCountdownLength(value);
         }
 
         public void SetLemmingLimit(int value)

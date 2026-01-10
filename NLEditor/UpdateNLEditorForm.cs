@@ -101,7 +101,7 @@ namespace NLEditor
                     continue;
                 }
 
-                int frameIndex = (ImageLibrary.GetObjType(pieceKey).In(C.OBJ.PICKUP, C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.COLLECTIBLE, C.OBJ.TRAPONCE)) ? 1 : 0;
+                int frameIndex = (ImageLibrary.GetObjType(pieceKey).In(C.OBJ.PICKUP, C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.TRAPONCE)) ? 1 : 0;
                 Bitmap pieceImage;
 
                 bool preferObjectName = curSettings.PreferObjectName;
@@ -315,18 +315,6 @@ namespace NLEditor
                     num_PickupSkillCount.Visible = false;
                 }
 
-                if (new[] { C.OBJ.RADIATION, C.OBJ.SLOWFREEZE }.Contains(gadget.ObjType))
-                {
-                    lbl_SR_Countdown.Visible = true;
-                    num_SR_Countdown.Value = Math.Min(Math.Max(gadget.CountdownLength, num_SR_Countdown.Minimum), num_SR_Countdown.Maximum);
-                    num_SR_Countdown.Visible = true;
-                }
-                else
-                {
-                    lbl_SR_Countdown.Visible = false;
-                    num_SR_Countdown.Visible = false;
-                }
-
                 if (new[] { C.OBJ.EXIT, C.OBJ.EXIT_LOCKED, C.OBJ.HATCH }.Contains(gadget.ObjType))
                 {
                     lbl_LemmingLimit.Visible = true;
@@ -345,8 +333,6 @@ namespace NLEditor
                 num_PickupSkillCount.Visible = false;
                 lbl_LemmingLimit.Visible = false;
                 num_LemmingLimit.Visible = false;
-                lbl_SR_Countdown.Visible = false;
-                num_SR_Countdown.Visible = false;
             }
 
             if (selectionList.Count == 2 &&
@@ -380,14 +366,6 @@ namespace NLEditor
             else
             {
                 but_PairTeleporter.Visible = false;
-            }
-            if (selectionList.Exists(p => p.ObjType == C.OBJ.COLLECTIBLE))
-            {
-                check_Lvl_Invincibility.Visible = true;
-            }
-            else
-            {
-                check_Lvl_Invincibility.Visible = false;
             }
         }
 

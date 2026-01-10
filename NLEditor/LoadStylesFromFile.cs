@@ -411,24 +411,6 @@ namespace NLEditor
                                 case "FIRE":
                                     objType = C.OBJ.FIRE;
                                     break;
-                                case "BLASTICINE":
-                                    objType = C.OBJ.BLASTICINE;
-                                    break;
-                                case "VINEWATER":
-                                    objType = C.OBJ.VINEWATER;
-                                    break;
-                                case "POISON":
-                                    objType = C.OBJ.POISON;
-                                    break;
-                                case "LAVA":
-                                    objType = C.OBJ.LAVA;
-                                    break;
-                                case "RADIATION":
-                                    objType = C.OBJ.RADIATION;
-                                    break;
-                                case "SLOWFREEZE":
-                                    objType = C.OBJ.SLOWFREEZE;
-                                    break;
                                 case "ONEWAYRIGHT":
                                 case "ONEWAYLEFT":
                                 case "ONEWAYDOWN":
@@ -437,9 +419,6 @@ namespace NLEditor
                                     break;
                                 case "PAINT":
                                     objType = C.OBJ.PAINT;
-                                    break;
-                                case "COLLECTIBLE":
-                                    objType = C.OBJ.COLLECTIBLE;
                                     break;
                                 case "UNLOCKBUTTON":
                                     objType = C.OBJ.BUTTON;

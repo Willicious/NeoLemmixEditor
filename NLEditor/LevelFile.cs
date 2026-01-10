@@ -113,8 +113,6 @@ namespace NLEditor
             newLevel.SpawnInterval = file["MAX_SPAWN_INTERVAL"].ValueInt;
             newLevel.ReleaseRate = 103 - file["MAX_SPAWN_INTERVAL"].ValueInt;
             newLevel.IsSpawnRateFix = file.HasChildWithKey("SPAWN_INTERVAL_LOCKED");
-            newLevel.IsSuperlemming = file.HasChildWithKey("SUPERLEMMING");
-            newLevel.IsInvincibility = file.HasChildWithKey("INVINCIBILITY");
 
             LoadSkillset(newLevel, file["SKILLSET"]);
 
@@ -233,12 +231,6 @@ namespace NLEditor
             if (newGadget.ObjType == C.OBJ.PICKUP && newGadget.Val_L < 1)
             {
                 newGadget.SetPickupSkillCount(1);
-            }
-
-            // Ensure radiation and slowfreeze countdown is set to 10 if no value is available
-            if (newGadget.ObjType.In(C.OBJ.RADIATION, C.OBJ.SLOWFREEZE) && newGadget.CountdownLength < 1)
-            {
-                newGadget.SetCountdownLength(10);
             }
 
             // For compatibility with player: NoOverwrite + OnlyOnTerrain gadgets work like OnlyOnTerrain 
@@ -428,12 +420,6 @@ namespace NLEditor
                 level.TerrainList.Insert(index, newSketch);
         }
 
-        // Counts the number of collectibles in the level
-        static int CountCollectibles(Level curLevel)
-        {
-            return curLevel.GadgetList.Count(gad => gad.ObjType == C.OBJ.COLLECTIBLE);
-        }
-
         private static void LoadTalisman(Level level, NLTextDataNode node)
         {
             Talisman talisman = new Talisman();
@@ -611,19 +597,6 @@ namespace NLEditor
             if (curLevel.IsSpawnRateFix)
             {
                 textFile.WriteLine(" SPAWN_INTERVAL_LOCKED");
-            }
-            int collectiblesCount = CountCollectibles(curLevel);
-            if (collectiblesCount > 0)
-            {
-                textFile.WriteLine(" COLLECTIBLES " + collectiblesCount);
-            }
-            if (curLevel.IsSuperlemming)
-            {
-                textFile.WriteLine(" SUPERLEMMING");
-            }
-            if (curLevel.IsInvincibility && (collectiblesCount > 0))
-            {
-                textFile.WriteLine(" INVINCIBILITY");
             }
             textFile.WriteLine(" ");
 
@@ -884,11 +857,6 @@ namespace NLEditor
             if (gadget.ObjType.In(C.OBJ.TELEPORTER, C.OBJ.RECEIVER, C.OBJ.PORTAL))
             {
                 textFile.WriteLine("   PAIRING " + gadget.Val_L.ToString());
-            }
-
-            if (gadget.ObjType.In(C.OBJ.RADIATION, C.OBJ.SLOWFREEZE) && gadget.CountdownLength > 0)
-            {
-                textFile.WriteLine("   COUNTDOWN " + gadget.CountdownLength.ToString());
             }
 
             if (gadget.ObjType.In(C.OBJ.DECORATION))

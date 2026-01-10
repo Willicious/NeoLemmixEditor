@@ -394,9 +394,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Pickup Skills");
             richTextBox.AppendText(" - Improved Pickup Skill graphics so that the icon is displayed more clearly\n");
 
-            WriteBoldText(richTextBox, "• Invincibility");
-            richTextBox.AppendText(" - Allowing this for Collectibles is designer-side optional; if checked, the lemming to grab the final Collectible will become Invincible for the remainder of the level!\n");
-
             WriteBoldText(richTextBox, "• New Objects");
             richTextBox.AppendText(" - Support added for Collectibles, Lava and Decoration objects\n");
 
@@ -422,9 +419,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Bugfix - Talismans");
             richTextBox.AppendText(" - Talisman requirements that aren't number-related (e.g. Play in Classic Mode, Kill All Zombies) no longer display \": 0\" unnecessarily when added\n");
 
-            WriteBoldText(richTextBox, "• Radiation & Slowfreeze");
-            richTextBox.AppendText(" - Added support for variable countdown on Radiation and Slowfreeze objects\n");
-
             // Version 2.4.X features
             WriteBoldText(richTextBox, "\nVersion 2.4.X\n");
             WriteBoldText(richTextBox, "• Hotkeys");
@@ -442,14 +436,8 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Hotkeys");
             richTextBox.AppendText(" - (RMB on its own still performs drag-to-scroll)\n");
 
-            WriteBoldText(richTextBox, "• Superlemming Mode");
-            richTextBox.AppendText(" - \"Activate Superlemming Mode\" checkbox added\n");
-
             WriteBoldText(richTextBox, "• Talismans");
             richTextBox.AppendText(" - Support for \"Play in Classic Mode\" and \"Play Without Pressing Pause\" talismans added\n");
-
-            WriteBoldText(richTextBox, "• New Objects");
-            richTextBox.AppendText(" - Support for Poison, Radiation and Slowfreeze added\n");
 
             WriteBoldText(richTextBox, "• UI Improvements");
             richTextBox.AppendText(" - Moved Custom Move numeric to Settings menu instead of Pieces tab (seems more appropriate there)\n");

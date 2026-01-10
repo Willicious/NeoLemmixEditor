@@ -203,7 +203,7 @@ namespace NLEditor
                 }
                 return 0;
             }
-            else if (ObjType.In(C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.COLLECTIBLE, C.OBJ.TRAPONCE))
+            else if (ObjType.In(C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.TRAPONCE))
             {
                 return 1;
             }
@@ -366,12 +366,6 @@ namespace NLEditor
         {
             System.Diagnostics.Debug.Assert(new[] { C.OBJ.EXIT, C.OBJ.EXIT_LOCKED, C.OBJ.HATCH }.Contains(ObjType), "Lemming limit set for incompatible object.");
             LemmingCap = newValue;
-        }
-
-        public void SetCountdownLength(int newValue)
-        {
-            System.Diagnostics.Debug.Assert(new[] { C.OBJ.RADIATION, C.OBJ.SLOWFREEZE }.Contains(ObjType), "Countdown length set for incompatible object.");
-            CountdownLength = newValue;
         }
 
         /// <summary>

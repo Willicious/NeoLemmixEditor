@@ -66,7 +66,6 @@ namespace NLEditor
             public int BottomBoundary { get; set; }
             public int LeftBoundary { get; set; }
             public int RightBoundary { get; set; }
-            public string Superlemming { get; set; }
             public string ForceNormalTimerSpeed { get; set; }
         }
 
@@ -121,7 +120,6 @@ namespace NLEditor
             ini.RightBoundary = -16;
 
             // Speed
-            ini.Superlemming = level.IsSuperlemming ? "true" : "false";
             ini.ForceNormalTimerSpeed = "true";
 
             return ini;
@@ -174,7 +172,6 @@ namespace NLEditor
             sb.AppendLine($"bottomBoundary = {ini.BottomBoundary}");
             sb.AppendLine($"leftBoundary = {ini.LeftBoundary}");
             sb.AppendLine($"rightBoundary = {ini.RightBoundary}");
-            sb.AppendLine($"superlemming = {ini.Superlemming}");
             sb.AppendLine($"forceNormalTimerSpeed = {ini.ForceNormalTimerSpeed}");
             sb.AppendLine();
 
@@ -1129,7 +1126,7 @@ namespace NLEditor
                 return;
             }
 
-            int frameIndex = (ImageLibrary.GetObjType(pieceKey).In(C.OBJ.PICKUP, C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.COLLECTIBLE, C.OBJ.TRAPONCE)) ? 1 : 0;
+            int frameIndex = (ImageLibrary.GetObjType(pieceKey).In(C.OBJ.PICKUP, C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.TRAPONCE)) ? 1 : 0;
             Bitmap pieceImage = ImageLibrary.GetImage(pieceKey, RotateFlipType.RotateNoneFlipNone, frameIndex);
 
             if (pieceImage == null)

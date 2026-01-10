@@ -190,7 +190,6 @@
             this.lbl_Skill_Climber = new System.Windows.Forms.Label();
             this.lbl_Skill_Stoner = new System.Windows.Forms.Label();
             this.tabMisc = new System.Windows.Forms.TabPage();
-            this.check_Lvl_Superlemming = new System.Windows.Forms.CheckBox();
             this.btnEditPostview = new System.Windows.Forms.Button();
             this.btnEditPreview = new System.Windows.Forms.Button();
             this.btnTalismanMoveDown = new System.Windows.Forms.Button();
@@ -2075,7 +2074,6 @@
             // 
             // tabMisc
             // 
-            this.tabMisc.Controls.Add(this.check_Lvl_Superlemming);
             this.tabMisc.Controls.Add(this.btnEditPostview);
             this.tabMisc.Controls.Add(this.btnEditPreview);
             this.tabMisc.Controls.Add(this.btnTalismanMoveDown);
@@ -2092,17 +2090,6 @@
             this.tabMisc.TabIndex = 3;
             this.tabMisc.Text = "Misc.";
             this.tabMisc.UseVisualStyleBackColor = true;
-            // 
-            // check_Lvl_Superlemming
-            // 
-            this.check_Lvl_Superlemming.AutoSize = true;
-            this.check_Lvl_Superlemming.Location = new System.Drawing.Point(68, 518);
-            this.check_Lvl_Superlemming.Name = "check_Lvl_Superlemming";
-            this.check_Lvl_Superlemming.Size = new System.Drawing.Size(242, 24);
-            this.check_Lvl_Superlemming.TabIndex = 9;
-            this.check_Lvl_Superlemming.Text = "Activate Superlemming Mode";
-            this.check_Lvl_Superlemming.UseVisualStyleBackColor = true;
-            this.check_Lvl_Superlemming.CheckedChanged += new System.EventHandler(this.textbox_Leave);
             // 
             // btnEditPostview
             // 
@@ -3693,7 +3680,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         public System.Windows.Forms.CheckBox chk_Lvl_AutoStart;
-        private System.Windows.Forms.CheckBox check_Lvl_Superlemming;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel1;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel2;

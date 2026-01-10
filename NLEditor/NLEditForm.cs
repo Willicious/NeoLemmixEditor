@@ -47,15 +47,12 @@ namespace NLEditor
                     { C.Skill.Builder, check_Piece_Builder }, { C.Skill.Basher, check_Piece_Basher },
                     { C.Skill.Miner, check_Piece_Miner }, { C.Skill.Digger, check_Piece_Digger },
                     { C.Skill.Walker, check_Piece_Walker }, { C.Skill.Swimmer, check_Piece_Swimmer },
-                    { C.Skill.Glider, check_Piece_Glider }, { C.Skill.Ballooner, check_Piece_Ballooner },
-                    { C.Skill.Disarmer, check_Piece_Disarmer },{ C.Skill.Freezer, check_Piece_Freezer },
-                    { C.Skill.Stoner, check_Piece_Stoner },
-                    { C.Skill.Ladderer, check_Piece_Ladderer }, { C.Skill.Platformer, check_Piece_Platformer },
+                    { C.Skill.Glider, check_Piece_Glider }, { C.Skill.Disarmer, check_Piece_Disarmer },
+                    { C.Skill.Stoner, check_Piece_Stoner }, { C.Skill.Platformer, check_Piece_Platformer },
                     { C.Skill.Stacker, check_Piece_Stacker }, { C.Skill.Cloner, check_Piece_Cloner },
                     { C.Skill.Fencer, check_Piece_Fencer },  { C.Skill.Shimmier, check_Piece_Shimmier },
                     { C.Skill.Jumper, check_Piece_Jumper }, { C.Skill.Slider, check_Piece_Slider },
-                    { C.Skill.Laserer, check_Piece_Laserer }, { C.Skill.Spearer, check_Piece_Spearer },
-                    { C.Skill.Grenader, check_Piece_Grenader }, { C.Skill.Timebomber, check_Piece_Timebomber },
+                    { C.Skill.Laserer, check_Piece_Laserer },
                     { C.Skill.Zombie, check_Piece_Zombie }, { C.Skill.Neutral, check_Piece_Neutral }
                 };
 
@@ -66,15 +63,12 @@ namespace NLEditor
                     { C.Skill.Builder, num_Ski_Builder }, { C.Skill.Basher, num_Ski_Basher },
                     { C.Skill.Miner, num_Ski_Miner }, { C.Skill.Digger, num_Ski_Digger },
                     { C.Skill.Walker, num_Ski_Walker }, { C.Skill.Swimmer, num_Ski_Swimmer },
-                    { C.Skill.Glider, num_Ski_Glider }, { C.Skill.Ballooner, num_Ski_Ballooner },
-                    { C.Skill.Disarmer, num_Ski_Disarmer }, { C.Skill.Freezer, num_Ski_Freezer },
-                    { C.Skill.Stoner, num_Ski_Stoner },
-                    { C.Skill.Ladderer, num_Ski_Ladderer }, { C.Skill.Platformer, num_Ski_Platformer },
+                    { C.Skill.Glider, num_Ski_Glider }, { C.Skill.Disarmer, num_Ski_Disarmer },
+                    { C.Skill.Stoner, num_Ski_Stoner }, { C.Skill.Platformer, num_Ski_Platformer },
                     { C.Skill.Stacker, num_Ski_Stacker }, { C.Skill.Cloner, num_Ski_Cloner },
                     { C.Skill.Fencer, num_Ski_Fencer }, { C.Skill.Shimmier, num_Ski_Shimmier },
                     { C.Skill.Jumper, num_Ski_Jumper }, { C.Skill.Slider, num_Ski_Slider },
-                    { C.Skill.Laserer, num_Ski_Laserer }, { C.Skill.Spearer, num_Ski_Spearer },
-                    { C.Skill.Grenader, num_Ski_Grenader }, { C.Skill.Timebomber, num_Ski_Timebomber },
+                    { C.Skill.Laserer, num_Ski_Laserer }
                 };
 
             var displayTabItems = new Dictionary<C.DisplayType, ToolStripMenuItem>()
@@ -719,13 +713,6 @@ namespace NLEditor
                 .FindAll(item => item.ObjType == C.OBJ.DECORATION)
                 .ForEach(obj => (obj as GadgetPiece).DecorationSpeed = newSpeed);
             SaveChangesToOldLevelList();
-        }
-
-        private void num_SR_Countdown_ValueChanged(object sender, EventArgs e)
-        {
-            int countdownLength = (int)num_SR_Countdown.Value;
-            CurLevel.SetCountdownLength(countdownLength);
-            pic_Level.SetImage(curRenderer.CreateLevelImage());
         }
 
         private void but_PairTeleporter_Click(object sender, EventArgs e)
@@ -1473,11 +1460,6 @@ namespace NLEditor
             if (_IsWritingToForm) return;
             textbox_Leave(sender, e);
             pic_Level.SetImage(curRenderer.GetScreenImage());
-        }
-
-        private void num_SR_Countdown_KeyUp(object sender, KeyEventArgs e)
-        {
-            num_SR_Countdown_ValueChanged(sender, null);
         }
 
         private void showMissingPiecesStatusBarMenuItem_Click(object sender, EventArgs e)

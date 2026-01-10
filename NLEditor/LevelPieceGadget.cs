@@ -249,9 +249,8 @@ namespace NLEditor
                         return !skill.In(C.Skill.Zombie, C.Skill.Neutral)
 
                            && (!(ObjType == C.OBJ.SKILL_ASSIGNER) || C.PermaSkills.Contains(skill) ||
-                               skill.In(C.Skill.Walker, C.Skill.Jumper, C.Skill.Shimmier, C.Skill.Ballooner,
-                                        C.Skill.Blocker, C.Skill.Spearer, C.Skill.Laserer, C.Skill.Grenader,
-                                        C.Skill.Cloner));
+                               skill.In(C.Skill.Walker, C.Skill.Jumper, C.Skill.Shimmier,
+                                        C.Skill.Blocker, C.Skill.Laserer, C.Skill.Cloner));
                     }
                 case C.OBJ.PERMASKILL_ADD:
                     {

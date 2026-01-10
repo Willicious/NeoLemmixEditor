@@ -149,21 +149,21 @@ namespace NLEditor
         public enum Skill
         {
             // Non-pickup-skills need to be <0 as they aren't used
-            Neutral = -3, Zombie = -2, Rival = -1,
+            Neutral = -3, Zombie = -2,
             
             // Use frame 0 for Skill.None
             None = 0,
 
             // All pickup skills are 2 frames apart
-            Walker = 1, Jumper = 3, Shimmier = 5, Ballooner = 7,
-            Slider = 9, Climber = 11, Swimmer = 13,
-            Floater = 15, Glider = 17, Disarmer = 19,
-            Timebomber = 21, Bomber = 23, Freezer = 25, Stoner = 27,
-            Blocker = 29,
-            Ladderer = 31, Platformer = 33, Builder = 35, Stacker = 37,
-            Spearer = 39, Grenader = 41, Laserer = 43,
-            Basher = 45, Fencer = 47, Miner = 49, Digger = 51,
-            Cloner = 53
+            Walker = 1, Jumper = 3, Shimmier = 5,
+            Slider = 7, Climber = 9, Swimmer = 11,
+            Floater = 13, Glider = 15, Disarmer = 17,
+            Bomber = 19, Stoner = 21,
+            Blocker = 23,
+            Platformer = 25, Builder = 27, Stacker = 29,
+            Laserer = 31, Basher = 33, Fencer = 35,
+            Miner = 37, Digger = 39,
+            Cloner = 41
         };
         public static Array SkillArray => Enum.GetValues(typeof(C.Skill));
 

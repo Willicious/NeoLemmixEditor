@@ -260,15 +260,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Bugfix - Piece Search");
             richTextBox.AppendText(" - Adding a piece to the level via the Piece Search now focuses the Pieces tab\n");
 
-            WriteBoldText(richTextBox, "• NeoLemmix Mode");
-            richTextBox.AppendText(" - Added support for NeoLemmix CE\n");
-
-            WriteBoldText(richTextBox, "• NeoLemmix Mode");
-            richTextBox.AppendText(" - The maximum number of skill types in a randomly-generated skillset is now 10 when in NeoLemmix Mode\n");
-
-            WriteBoldText(richTextBox, "• Editor Mode");
-            richTextBox.AppendText(" - Editor Mode is now set to Auto by default\n");
-
             WriteBoldText(richTextBox, "• Bugfix - Pre/PostView Text dialog");
             richTextBox.AppendText(" - Added a button to clear the text input, and blank text is now handled more gracefully\n");
 
@@ -325,9 +316,6 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• Piece Search dialog added to browser");
             richTextBox.AppendText(" - Search for specific pieces by name, style, object type, and other properties\n");
-
-            WriteBoldText(richTextBox, "• NeoLemmix Mode");
-            richTextBox.AppendText(" - Activates NeoLemmix-specific controls and features across the Editor's UI - (As of 2.8.4 it's now possible to switch between Neo/Super/Auto Modes without closing and re-opening the Editor) \n");
 
             WriteBoldText(richTextBox, "• Settings");
             richTextBox.AppendText(" - Improved Settings form with more sophisticated UI\n");
@@ -391,9 +379,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Cleanse Levels");
             richTextBox.AppendText(" - Added \"Cleanse Levels\" menu item - this automatically re-saves all levels in a specified pack to ensure compatibility with NL\n");
 
-            WriteBoldText(richTextBox, "• Pickup Skills");
-            richTextBox.AppendText(" - Improved Pickup Skill graphics so that the icon is displayed more clearly\n");
-
             WriteBoldText(richTextBox, "• New Objects");
             richTextBox.AppendText(" - Support added for Decoration objects\n");
 
@@ -411,14 +396,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Level Size");
             richTextBox.AppendText(" - Maximum level width increased to 6400px, maximum height decreased to 1600px\n");
 
-            WriteBoldText(richTextBox, "• New Skills");
-            richTextBox.AppendText(" - Added support for Ballooner and Ladderer\n");
-
-            // Version 2.5.X features
-            WriteBoldText(richTextBox, "\nVersion 2.5.X\n");
-            WriteBoldText(richTextBox, "• Bugfix - Talismans");
-            richTextBox.AppendText(" - Talisman requirements that aren't number-related (e.g. Play in Classic Mode, Kill All Zombies) no longer display \": 0\" unnecessarily when added\n");
-
             // Version 2.4.X features
             WriteBoldText(richTextBox, "\nVersion 2.4.X\n");
             WriteBoldText(richTextBox, "• Hotkeys");
@@ -435,9 +412,6 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• Hotkeys");
             richTextBox.AppendText(" - (RMB on its own still performs drag-to-scroll)\n");
-
-            WriteBoldText(richTextBox, "• Talismans");
-            richTextBox.AppendText(" - Support for \"Play in Classic Mode\" and \"Play Without Pressing Pause\" talismans added\n");
 
             WriteBoldText(richTextBox, "• UI Improvements");
             richTextBox.AppendText(" - Moved Custom Move numeric to Settings menu instead of Pieces tab (seems more appropriate there)\n");
@@ -465,9 +439,6 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• Tab Display");
             richTextBox.AppendText(" - \"Display Tabs\" is no longer an option - tab display is the default and only option (necessary due to the various 2.X updates\n");
-
-            WriteBoldText(richTextBox, "• Bugfix - Talismans");
-            richTextBox.AppendText(" - A num up/down box was displayed for Kill All Zombies talisman when it didn't need to be, and wasn't displaying when it did need to be for other talismans\n");
 
             // Version 2.1.X features
             WriteBoldText(richTextBox, "\nVersion 2.1.X\n");
@@ -499,9 +470,6 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• UI Improvements");
             richTextBox.AppendText(" - Theme/style dropdowns widened for easier reading\n");
-
-            WriteBoldText(richTextBox, "• New Talismans");
-            richTextBox.AppendText(" - Added support for Play in Classic Mode, Play Without Pressing Pause, and Kill All Zombies talismans\n");
 
             WriteBoldText(richTextBox, "• New Skills");
             richTextBox.AppendText(" - Added support for Spearer, Grenader and Timebomber\n");

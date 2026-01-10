@@ -865,7 +865,7 @@ namespace NLEditor
             }
         }
 
-        public void GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int rivalCount, out int neutralCount)
+        public void GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int neutralCount)
         {
             var hatches = GadgetList.Where(gad => gad.ObjType == C.OBJ.HATCH).ToList();
             var hatchRemain = new int[hatches.Count];
@@ -874,9 +874,8 @@ namespace NLEditor
             int fixedLemmingCount = preplacedLemmingCount;
 
             zombieCount = GadgetList.Where(gad => gad.ObjType == C.OBJ.LEMMING && gad.IsZombie).Count();
-            rivalCount = GadgetList.Where(gad => gad.ObjType == C.OBJ.LEMMING && gad.IsRival && !gad.IsZombie).Count();
-            neutralCount = GadgetList.Where(gad => gad.ObjType == C.OBJ.LEMMING && gad.IsNeutral && !gad.IsZombie && !gad.IsRival).Count();
-            normalCount = preplacedLemmingCount - zombieCount - rivalCount - neutralCount;
+            neutralCount = GadgetList.Where(gad => gad.ObjType == C.OBJ.LEMMING && gad.IsNeutral && !gad.IsZombie).Count();
+            normalCount = preplacedLemmingCount - zombieCount - neutralCount;
 
             for (int i = 0; i < hatches.Count; i++)
             {
@@ -910,8 +909,6 @@ namespace NLEditor
 
                 if (hatch.IsZombie)
                     zombieCount++;
-                else if (hatch.IsRival)
-                    rivalCount++;
                 else if (hatch.IsNeutral)
                     neutralCount++;
                 else

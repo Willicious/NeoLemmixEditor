@@ -47,11 +47,8 @@ namespace NLEditor
         public int Val_L { get; private set; }
         public HashSet<C.Skill> SkillFlags { get; private set; }
         public bool IsZombie => SkillFlags.Contains(C.Skill.Zombie);
-        public bool IsRival => SkillFlags.Contains(C.Skill.Rival)
-                           && !SkillFlags.Contains(C.Skill.Zombie);
         public bool IsNeutral => SkillFlags.Contains(C.Skill.Neutral)
-                             && !SkillFlags.Contains(C.Skill.Zombie)
-                             && !SkillFlags.Contains(C.Skill.Rival);
+                             && !SkillFlags.Contains(C.Skill.Zombie);
         public int DecorationAngle { get; set; }
         public int DecorationSpeed { get; set; }
         public int LemmingCap { get; set; }
@@ -249,7 +246,7 @@ namespace NLEditor
                 case C.OBJ.PICKUP:
                 case C.OBJ.SKILL_ASSIGNER:
                     {
-                        return !skill.In(C.Skill.Zombie, C.Skill.Rival, C.Skill.Neutral)
+                        return !skill.In(C.Skill.Zombie, C.Skill.Neutral)
 
                            && (!(ObjType == C.OBJ.SKILL_ASSIGNER) || C.PermaSkills.Contains(skill) ||
                                skill.In(C.Skill.Walker, C.Skill.Jumper, C.Skill.Shimmier, C.Skill.Ballooner,
@@ -304,16 +301,6 @@ namespace NLEditor
                         else if (skill == C.Skill.Glider)
                         {
                             SkillFlags.Remove(C.Skill.Floater);
-                        }
-
-                        if (skill == C.Skill.Rival)
-                        {
-                            SkillFlags.Remove(C.Skill.Zombie);
-                            SkillFlags.Remove(C.Skill.Neutral);
-                        }
-                        else if (skill == C.Skill.Neutral || skill == C.Skill.Zombie)
-                        {
-                            SkillFlags.Remove(C.Skill.Rival);
                         }
 
                         if (doAdd)

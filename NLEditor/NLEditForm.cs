@@ -56,8 +56,7 @@ namespace NLEditor
                     { C.Skill.Jumper, check_Piece_Jumper }, { C.Skill.Slider, check_Piece_Slider },
                     { C.Skill.Laserer, check_Piece_Laserer }, { C.Skill.Spearer, check_Piece_Spearer },
                     { C.Skill.Grenader, check_Piece_Grenader }, { C.Skill.Timebomber, check_Piece_Timebomber },
-                    { C.Skill.Zombie, check_Piece_Zombie }, { C.Skill.Rival, check_Piece_Rival },
-                    { C.Skill.Neutral, check_Piece_Neutral }
+                    { C.Skill.Zombie, check_Piece_Zombie }, { C.Skill.Neutral, check_Piece_Neutral }
                 };
 
             numericsSkillSet = new Dictionary<C.Skill, NumericUpDown>()
@@ -1655,10 +1654,10 @@ namespace NLEditor
 
         private void btnLemCount_Click(object sender, EventArgs e)
         {
-            CurLevel.GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int rivalCount, out int neutralCount);
+            CurLevel.GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int neutralCount);
 
-            int totalCount = normalCount + zombieCount + rivalCount + neutralCount;
-            int possibleSaveCount = normalCount + rivalCount + neutralCount;
+            int totalCount = normalCount + zombieCount + neutralCount;
+            int possibleSaveCount = normalCount + neutralCount;
 
             if (totalCount == 0 || possibleSaveCount == 0)
             {

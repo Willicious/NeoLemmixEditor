@@ -365,9 +365,6 @@ namespace NLEditor
             WriteBoldText(richTextBox, "• Skillset Features");
             richTextBox.AppendText(" - Added buttons for Random Skillset and Set All Skills To Zero\n");
 
-            WriteBoldText(richTextBox, "• Rivals");
-            richTextBox.AppendText(" - Support for Rival lemmings added\n");
-
             WriteBoldText(richTextBox, "• Helper Icons");
             richTextBox.AppendText(" - Added helper icons to show pre-placed-lem/hatch/exit skills & properties\n");
 

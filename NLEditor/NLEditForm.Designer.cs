@@ -903,7 +903,7 @@
             this.btnLemCount.Name = "btnLemCount";
             this.btnLemCount.Size = new System.Drawing.Size(302, 41);
             this.btnLemCount.TabIndex = 33;
-            this.btnLemCount.Text = "0 Normal, 0 Zombie, 0 Rival, 0 Neutral";
+            this.btnLemCount.Text = "0 Normal, 0 Zombie, 0 Neutral";
             this.btnLemCount.UseVisualStyleBackColor = true;
             this.btnLemCount.Click += new System.EventHandler(this.btnLemCount_Click);
             // 

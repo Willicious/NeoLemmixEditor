@@ -36,8 +36,7 @@ namespace NLEditor
         public static string AppPathCustomSkillsets => AppPath + "settings" + DirSep + "SLXEditorCustomSkillsets.ini";
         public static string AppPathTranslationTables => AppPath + "settings" + DirSep + "SLXEditorINITranslationTables.ini";
         public static string AppPathPlayerSettings => AppPath + "settings" + DirSep + "settings.ini";
-        public static string AppPathPlayerSettingsOld => AppPath + "SuperLemmix147Settings.ini";
-        public static string AppPathSuperLemmix => AppPath + "SuperLemmix.exe";
+        public static string AppPathPlayerSettingsOld => AppPath + "NeoLemmix147Settings.ini";
         public static string AppPathNeoLemmix => AppPath + "NeoLemmix.exe";
         public static string AppPathNeoLemmixCE => AppPath + "NeoLemmixCE.exe";
 
@@ -71,7 +70,7 @@ namespace NLEditor
         public enum DIR { N, E, S, W }
 
         /// <summary>
-        /// Warning: The values of the object types here do NOT correspond to the numbers used in SuperLemmix! 
+        /// Warning: The values of the object types here do NOT correspond to the numbers used in NeoLemmix! 
         /// </summary>
         public enum OBJ
         {
@@ -176,16 +175,6 @@ namespace NLEditor
             Skill.Floater,
             Skill.Glider,
             Skill.Disarmer
-        };
-
-        public static readonly HashSet<Skill> SuperLemmixSkills = new HashSet<Skill>
-        {
-            Skill.Ballooner,
-            Skill.Timebomber,
-            Skill.Freezer,
-            Skill.Grenader,
-            Skill.Spearer,
-            Skill.Ladderer
         };
 
         public static readonly int ZOOM_MIN = -2;

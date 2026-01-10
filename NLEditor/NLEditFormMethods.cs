@@ -1239,7 +1239,7 @@ Ladderer=10";
         }
 
         /// <summary>
-        /// Saves the level as TempTestLevel.nxlv and loads this level in the Neo/SuperLemmix player.
+        /// Saves the level as TempTestLevel.nxlv and loads this level in the NeoLemmix player.
         /// </summary>
         private void PlaytestLevel()
         {
@@ -1278,7 +1278,7 @@ Ladderer=10";
             {
                 try
                 {
-                    // Start the SuperLemmix player.
+                    // Start the NeoLemmix player.
                     var playerStartInfo = new System.Diagnostics.ProcessStartInfo();
                     playerStartInfo.FileName = enginePath;
                     playerStartInfo.Arguments = "test " + "\"" + C.AppPathTempLevel + "\"";

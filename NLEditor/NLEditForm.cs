@@ -701,7 +701,7 @@ namespace NLEditor
         {
             int newDir = cb_Decoration_Direction.SelectedIndex * 45 / 2;
             CurLevel.SelectionList()
-                .FindAll(item => item.ObjType == C.OBJ.DECORATION)
+                .FindAll(item => item.ObjType == C.OBJ.DECORATION || item.ObjType == C.OBJ.PAINT)
                 .ForEach(obj => (obj as GadgetPiece).DecorationAngle = newDir);
             SaveChangesToOldLevelList();
         }
@@ -710,7 +710,7 @@ namespace NLEditor
         {
             int newSpeed = (int)num_Decoration_Speed.Value;
             CurLevel.SelectionList()
-                .FindAll(item => item.ObjType == C.OBJ.DECORATION)
+                .FindAll(item => item.ObjType == C.OBJ.DECORATION || item.ObjType == C.OBJ.PAINT)
                 .ForEach(obj => (obj as GadgetPiece).DecorationSpeed = newSpeed);
             SaveChangesToOldLevelList();
         }

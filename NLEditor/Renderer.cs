@@ -502,7 +502,7 @@ namespace NLEditor
         {
             layerImages[C.Layer.ObjBack].Clear();
 
-            var backgroundGadgets = level.GadgetList.FindAll(obj => obj.ObjType == C.OBJ.DECORATION && !obj.IsOnlyOnTerrain);
+            var backgroundGadgets = level.GadgetList.FindAll(obj => (obj.ObjType == C.OBJ.DECORATION && !obj.IsOnlyOnTerrain) || obj.ObjType == C.OBJ.PAINT);
             foreach (GadgetPiece gadget in backgroundGadgets)
             {
                 layerImages[C.Layer.ObjBack].DrawOn(gadget.Image, gadget.Pos);

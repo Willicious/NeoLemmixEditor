@@ -278,7 +278,7 @@ namespace NLEditor
                 num_Resize_Height.Visible = false;
             }
 
-            if (selectionList.Count > 0 && selectionList.All(item => item.ObjType == C.OBJ.DECORATION))
+            if (selectionList.Count > 0 && selectionList.All(item => item.ObjType == C.OBJ.DECORATION || item.ObjType == C.OBJ.PAINT))
             {
                 var gadget = selectionList[0] as GadgetPiece;
                 int dirIndex = gadget.DecorationAngle * 2 / 45;

@@ -859,7 +859,7 @@ namespace NLEditor
                 textFile.WriteLine("   PAIRING " + gadget.Val_L.ToString());
             }
 
-            if (gadget.ObjType.In(C.OBJ.DECORATION))
+            if (gadget.ObjType.In(C.OBJ.DECORATION, C.OBJ.PAINT))
             {
                 textFile.WriteLine("   SPEED " + gadget.DecorationSpeed.ToString());
                 textFile.WriteLine("   ANGLE " + gadget.DecorationAngle.ToString());

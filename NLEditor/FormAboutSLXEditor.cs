@@ -395,7 +395,7 @@ namespace NLEditor
             richTextBox.AppendText(" - Improved Pickup Skill graphics so that the icon is displayed more clearly\n");
 
             WriteBoldText(richTextBox, "• New Objects");
-            richTextBox.AppendText(" - Support added for Collectibles, Lava and Decoration objects\n");
+            richTextBox.AppendText(" - Support added for Decoration objects\n");
 
             WriteBoldText(richTextBox, "• Bugfix - Missing Piece Handling");
             richTextBox.AppendText(" - Levels with missing pieces no longer create infinite popups; instead, a status bar is used to inform the player that the level has missing pieces\n");

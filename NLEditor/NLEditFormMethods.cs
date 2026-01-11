@@ -436,10 +436,10 @@ Digger=20";
             CurLevel.SaveReq = decimal.ToInt32(num_Lvl_Rescue.Value);
             CurLevel.SpawnInterval = decimal.ToInt32(num_Lvl_SI.Value);
             CurLevel.ReleaseRate = decimal.ToInt32(num_Lvl_RR.Value);
-            CurLevel.IsSpawnRateFix = check_Lvl_LockSR.Checked;
+            CurLevel.IsSpawnRateFix = check_Lvl_LockRRSR.Checked;
             CurLevel.TimeLimit = decimal.ToInt32(num_Lvl_TimeMin.Value) * 60
                                     + decimal.ToInt32(num_Lvl_TimeSec.Value);
-            CurLevel.IsNoTimeLimit = check_Lvl_InfTime.Checked;
+            CurLevel.IsNoTimeLimit = !check_Lvl_TimeLimit.Checked;
 
             string idText = txt_LevelID.Text;
             if (idText.Length < 16)
@@ -502,10 +502,10 @@ Digger=20";
                 num_Lvl_Rescue.Value = CurLevel.SaveReq;
                 num_Lvl_SI.Value = CurLevel.SpawnInterval;
                 num_Lvl_RR.Value = CurLevel.ReleaseRate;
-                check_Lvl_LockSR.Checked = CurLevel.IsSpawnRateFix;
+                check_Lvl_LockRRSR.Checked = CurLevel.IsSpawnRateFix;
                 num_Lvl_TimeMin.Value = CurLevel.TimeLimit / 60;
                 num_Lvl_TimeSec.Value = CurLevel.TimeLimit % 60;
-                check_Lvl_InfTime.Checked = CurLevel.IsNoTimeLimit;
+                check_Lvl_TimeLimit.Checked = !CurLevel.IsNoTimeLimit;
 
                 txt_LevelID.Text = CurLevel.LevelID.ToString("X16");
 

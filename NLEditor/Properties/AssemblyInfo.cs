@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("NLEditor")]
 [assembly: AssemblyDescription("An editor for NeoLemmix.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Stephan Neupert, Namida Verasche & William James")]
+[assembly: AssemblyCompany("LemmingsForums")]
 [assembly: AssemblyProduct("NLEditor")]
 [assembly: AssemblyCopyright("CC BY-NC 4.0 (2017-2020)")]
 [assembly: AssemblyTrademark("")]

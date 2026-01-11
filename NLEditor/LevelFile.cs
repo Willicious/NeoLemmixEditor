@@ -107,7 +107,7 @@ namespace NLEditor
             if (file.HasChildWithKey("TIME_LIMIT"))
             {
                 newLevel.TimeLimit = file["TIME_LIMIT"].ValueInt;
-                newLevel.IsNoTimeLimit = false;
+                newLevel.HasTimeLimit = true;
             }
 
             newLevel.SpawnInterval = file["MAX_SPAWN_INTERVAL"].ValueInt;
@@ -589,7 +589,7 @@ namespace NLEditor
             textFile.WriteLine("# ----------------------------- ");
             textFile.WriteLine(" LEMMINGS " + curLevel.NumLems.ToString());
             textFile.WriteLine(" SAVE_REQUIREMENT " + curLevel.SaveReq.ToString());
-            if (!curLevel.IsNoTimeLimit)
+            if (curLevel.HasTimeLimit)
             {
                 textFile.WriteLine(" TIME_LIMIT " + curLevel.TimeLimit.ToString());
             }

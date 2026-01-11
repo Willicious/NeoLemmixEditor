@@ -439,7 +439,7 @@ Digger=20";
             CurLevel.IsSpawnRateFix = check_Lvl_LockRRSR.Checked;
             CurLevel.TimeLimit = decimal.ToInt32(num_Lvl_TimeMin.Value) * 60
                                     + decimal.ToInt32(num_Lvl_TimeSec.Value);
-            CurLevel.IsNoTimeLimit = !check_Lvl_TimeLimit.Checked;
+            CurLevel.HasTimeLimit = check_Lvl_TimeLimit.Checked;
 
             string idText = txt_LevelID.Text;
             if (idText.Length < 16)
@@ -505,7 +505,7 @@ Digger=20";
                 check_Lvl_LockRRSR.Checked = CurLevel.IsSpawnRateFix;
                 num_Lvl_TimeMin.Value = CurLevel.TimeLimit / 60;
                 num_Lvl_TimeSec.Value = CurLevel.TimeLimit % 60;
-                check_Lvl_TimeLimit.Checked = !CurLevel.IsNoTimeLimit;
+                check_Lvl_TimeLimit.Checked = CurLevel.HasTimeLimit;
 
                 txt_LevelID.Text = CurLevel.LevelID.ToString("X16");
 

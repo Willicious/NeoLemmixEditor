@@ -26,9 +26,8 @@ namespace NLEditor
             picturePadding.Left = richTextBox_WhatsNew.Right;
             pictureClimber.Left = richTextBox_WhatsNew.Right;
 
-            lblWhatsNew.Text = "What's New in NeoLemmix Editor"; //+ C.Version;
-            lblWhatsNew.Top = topMargin;
-            lblWhatsNew.Left = GetCenter(lblWhatsNew);
+            pictureWhatsNew.Top = topMargin;
+            pictureWhatsNew.Left = GetCenter(pictureWhatsNew);
             WriteWhatsNewText();
 
             lblPreviousUpdates.Left = GetCenter(lblPreviousUpdates);

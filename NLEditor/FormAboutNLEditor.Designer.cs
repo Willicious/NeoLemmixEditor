@@ -31,7 +31,6 @@ namespace NLEditor
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAboutNLEditor));
-            this.lblWhatsNew = new System.Windows.Forms.Label();
             this.pictureFloater = new System.Windows.Forms.PictureBox();
             this.pictureClimber = new System.Windows.Forms.PictureBox();
             this.check_ShowThisWindow = new System.Windows.Forms.CheckBox();
@@ -45,20 +44,12 @@ namespace NLEditor
             this.lblLFCommunity = new System.Windows.Forms.Label();
             this.linkLF = new System.Windows.Forms.LinkLabel();
             this.picturePadding = new System.Windows.Forms.PictureBox();
+            this.pictureWhatsNew = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePadding)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWhatsNew)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblWhatsNew
-            // 
-            this.lblWhatsNew.AutoSize = true;
-            this.lblWhatsNew.Font = new System.Drawing.Font("Hobo Std", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWhatsNew.Location = new System.Drawing.Point(555, 16);
-            this.lblWhatsNew.Name = "lblWhatsNew";
-            this.lblWhatsNew.Size = new System.Drawing.Size(222, 51);
-            this.lblWhatsNew.TabIndex = 0;
-            this.lblWhatsNew.Text = "What\'s New";
             // 
             // pictureFloater
             // 
@@ -198,6 +189,16 @@ namespace NLEditor
             this.picturePadding.TabIndex = 17;
             this.picturePadding.TabStop = false;
             // 
+            // pictureWhatsNew
+            // 
+            this.pictureWhatsNew.Image = global::NLEditor.Properties.Resources.WhatsNew;
+            this.pictureWhatsNew.Location = new System.Drawing.Point(349, 16);
+            this.pictureWhatsNew.Name = "pictureWhatsNew";
+            this.pictureWhatsNew.Size = new System.Drawing.Size(620, 60);
+            this.pictureWhatsNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureWhatsNew.TabIndex = 18;
+            this.pictureWhatsNew.TabStop = false;
+            // 
             // FormAboutNLEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -205,6 +206,7 @@ namespace NLEditor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 811);
+            this.Controls.Add(this.pictureWhatsNew);
             this.Controls.Add(this.pictureClimber);
             this.Controls.Add(this.linkLF);
             this.Controls.Add(this.lblLFCommunity);
@@ -216,7 +218,6 @@ namespace NLEditor
             this.Controls.Add(this.lblPreviousUpdates);
             this.Controls.Add(this.check_ShowThisWindow);
             this.Controls.Add(this.pictureFloater);
-            this.Controls.Add(this.lblWhatsNew);
             this.Controls.Add(this.lblDMA);
             this.Controls.Add(this.picturePadding);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -231,14 +232,13 @@ namespace NLEditor
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePadding)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureWhatsNew)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblWhatsNew;
         private PictureBox pictureFloater;
         private PictureBox pictureClimber;
         private CheckBox check_ShowThisWindow;
@@ -252,5 +252,6 @@ namespace NLEditor
         private Label lblLFCommunity;
         private LinkLabel linkLF;
         private PictureBox picturePadding;
+        private PictureBox pictureWhatsNew;
     }
 }

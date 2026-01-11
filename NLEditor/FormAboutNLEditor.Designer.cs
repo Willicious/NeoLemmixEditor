@@ -38,13 +38,14 @@ namespace NLEditor
             this.richTextBox_PreviousUpdates = new System.Windows.Forms.RichTextBox();
             this.richTextBox_WhatsNew = new System.Windows.Forms.RichTextBox();
             this.lblNeoLemmixEditor = new System.Windows.Forms.Label();
-            this.lblAuthor = new System.Windows.Forms.Label();
             this.lblThanksTo = new System.Windows.Forms.Label();
             this.lblDMA = new System.Windows.Forms.Label();
             this.lblLFCommunity = new System.Windows.Forms.Label();
             this.linkLF = new System.Windows.Forms.LinkLabel();
             this.picturePadding = new System.Windows.Forms.PictureBox();
             this.pictureWhatsNew = new System.Windows.Forms.PictureBox();
+            this.lblBasedOn = new System.Windows.Forms.Label();
+            this.lblAuthor = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureFloater)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureClimber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picturePadding)).BeginInit();
@@ -128,15 +129,6 @@ namespace NLEditor
             this.lblNeoLemmixEditor.TabIndex = 10;
             this.lblNeoLemmixEditor.Text = "NeoLemmix Editor (Version)";
             // 
-            // lblAuthor
-            // 
-            this.lblAuthor.AutoSize = true;
-            this.lblAuthor.Location = new System.Drawing.Point(453, 629);
-            this.lblAuthor.Name = "lblAuthor";
-            this.lblAuthor.Size = new System.Drawing.Size(422, 20);
-            this.lblAuthor.TabIndex = 11;
-            this.lblAuthor.Text = "By William James, Namida Verasche and Stephan Neupert";
-            // 
             // lblThanksTo
             // 
             this.lblThanksTo.AutoSize = true;
@@ -199,6 +191,25 @@ namespace NLEditor
             this.pictureWhatsNew.TabIndex = 18;
             this.pictureWhatsNew.TabStop = false;
             // 
+            // lblBasedOn
+            // 
+            this.lblBasedOn.AutoSize = true;
+            this.lblBasedOn.Location = new System.Drawing.Point(328, 638);
+            this.lblBasedOn.Name = "lblBasedOn";
+            this.lblBasedOn.Size = new System.Drawing.Size(668, 20);
+            this.lblBasedOn.TabIndex = 20;
+            this.lblBasedOn.Text = "Based on the original NeoLemmix Editor by Stephan Neupert (Nepster) and Namida Ve" +
+    "rasche";
+            // 
+            // lblAuthor
+            // 
+            this.lblAuthor.AutoSize = true;
+            this.lblAuthor.Location = new System.Drawing.Point(565, 615);
+            this.lblAuthor.Name = "lblAuthor";
+            this.lblAuthor.Size = new System.Drawing.Size(200, 20);
+            this.lblAuthor.TabIndex = 19;
+            this.lblAuthor.Text = "By William James (WillLem)";
+            // 
             // FormAboutNLEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -206,12 +217,13 @@ namespace NLEditor
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1300, 811);
+            this.Controls.Add(this.lblBasedOn);
+            this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.pictureWhatsNew);
             this.Controls.Add(this.pictureClimber);
             this.Controls.Add(this.linkLF);
             this.Controls.Add(this.lblLFCommunity);
             this.Controls.Add(this.lblThanksTo);
-            this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.lblNeoLemmixEditor);
             this.Controls.Add(this.richTextBox_WhatsNew);
             this.Controls.Add(this.richTextBox_PreviousUpdates);
@@ -246,12 +258,13 @@ namespace NLEditor
         private RichTextBox richTextBox_PreviousUpdates;
         private RichTextBox richTextBox_WhatsNew;
         private Label lblNeoLemmixEditor;
-        private Label lblAuthor;
         private Label lblThanksTo;
         private Label lblDMA;
         private Label lblLFCommunity;
         private LinkLabel linkLF;
         private PictureBox picturePadding;
         private PictureBox pictureWhatsNew;
+        private Label lblBasedOn;
+        private Label lblAuthor;
     }
 }

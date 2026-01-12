@@ -178,7 +178,7 @@ namespace NLEditor
 
             if (IsTriggerLayer)
             {
-                baseLevelImage.DrawOnWithAlpha(layerImages[C.Layer.Trigger], curSettings.CurrentTriggerAreaColor);
+                baseLevelImage.DrawOnWithAlpha(layerImages[C.Layer.Trigger]);
             }
         }
 
@@ -675,7 +675,25 @@ namespace NLEditor
                 .Where(obj => !C.HideTriggerObjects.Contains(obj.ObjType))
                 .Select(obj => C.TriggerPointObjects.Contains(obj.ObjType) ? new Rectangle(obj.TriggerRect.X, obj.TriggerRect.Y, 1, 1) : obj.TriggerRect)
                 .ToList();
-            layerImages[C.Layer.Trigger].DrawOnFilledRectangles(triggerRectangles, C.NLColors[C.NLColor.Trigger]);
+            layerImages[C.Layer.Trigger].DrawOnFilledRectangles(triggerRectangles, GetTriggerColor());
+        }
+
+        /// <summary>
+        /// Gets the trigger color from settings
+        /// </summary>
+        private Color GetTriggerColor()
+        {
+            var color = curSettings.CurrentTriggerAreaColor;
+            if      (color == Settings.TriggerAreaColor.Yellow)
+                return C.TriggerColors[C.NLColor.TriggerYellow];
+            else if (color == Settings.TriggerAreaColor.Green)
+                return C.TriggerColors[C.NLColor.TriggerGreen];
+            else if (color == Settings.TriggerAreaColor.Blue)
+                return C.TriggerColors[C.NLColor.TriggerBlue];
+            else if (color == Settings.TriggerAreaColor.Purple)
+                return C.TriggerColors[C.NLColor.TriggerPurple];
+            else
+                return C.TriggerColors[C.NLColor.TriggerPink]; // Default
         }
 
         /// <summary>

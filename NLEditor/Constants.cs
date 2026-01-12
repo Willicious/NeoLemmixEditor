@@ -181,15 +181,22 @@ namespace NLEditor
         // Other colors are specified directly in BmpModify to speed up rendering.
         public enum NLColor
         {
-            Text, OWWDefault, BackDefault,
-            Trigger, ScreenStart, SelRectGadget, SelRectTerrain
+            Text, OWWDefault, BackDefault, ScreenStart, SelRectGadget, SelRectTerrain,
+            TriggerPink, TriggerYellow, TriggerGreen, TriggerBlue, TriggerPurple
         }
+        public static readonly Dictionary<NLColor, Color> TriggerColors = new Dictionary<NLColor, Color>()
+        {
+          { NLColor.TriggerPink, Utility.HexToColor("55EE88EE") }, // Pink with reduced alpha
+          { NLColor.TriggerYellow, Utility.HexToColor("44FFDD00") }, // Banana with reduced alpha
+          { NLColor.TriggerGreen, Utility.HexToColor("4411FFAA") }, // Mint with reduced alpha
+          { NLColor.TriggerBlue, Utility.HexToColor("4400FFFF") }, // Cyan with reduced alpha
+          { NLColor.TriggerPurple, Utility.HexToColor("44AA00FF") }, // Indigo with reduced alpha
+        };
         public static readonly Dictionary<NLColor, Color> NLColors = new Dictionary<NLColor, Color>()
         {
           { NLColor.Text, Utility.HexToColor("FEF5F5F5") }, // Color.WhiteSmoke with slightly reduced alpha
           { NLColor.OWWDefault, Color.Linen },
           { NLColor.BackDefault, Color.Black },
-          { NLColor.Trigger, Utility.HexToColor("80EE82EE") }, // Color.Violet with reduced alpha
           { NLColor.ScreenStart, Color.AliceBlue },
           { NLColor.SelRectGadget, Color.Chartreuse },
           { NLColor.SelRectTerrain, Color.Gold }

@@ -2572,6 +2572,7 @@ Digger=20";
             AddHotkey(HotkeyConfig.HotkeyToggleTerrain, () => ToggleTerrain());
             AddHotkey(HotkeyConfig.HotkeyToggleObjects, () => ToggleObjects());
             AddHotkey(HotkeyConfig.HotkeyToggleTriggerAreas, () => ToggleTriggerAreas());
+            AddHotkey(HotkeyConfig.HotkeyToggleRulers, () => ToggleRulers());
             AddHotkey(HotkeyConfig.HotkeyToggleScreenStart, () => ToggleScreenStart());
             AddHotkey(HotkeyConfig.HotkeyToggleBackground, () => ToggleBackground());
             AddHotkey(HotkeyConfig.HotkeyToggleDeprecatedPieces, () => ToggleDeprecatedPieces());
@@ -2743,6 +2744,9 @@ Digger=20";
 
             triggerAreasToolStripMenuItem.ShortcutKeyDisplayString =
                 HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyToggleTriggerAreas);
+
+            rulersToolStripMenuItem.ShortcutKeyDisplayString =
+                HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyToggleRulers);
 
             screenStartToolStripMenuItem.ShortcutKeyDisplayString =
                 HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyToggleScreenStart);

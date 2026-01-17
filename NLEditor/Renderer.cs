@@ -55,7 +55,8 @@ namespace NLEditor
         bool IsClearPhysics => DisplaySettings.IsDisplayed(C.DisplayType.ClearPhysics);
         bool IsTerrainLayer => DisplaySettings.IsDisplayed(C.DisplayType.Terrain);
         bool IsObjectLayer => DisplaySettings.IsDisplayed(C.DisplayType.Objects);
-        bool IsTriggerLayer => DisplaySettings.IsDisplayed(C.DisplayType.Trigger);
+        bool IsTriggerLayer => DisplaySettings.IsDisplayed(C.DisplayType.Triggers);
+        bool IsRulerLayer => DisplaySettings.IsDisplayed(C.DisplayType.Rulers);
         bool IsScreenStart => DisplaySettings.IsDisplayed(C.DisplayType.ScreenStart);
         bool IsBackgroundLayer => DisplaySettings.IsDisplayed(C.DisplayType.Background);
         bool IsGridEnabled => curSettings.UseGridForPieces;
@@ -96,6 +97,7 @@ namespace NLEditor
             CreateTerrainLayer();
             CreateObjectTopLayer();
             CreateTriggerLayer();
+            CreateRulerLayer();
 
             return CombineLayers();
         }
@@ -178,7 +180,12 @@ namespace NLEditor
 
             if (IsTriggerLayer)
             {
-                baseLevelImage.DrawOnWithAlpha(layerImages[C.Layer.Trigger]);
+                baseLevelImage.DrawOnWithAlpha(layerImages[C.Layer.Triggers]);
+            }
+
+            if (IsRulerLayer)
+            {
+                baseLevelImage.DrawOnWithAlpha(layerImages[C.Layer.Rulers]);
             }
         }
 
@@ -508,7 +515,7 @@ namespace NLEditor
                 layerImages[C.Layer.ObjBack].DrawOn(gadget.Image, gadget.Pos);
             }
 
-            var backGadgets = level.GadgetList.FindAll(obj => obj.IsNoOverwrite && !obj.ObjType.In(C.OBJ.DECORATION, C.OBJ.ONE_WAY_WALL, C.OBJ.PAINT));
+            var backGadgets = level.GadgetList.FindAll(obj => obj.IsNoOverwrite && !obj.ObjType.In(C.OBJ.DECORATION, C.OBJ.ONE_WAY_WALL, C.OBJ.PAINT, C.OBJ.RULER));
             backGadgets.Reverse();
             foreach (GadgetPiece gadget in backGadgets)
             {
@@ -576,9 +583,7 @@ namespace NLEditor
         /// <param name="terrPiece"></param>
         private C.CustDrawMode GetDrawModeForTerrain(TerrainPiece terrPiece)
         {
-            if (terrPiece.IsSketch)
-                return C.CustDrawMode.Default;
-            else if (terrPiece is GroupPiece && Properties.Settings.Default.GroupsAreHighlighted)
+            if (terrPiece is GroupPiece && Properties.Settings.Default.GroupsAreHighlighted)
                 return C.CustDrawMode.HighlightGrouped;
             else if (terrPiece.IsErase)
                 return C.CustDrawMode.Erase;
@@ -626,7 +631,6 @@ namespace NLEditor
             }
         }
 
-
         /// <summary>
         /// Renders all object, that overwrite usual terrain.
         /// </summary>
@@ -635,7 +639,7 @@ namespace NLEditor
             layerImages[C.Layer.ObjTop].Clear();
 
             var onlyOnTerrainGadgetList = level.GadgetList.FindAll(gad =>
-                    gad.IsOnlyOnTerrain && !gad.ObjType.In(C.OBJ.ONE_WAY_WALL, C.OBJ.PAINT));
+                    gad.IsOnlyOnTerrain && !gad.ObjType.In(C.OBJ.ONE_WAY_WALL, C.OBJ.PAINT, C.OBJ.RULER));
             foreach (GadgetPiece gadget in onlyOnTerrainGadgetList)
             {
                 layerImages[C.Layer.ObjTop].DrawOn(gadget.Image, layerImages[C.Layer.Terrain], gadget.Pos, C.CustDrawMode.OnlyAtMask);
@@ -657,7 +661,7 @@ namespace NLEditor
             }
 
             var normalGadgetList = level.GadgetList.FindAll(gad =>
-                    !gad.IsNoOverwrite && !gad.IsOnlyOnTerrain && !gad.ObjType.In(C.OBJ.ONE_WAY_WALL, C.OBJ.DECORATION, C.OBJ.PAINT));
+                    !gad.IsNoOverwrite && !gad.IsOnlyOnTerrain && !gad.ObjType.In(C.OBJ.ONE_WAY_WALL, C.OBJ.DECORATION, C.OBJ.PAINT, C.OBJ.RULER));
             foreach (GadgetPiece gadget in normalGadgetList)
             {
                 layerImages[C.Layer.ObjTop].DrawOn(gadget.Image, gadget.Pos);
@@ -669,13 +673,30 @@ namespace NLEditor
         /// </summary>
         private void CreateTriggerLayer()
         {
-            layerImages[C.Layer.Trigger].Clear();
+            layerImages[C.Layer.Triggers].Clear();
 
             var triggerRectangles = level.GadgetList
                 .Where(obj => !C.HideTriggerObjects.Contains(obj.ObjType))
                 .Select(obj => C.TriggerPointObjects.Contains(obj.ObjType) ? new Rectangle(obj.TriggerRect.X, obj.TriggerRect.Y, 1, 1) : obj.TriggerRect)
                 .ToList();
-            layerImages[C.Layer.Trigger].DrawOnFilledRectangles(triggerRectangles, GetTriggerColor());
+            layerImages[C.Layer.Triggers].DrawOnFilledRectangles(triggerRectangles, GetTriggerColor());
+        }
+
+        /// <summary>
+        /// Renders all rulers.
+        /// </summary>
+        private void CreateRulerLayer()
+        {
+            layerImages[C.Layer.Rulers].Clear();
+
+            var rulerList = level.GadgetList.FindAll(gad => gad.ObjType == C.OBJ.RULER);
+            foreach (GadgetPiece ruler in rulerList)
+            {
+                // TODO - Implement ruler recoloring
+                //Bitmap recoloredImage;
+                //recoloredImage = ruler.Image.ApplyThemeColorToTarget(level.GetThemeColor(C.StyleColor.?????), Color.Silver);
+                layerImages[C.Layer.Rulers].DrawOn(ruler.Image, ruler.Pos);
+            }
         }
 
         /// <summary>
@@ -904,14 +925,39 @@ namespace NLEditor
         /// <param name="levelBmp"></param>
         private void AddSelectedRectangles(ref Bitmap levelBmp)
         {
-            // First get a list of all Rectangled to draw (in image coordinates)
-            var gadgetRectangles = level.GadgetList.FindAll(gad => gad.IsSelected)
-                                                   .ConvertAll(gad => GetPicRectFromLevelRect(gad.ImageRectangle));
-            levelBmp.DrawOnRectangles(gadgetRectangles, C.NLColors[C.NLColor.SelRectGadget]);
+            // ----- Gadgets -----
+            var selectedGadgets = level.GadgetList.FindAll(gad => gad.IsSelected);
 
-            var terrRectangles = level.TerrainList.FindAll(ter => ter.IsSelected)
-                                                  .ConvertAll(ter => GetPicRectFromLevelRect(ter.ImageRectangle));
-            levelBmp.DrawOnRectangles(terrRectangles, C.NLColors[C.NLColor.SelRectTerrain]);
+            // Rulers
+            var rulerRects = selectedGadgets
+                .Where(gad => gad.ObjType == C.OBJ.RULER)
+                .Select(gad => GetPicRectFromLevelRect(gad.ImageRectangle))
+                .ToList();
+            levelBmp.DrawOnRectangles(rulerRects, C.NLColors[C.NLColor.SelRectRulers]);
+
+            // All other gadgets
+            var gadgetRects = selectedGadgets
+                .Where(gad => gad.ObjType != C.OBJ.STEEL && gad.ObjType != C.OBJ.RULER)
+                .Select(gad => GetPicRectFromLevelRect(gad.ImageRectangle))
+                .ToList();
+            levelBmp.DrawOnRectangles(gadgetRects, C.NLColors[C.NLColor.SelRectGadget]);
+
+            // ----- Terrain -----
+            var selectedTerrain = level.TerrainList.FindAll(ter => ter.IsSelected);
+
+            // Steel terrain
+            var steelRects = selectedTerrain
+                .Where(ter => ter.IsSteel)
+                .Select(ter => GetPicRectFromLevelRect(ter.ImageRectangle))
+                .ToList();
+            levelBmp.DrawOnRectangles(steelRects, C.NLColors[C.NLColor.SelRectSteel]);
+
+            // All other terrain
+            var terrRects = selectedTerrain
+                .Where(ter => !ter.IsSteel)
+                .Select(ter => GetPicRectFromLevelRect(ter.ImageRectangle))
+                .ToList();
+            levelBmp.DrawOnRectangles(terrRects, C.NLColors[C.NLColor.SelRectTerrain]);
         }
 
         /// <summary>

@@ -31,6 +31,7 @@ namespace NLEditor
             C.ScreenSize.InizializeSettings();
 
             LoadStylesFromFile.AddInitialImagesToLibrary();
+            LoadStylesFromFile.AddRulersToLibrary();
 
             ImageLibrary.SetEditorForm(this);
 
@@ -78,7 +79,8 @@ namespace NLEditor
                     { C.DisplayType.Objects, objectToolStripMenuItem },
                     { C.DisplayType.ScreenStart, screenStartToolStripMenuItem },
                     { C.DisplayType.Terrain, terrainToolStripMenuItem },
-                    { C.DisplayType.Trigger, triggerAreasToolStripMenuItem },
+                    { C.DisplayType.Triggers, triggerAreasToolStripMenuItem },
+                    { C.DisplayType.Rulers, rulersToolStripMenuItem },
                     { C.DisplayType.Deprecated, deprecatedPiecesToolStripMenuItem }
                 };
             DisplaySettings.SetMenuTabItems(displayTabItems);
@@ -361,6 +363,10 @@ namespace NLEditor
         private void triggerAreasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToggleTriggerAreas();
+        }
+        private void rulersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToggleRulers();
         }
 
         private void screenStartToolStripMenuItem_Click(object sender, EventArgs e)
@@ -809,15 +815,15 @@ namespace NLEditor
             PullFocusFromTextInputs();
         }
 
-        private void but_PieceBackground_Click(object sender, EventArgs e)
+        private void but_PieceRulers_Click(object sender, EventArgs e)
         {
-            CyclePieceBrowserDisplay(C.SelectPieceType.Backgrounds);
+            CyclePieceBrowserDisplay(C.SelectPieceType.Rulers);
             PullFocusFromTextInputs();
         }
 
-        private void but_PieceSketch_Click(object sender, EventArgs e)
+        private void but_PieceBackground_Click(object sender, EventArgs e)
         {
-            CyclePieceBrowserDisplay(C.SelectPieceType.Sketches);
+            CyclePieceBrowserDisplay(C.SelectPieceType.Backgrounds);
             PullFocusFromTextInputs();
         }
 

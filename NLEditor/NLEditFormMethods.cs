@@ -662,7 +662,7 @@ Digger=20";
 
             ImageLibrary.Clear();
             LoadStylesFromFile.AddInitialImagesToLibrary();
-            Style.ReloadSketches();
+            LoadStylesFromFile.AddRulersToLibrary();
 
             CreateStyleList();
 
@@ -894,6 +894,13 @@ Digger=20";
             {
                 MessageBox.Show("No missing pieces found.", "Missing Pieces", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void AddRuler(string pieceKey)
+        {
+            Point pos = curRenderer.GetCenterPoint();
+            AddNewPieceToLevel(pieceKey, pos);
+            MaybeOpenPiecesTab();
         }
 
         private void OpenLevelArrangerWindow()
@@ -1315,7 +1322,7 @@ Digger=20";
                 but_PieceSteel.Font = new Font(but_PieceSteel.Font, FontStyle.Regular);
                 but_PieceObj.Font = new Font(but_PieceObj.Font, FontStyle.Regular);
                 but_PieceBackground.Font = new Font(but_PieceBackground.Font, FontStyle.Regular);
-                but_PieceSketches.Font = new Font(but_PieceSketches.Font, FontStyle.Regular);
+                but_PieceRulers.Font = new Font(but_PieceRulers.Font, FontStyle.Regular);
 
                 switch (newKind)
                 {
@@ -1331,8 +1338,8 @@ Digger=20";
                     case C.SelectPieceType.Backgrounds:
                         but_PieceBackground.Font = new Font(but_PieceBackground.Font, FontStyle.Bold);
                         break;
-                    case C.SelectPieceType.Sketches:
-                        but_PieceSketches.Font = new Font(but_PieceSketches.Font, FontStyle.Bold);
+                    case C.SelectPieceType.Rulers:
+                        but_PieceRulers.Font = new Font(but_PieceRulers.Font, FontStyle.Bold);
                         break;
                 }
 
@@ -1420,8 +1427,8 @@ Digger=20";
                 case C.SelectPieceType.Backgrounds:
                     pieceNameList = pieceCurStyle?.BackgroundKeys;
                     break;
-                case C.SelectPieceType.Sketches:
-                    pieceNameList = Style.SketchKeys;
+                case C.SelectPieceType.Rulers:
+                    pieceNameList = new List<string>(ImageLibrary.RulerKeys);
                     break;
                 default:
                     throw new ArgumentException();
@@ -1520,9 +1527,9 @@ Digger=20";
                     newKind = C.SelectPieceType.Objects;
                     break;
                 case C.SelectPieceType.Objects:
-                    newKind = C.SelectPieceType.Sketches;
+                    newKind = C.SelectPieceType.Rulers;
                     break;
-                case C.SelectPieceType.Sketches:
+                case C.SelectPieceType.Rulers:
                     newKind = C.SelectPieceType.Backgrounds;
                     break;
                 case C.SelectPieceType.Backgrounds:
@@ -1592,16 +1599,13 @@ Digger=20";
             }
 
             // Get the name of the currently-selected piece
-            if (currentPiece.IsSketch)
-                pieceName = char.ToUpper(currentPiece.Name[0]) + currentPiece.Name.Substring(1).ToLower() + " Sketch";
-            else
-                pieceName = currentPiece.Name;
+            pieceName = currentPiece.Name;
 
             // Find the style based on its directory (NameInDirectory)
             Style style = StyleList?.Find(sty => sty.NameInDirectory == currentPiece.Style);
 
-            if (currentPiece.IsSketch)
-                pieceStyle = "(Sketches)";
+            if (currentPiece.ObjType == C.OBJ.RULER)
+                pieceStyle = "(Rulers)";
             else if (currentPiece is GroupPiece)
                 pieceStyle = "(Group)";
             else if (style == null)
@@ -1624,7 +1628,7 @@ Digger=20";
             lblPieceType.Text = pieceType;
             lblPieceSize.Text = pieceSize;
 
-            string[] nonLoadable = { "(Default)", "(Group)", "(Sketches)" };
+            string[] nonLoadable = { "(Default)", "(Group)", "(Rulers)" };
 
             if (pieceCurStyle.NameInEditor != pieceStyle && !nonLoadable.Contains(pieceStyle))
                 but_LoadStyle.Visible = true;
@@ -1655,8 +1659,8 @@ Digger=20";
                 case C.SelectPieceType.Backgrounds:
                     pieceList = pieceCurStyle?.BackgroundKeys;
                     break;
-                case C.SelectPieceType.Sketches:
-                    pieceList = Style.SketchKeys;
+                case C.SelectPieceType.Rulers:
+                    pieceList = new List<string>(ImageLibrary.RulerKeys);
                     break;
                 default:
                     throw new ArgumentException();
@@ -1703,8 +1707,10 @@ Digger=20";
                     case C.SelectPieceType.Terrain:
                     case C.SelectPieceType.Steel:
                     case C.SelectPieceType.Objects:
-                    case C.SelectPieceType.Sketches:
                         AddNewPieceToLevel(pieceKey, curRenderer.GetCenterPoint());
+                        break;
+                    case C.SelectPieceType.Rulers:
+                        AddRuler(pieceKey);
                         break;
                     case C.SelectPieceType.Backgrounds:
                         string[] splitKey = pieceKey.Split('/', '\\');
@@ -2475,7 +2481,12 @@ Digger=20";
 
         private void ToggleTriggerAreas()
         {
-            DisplaySettings.ChangeDisplayed(C.DisplayType.Trigger);
+            DisplaySettings.ChangeDisplayed(C.DisplayType.Triggers);
+            pic_Level.SetImage(curRenderer.CombineLayers());
+        }
+        private void ToggleRulers()
+        {
+            DisplaySettings.ChangeDisplayed(C.DisplayType.Rulers);
             pic_Level.SetImage(curRenderer.CombineLayers());
         }
 

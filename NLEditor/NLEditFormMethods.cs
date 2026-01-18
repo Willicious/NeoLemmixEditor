@@ -808,7 +808,7 @@ Digger=20";
             CurLevel.TerrainList.FindAll(ter => !ter.ExistsImage())
                   .ForEach(ter => missingPieces.Add($@"{ter.Style}\terrain\{ter.Name}"));
             CurLevel.GadgetList.FindAll(gad => !gad.ExistsImage())
-                             .ForEach(gad => missingPieces.Add($@"{gad.Style}\terrain\{gad.Name}"));
+                             .ForEach(gad => missingPieces.Add($@"{gad.Style}\objects\{gad.Name}"));
         }
 
         /// <summary>

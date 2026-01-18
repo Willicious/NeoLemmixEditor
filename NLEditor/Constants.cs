@@ -297,7 +297,12 @@ namespace NLEditor
         {
           "orig_01", "orig_02", "orig_03", "orig_04", "orig_05", "orig_06", "orig_07", "orig_08", "orig_09", "orig_10",
           "orig_11", "orig_12", "orig_13", "orig_14", "orig_15", "orig_16", "orig_17",
+          "awesome", "beasti", "beastii", "menace",
           "ohno_01", "ohno_02", "ohno_03", "ohno_04", "ohno_05", "ohno_06",
+          "WillLem_Xmas_Music/WL_Ding_Dong", "WillLem_Xmas_Music/WL_Hark_Angels",
+          "WillLem_Xmas_Music/WL_Jingle_Bells", "WillLem_Xmas_Music/WL_O_Holy_Night",
+          "WillLem_Xmas_Music/WL_Rockin_Around", "WillLem_Xmas_Music/WL_Rudolph",
+          "WillLem_Xmas_Music/WL_Twelve_Days", "WillLem_Xmas_Music/WL_Winter_Wonderland",
           "xmas_01", "xmas_02", "xmas_03"
         };
 

@@ -355,10 +355,10 @@ namespace NLEditor
             }
 
             if (butFixIssues.Text == "Delete Pieces Outside Level")
-                RemovePiecesOutsideBoundary();
+                DeletePiecesOutsideBoundary();
 
             if (butFixIssues.Text == "Delete Deprecated Pieces")
-                RemoveDeprecatedPieces();
+                DeleteDeprecatedPieces();
 
             Validate(true, false, isCleansing);
 
@@ -382,14 +382,14 @@ namespace NLEditor
         /// <summary>
         /// Removes all pieces that do not intersect the level boundaries.
         /// </summary>
-        private void RemovePiecesOutsideBoundary()
+        private void DeletePiecesOutsideBoundary()
         {
             System.Drawing.Rectangle levelRect = new System.Drawing.Rectangle(0, 0, level.Width, level.Height);
             level.TerrainList.RemoveAll(ter => !ter.ImageRectangle.IntersectsWith(levelRect));
             level.GadgetList.RemoveAll(obj => !obj.ImageRectangle.IntersectsWith(levelRect));
         }
 
-        private void RemoveDeprecatedPieces()
+        private void DeleteDeprecatedPieces()
         {
             level.TerrainList.RemoveAll(ter => ImageLibrary.GetDeprecated(ter.Key));
             level.GadgetList.RemoveAll(obj => ImageLibrary.GetDeprecated(obj.Key));

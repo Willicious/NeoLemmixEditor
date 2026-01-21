@@ -1613,7 +1613,7 @@ Digger=20";
                 currentPiece = CurLevel.SelectionList().First();
             else
             {
-                gbPieceMetaData.Enabled = false;
+                panelPieceMetaData.Enabled = false;
 
                 lblPieceName.Text = string.Empty;
                 lblPieceStyle.Text = string.Empty;
@@ -1647,7 +1647,7 @@ Digger=20";
             pieceSize = $"{ImageLibrary.GetWidth(currentPiece.Key).ToString()} x {ImageLibrary.GetHeight(currentPiece.Key).ToString()}";
 
             // Update panel, labels and button
-            gbPieceMetaData.Enabled = true;
+            panelPieceMetaData.Enabled = true;
 
             lblPieceName.Text = pieceName;
             lblPieceStyle.Text = pieceStyle;
@@ -2390,9 +2390,11 @@ Digger=20";
 
         private void SetMetaDataPanel()
         {
-            gbPieceMetaData.Top = tabPieces.Height - gbPieceMetaData.Height;
-            gbPieceMetaData.Left = tabPieces.Left;
-            gbPieceMetaData.Width = tabPieces.Width - 5;
+            panelPieceMetaData.ForeColor = Color.SteelBlue;
+            but_LoadStyle.Top = tabPieces.Height - but_LoadStyle.Height;
+            panelPieceMetaData.Top = but_LoadStyle.Top - panelPieceMetaData.Height;
+            panelPieceMetaData.Left = tabPieces.Left;
+            panelPieceMetaData.Width = tabPieces.Width - 5;
         }
 
         private void SetAllSkillsToZero()

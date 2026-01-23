@@ -155,7 +155,7 @@ namespace NLEditor
 
                 if (ObjType == C.OBJ.HATCH)
                 {
-                    image = ImageLibrary.GetWindowImageWithDirection(Key, GetRotateFlipType(), GetFrameIndex());
+                    image = ImageLibrary.GetEntranceHatchImage(Key, GetFrameIndex());
                 }
                 else
                 {

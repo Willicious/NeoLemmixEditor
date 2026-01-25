@@ -1147,7 +1147,7 @@ Digger=20";
 
                 if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
                 {
-                    targetFolder = folderBrowserDialog.SelectedPath;
+                    String targetFolder = folderBrowserDialog.SelectedPath;
 
                     var confirmResult = MessageBox.Show(
                         $"Are you sure you want to cleanse all levels in \"{targetFolder}\"?",
@@ -1157,7 +1157,7 @@ Digger=20";
 
                     if (confirmResult == DialogResult.Yes)
                     {
-                        CleanseLevels();
+                        CleanseLevels(targetFolder);
                     }
                 }
             }
@@ -1173,7 +1173,7 @@ Digger=20";
         /// <summary>
         /// Opens and saves all .nxlv files in a directory in order to ensure compatibility and update the file
         /// </summary>
-        private async void CleanseLevels()
+        private async void CleanseLevels(String targetFolder)
         {
             if (string.IsNullOrEmpty(targetFolder))
             {

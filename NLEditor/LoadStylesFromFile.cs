@@ -883,6 +883,9 @@ namespace NLEditor
 
             Bitmap newBitmap = Image(filePath);
 
+            if (newBitmap == null)
+                throw new Exception(); // Let missing pieces handle this
+
             Rectangle nineSliceRect = new Rectangle(nineSliceLeft, nineSliceTop, newBitmap.Width - nineSliceLeft - nineSliceRight, newBitmap.Height - nineSliceTop - nineSliceBottom);
 
             return new BaseImageInfo(newBitmap, IsSteel, Resize, isDeprecated, nineSliceRect, defaultWidth, defaultHeight);

@@ -1207,6 +1207,9 @@ Digger=20";
                     int progressPercentage = (Array.IndexOf(files, file) + 1) * 100 / files.Length;
                     progressForm.UpdateProgress(progressPercentage, $"Processing file {Array.IndexOf(files, file) + 1} of {files.Length}: {Path.GetFileName(file)}");
 
+                    // Reset Editor before moving on to the next level
+                    CreateNewLevelAndRenderer();
+
                     // Give a short delay to allow status to update
                     await Task.Delay(10);
                 }

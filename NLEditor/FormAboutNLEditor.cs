@@ -33,7 +33,7 @@ namespace NLEditor
             lblPreviousUpdates.Left = GetCenter(lblPreviousUpdates);
             WritePreviousUpdatesText();
 
-            lblNeoLemmixEditor.Text = "NeoLemmix Editor (Version " + C.Version + ")";
+            lblNeoLemmixEditor.Text = $"NeoLemmix Editor (Version {C.Version})";
             lblNeoLemmixEditor.Top = richTextBox_PreviousUpdates.Bottom + padding;
             lblNeoLemmixEditor.Left = GetCenter(lblNeoLemmixEditor);
 
@@ -100,8 +100,31 @@ namespace NLEditor
             //WriteBoldText(richTextBox, "This version of the Editor is for test purposes only!\n");
             //richTextBox.AppendText("Please do not distribute it publicly as stability cannot be guaranteed. Thanks\n");
 
-            // Version 1.44 features
-            WriteBoldText(richTextBox, "Version 1.44 Updates\n");
+            // =======================
+            // Latest Version Features
+            // (Delete and merge these into 'all features' below with each update)  
+            // =======================
+
+            WriteBoldText(richTextBox, $"================ Version {C.Version} Updates ================\n");
+            WriteBoldText(richTextBox, "\n• 'Sketches' are now 'Rulers'\n");
+            richTextBox.AppendText(" • Rulers are drawn to their own layer and with their own selection rectangle colour for easier identification. The layer can be toggled on/off via hotkey/menu item. Full backwards compatibility with existing Sketches is preserved (NOTE: the 'sketches' folder is auto-renamed to 'rulers' if the rulers folder is not found).\n");
+            
+            WriteBoldText(richTextBox, "\n• UI\n");
+            richTextBox.AppendText(" • Improved Entrance Hatch arrow rendering\n");
+            richTextBox.AppendText(" • Steel now has its own selection rectangle colour\n");
+            richTextBox.AppendText(" • Improved layout of piece data & 'Load Style' button in Pieces tab\n");
+
+            WriteBoldText(richTextBox, "\n• Bugfixes\n");
+            richTextBox.AppendText(" • Combos are now correctly refreshed when changing levels\n");
+            richTextBox.AppendText(" • Music list now searches recursively in subfolders of 'music'\n");
+            richTextBox.AppendText(" • Cursor is correctly reset when clicking status bar buttons\n");
+            richTextBox.AppendText(" • The Editor now closes if the 'styles' folder cannot be found\n");
+            richTextBox.AppendText(" • Many other general improvements, tweaks and typo fixes\n");
+
+            // =======================
+            // All Features
+            // =======================
+            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
 
             // =======================
             // Piece Browser
@@ -187,6 +210,10 @@ namespace NLEditor
             richTextBox.AppendText(" • Validation now has a minimum time limit of 1 second\n");
             richTextBox.AppendText(" • Dialog now alerts the user that the lem count is higher than the pre-placed lem count (where relevant) rather than just showing \"missing hatch\"\n");
 
+            WriteBoldText(richTextBox, "• Cleanse Levels");
+            richTextBox.AppendText(" • It's now possible to delete deprecated pieces\n");
+            richTextBox.AppendText(" • A more complete list of errors is now shown (Missing Pieces, Deprecated Pieces, No Lemmings/Exits) and a .txt report is generated in the target level folder\n");
+
             // =======================
             // Talismans
             // =======================
@@ -203,10 +230,15 @@ namespace NLEditor
             richTextBox.AppendText(" • Scroll wheel can be used to change items when mousing over a dropdown list (without clicking)\n");
             richTextBox.AppendText(" • It's no longer possible to type into dropdown lists (to prevent accidental typing). However, it's now possible to use A-Z keys to quickly jump to a style/author when the list is active\n");
             richTextBox.AppendText(" • All secondary windows can now be closed using the [Esc] key\n");
+            richTextBox.AppendText(" • Added zoom factor indicator to corner text\n");
+            richTextBox.AppendText(" • It's now possible to switch between Release Rate & Spawn Interval\n");
             richTextBox.AppendText(" • Zoom factor is now 1 instead of 0 when opening the Editor\n");
             richTextBox.AppendText(" • Increased maximum zoom level\n");
             richTextBox.AppendText(" • Editor now opens Maximized by default\n");
             richTextBox.AppendText(" • Auto-start checkbox is no longer checked by default, but its state is remembered per-level when closing and re-loading the Editor\n");
+
+            WriteBoldText(richTextBox, "\n• Automatic Lem Count Button\n");
+            richTextBox.AppendText(" • Added a button to the Globals tab which automatically sets the lem/save counts to the most appropriate for the number and type of pre-placed lemmings\n");
 
             WriteBoldText(richTextBox, "• Level Arranger Window");
             richTextBox.AppendText(" - The Level Arranger can now be opened in its own pop-out window to accompany the Level Arranger. It's external-display compatible, and size & location are remembered between sessions\n");
@@ -222,6 +254,9 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, "• Trigger area colours");
             richTextBox.AppendText(" - It's now possible to choose between 5 different trigger area colours\n");
+
+            WriteBoldText(richTextBox, "• Snap-to-Grid");
+            richTextBox.AppendText(" - When snap-to-grid is active, the grid lines are now displayed in a colour of your choice (they can also be invisible, as before)\n");
 
             WriteBoldText(richTextBox, "• Pre-placed Lemming");
             richTextBox.AppendText(" - Added pink (X, Y) location pin to pre-placed lemming)\n");
@@ -248,6 +283,9 @@ namespace NLEditor
             // =======================
             WriteBoldText(richTextBox, "\n• Miscellaneous\n");
 
+            WriteBoldText(richTextBox, "\n• Style Manager\n");
+            richTextBox.AppendText(" • Added a style manager to create/edit the style list\n");
+
             WriteBoldText(richTextBox, "• Refresh Styles");
             richTextBox.AppendText(" - It's now possible to refresh the styles without closing and re-opening the Editor. So, if a style is modified during a level editing session, it can be refreshed without interrupting workflow! This feature is accessed via a menu item and customizable hotkey (Ctrl+Shift+F8 by default)\n");
 
@@ -272,12 +310,16 @@ namespace NLEditor
             richTextBox.AppendText(" - Levels with missing pieces no longer create multiple popups; instead, a status bar is used to inform the player that the level has missing pieces\n");
 
             WriteBoldText(richTextBox, "• Bugfixes - UI\n");
+            richTextBox.AppendText(" • All secondary windows can now be closed using the [Esc] key\n");
             richTextBox.AppendText(" • Increased minimum selectable grid size to 2px\n");
             richTextBox.AppendText(" • Settings form now stays on top when active\n");
             richTextBox.AppendText(" • Improved mouseover handling for dropdown lists\n");
             richTextBox.AppendText(" • Fixed bug affecting the position of the screen area in relation to the scrollbars when zoomed in\n");
             richTextBox.AppendText(" • Character limits increased to NL Player UI limits: Title (62), Author (60), Talisman Title (54)\n");
             richTextBox.AppendText(" • Cursor anchor is now correctly preserved when zooming in and out\n");
+
+            WriteBoldText(richTextBox, "• Bugfix - Cursor Zoom");
+            richTextBox.AppendText(" - Cursor anchor is now correctly preserved when zooming in and out\n");
 
             WriteBoldText(richTextBox, "• Bugfix - Preview/Postview Text");
             richTextBox.AppendText(" - Text is now displayed centred for better previewing\n");

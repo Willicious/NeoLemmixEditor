@@ -36,7 +36,6 @@ namespace NLEditor
         public static string AppPathSettings => AppPath + "settings" + DirSep + "NLEditorSettings.ini";
         public static string AppPathHotkeys => AppPath + "settings" + DirSep + "NLEditorHotkeys.ini";
         public static string AppPathCustomSkillsets => AppPath + "settings" + DirSep + "NLEditorCustomSkillsets.ini";
-        public static string AppPathTranslationTables => AppPath + "settings" + DirSep + "NLEditorINITranslationTables.ini";
         public static string AppPathPlayerSettings => AppPath + "settings" + DirSep + "settings.ini";
         public static string AppPathPlayerSettingsOld => AppPath + "NeoLemmix147Settings.ini";
         public static string AppPathNeoLemmix => AppPath + "NeoLemmix.exe";

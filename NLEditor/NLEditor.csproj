@@ -91,12 +91,6 @@
     <Compile Include="Aliases.cs" />
     <Compile Include="Background.cs" />
     <Compile Include="BmpModify.cs" />
-    <Compile Include="FormINIExporter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormINIExporter.Designer.cs">
-      <DependentUpon>FormINIExporter.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLevelArranger.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,7 +128,6 @@
     <Compile Include="FormAboutNLEditor.Designer.cs">
       <DependentUpon>FormAboutNLEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="INITranslationTables.cs" />
     <Compile Include="LevelPieceBase.cs" />
     <Compile Include="LevelPieceGadget.cs" />
     <Compile Include="LevelPieceTerrain.cs" />
@@ -199,9 +192,6 @@
     </Compile>
     <Compile Include="Utility.cs" />
     <Compile Include="ValidateLevel.cs" />
-    <EmbeddedResource Include="FormINIExporter.resx">
-      <DependentUpon>FormINIExporter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormLevelArranger.resx">
       <DependentUpon>FormLevelArranger.cs</DependentUpon>
     </EmbeddedResource>

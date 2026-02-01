@@ -838,17 +838,6 @@ Digger=20";
         }
 
         /// <summary>
-        /// Opens the Export As INI dialog
-        /// </summary>
-        private void OpenExportAsINI()
-        {
-            using (var iniExporterForm = new FormINIExporter(CurLevel))
-            {
-                iniExporterForm.ShowDialog(this);
-            }
-        }
-
-        /// <summary>
         /// Opens the Style Manager dialog
         /// </summary>
         private void OpenStyleManager()
@@ -2597,7 +2586,6 @@ Digger=20";
             AddHotkey(HotkeyConfig.HotkeySaveLevel, () => SaveLevel());
             AddHotkey(HotkeyConfig.HotkeySaveLevelAs, () => SaveLevelAsNewFile());
             AddHotkey(HotkeyConfig.HotkeySaveLevelAsImage, () => SaveLevelAsImage());
-            AddHotkey(HotkeyConfig.HotkeyExportLevelAsINI, () => OpenExportAsINI());
             AddHotkey(HotkeyConfig.HotkeyPlaytestLevel, () => PlaytestLevel());
             AddHotkey(HotkeyConfig.HotkeyValidateLevel, () => ValidateLevel(false, false));
             AddHotkey(HotkeyConfig.HotkeyCleanseLevels, () => ShowCleanseLevelsDialog());
@@ -2716,9 +2704,6 @@ Digger=20";
 
             saveAsImageToolStripMenuItem.ShortcutKeyDisplayString =
                 HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeySaveLevelAsImage);
-
-            exportAsINIToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyExportLevelAsINI);
 
             exitToolStripMenuItem.ShortcutKeyDisplayString =
                 HotkeyConfig.FormatHotkeyString(HotkeyConfig.HotkeyCloseEditor);

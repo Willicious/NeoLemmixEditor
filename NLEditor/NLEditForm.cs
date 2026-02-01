@@ -1635,11 +1635,6 @@ namespace NLEditor
                 num_Lvl_SI.Value = 103 - num_Lvl_RR.Value;
         }
 
-        private void exportAsINIToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenExportAsINI();
-        }
-
         private void btnLemCount_Click(object sender, EventArgs e)
         {
             CurLevel.GetLemmingTypeCounts(out int normalCount, out int zombieCount, out int neutralCount);

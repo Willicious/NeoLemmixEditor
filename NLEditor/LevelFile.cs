@@ -668,7 +668,7 @@ namespace NLEditor
 
             textFile.WriteLine("#        Terrain pieces         ");
             textFile.WriteLine("# ----------------------------- ");
-            curLevel.TerrainList.ForEach(ter => WriteTerrain(textFile, ter, curLevel.TerrainList.IndexOf(ter)));
+            curLevel.TerrainList.ForEach(ter => WriteTerrain(textFile, ter, curLevel.TerrainList.IndexOf(ter), 0));
             textFile.WriteLine(" ");
 
             if (curLevel.GadgetList.Exists(gad => gad.ObjType == C.OBJ.LEMMING))

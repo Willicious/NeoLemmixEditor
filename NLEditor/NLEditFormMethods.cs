@@ -478,6 +478,35 @@ Digger=20";
             }
         }
 
+        private string GetDefaultAuthorName()
+        {
+            string name = curSettings.DefaultAuthorName;
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                try
+                {
+                    var fileReader = new StreamReader(C.AppPathPlayerSettings);
+
+                    string line;
+                    while ((line = fileReader.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("UserName=", StringComparison.OrdinalIgnoreCase))
+                        {
+                            name = line.Substring("UserName=".Length).Trim();
+                            break;
+                        }
+                    }
+                }
+                catch
+                {
+                    name = string.Empty;
+                }
+            }
+
+            return name;
+        }
+
         private bool _IsWritingToForm;
 
         /// <summary>
@@ -568,6 +597,8 @@ Digger=20";
 
             Style mainStyle = StyleList?.Find(sty => sty.NameInEditor == combo_MainStyle.Text);
             CurLevel = new Level(mainStyle);
+            CurLevel.Author = GetDefaultAuthorName();
+
             // Get new renderer with the standard display options
             if (curRenderer != null)
                 curRenderer.Dispose();

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Windows.Forms;
 
 namespace NLEditor
@@ -56,6 +55,7 @@ namespace NLEditor
             ShowData,
         }
 
+        public string DefaultAuthorName { get; private set; }
         public bool AutoPinOGStyles { get; set; }
         public bool PreferObjectName { get; private set; }
         public PieceBrowserMode CurrentPieceBrowserMode { get; private set; }
@@ -88,6 +88,7 @@ namespace NLEditor
         /// </summary>
         public void SetDefault()
         {
+            DefaultAuthorName = string.Empty;
             CurrentPieceBrowserMode = PieceBrowserMode.ShowData;
             CurrentTriggerAreaColor = TriggerAreaColor.Pink;
             AutoPinOGStyles = true;
@@ -125,13 +126,13 @@ namespace NLEditor
         public void OpenSettingsWindow()
         {
             int formWidth = 650;
-            int formHeight = 370;
+            int formHeight = 400;
             int columnLeft = 30;
             int columnRight = 340;
             int groupBoxTop = 20;
             int groupBoxColumnLeft = 16;
             int groupBoxColumnRight = 208;
-            int buttonsTop = 320;
+            int buttonsTop = 350;
 
             settingsForm = new EscExitForm();
             settingsForm.StartPosition = FormStartPosition.CenterScreen;
@@ -144,11 +145,26 @@ namespace NLEditor
             settingsForm.MouseDown += new MouseEventHandler(settingsForm_MouseDown);
             settingsForm.FormClosing += new FormClosingEventHandler(settingsForm_FormClosing);
 
+            // ======================= Author Name Field ======================== //
+
+            Label labelAuthorName = new Label();
+            labelAuthorName.Text = "Default Author Name";
+            labelAuthorName.Top = 20;
+            labelAuthorName.Left = columnLeft;
+            labelAuthorName.AutoSize = true;
+
+            TextBox textAuthorName = new TextBox();
+            textAuthorName.Name = "textDefaultAuthorName";
+            textAuthorName.Text = DefaultAuthorName;
+            textAuthorName.Top = labelAuthorName.Top - 3;
+            textAuthorName.Left = labelAuthorName.Right + 10;
+            textAuthorName.Width = 170;
+
             // ======================= Piece Browser Mode GroupBox ======================== //
 
             GroupBox groupPieceBrowserMode = new GroupBox();
             groupPieceBrowserMode.Text = "Piece Browser";
-            groupPieceBrowserMode.Top = 20;
+            groupPieceBrowserMode.Top = 50;
             groupPieceBrowserMode.Left = columnLeft;
             groupPieceBrowserMode.Width = 280;
             groupPieceBrowserMode.Height = 110;
@@ -157,7 +173,7 @@ namespace NLEditor
             radShowPieceData.Name = "radShowPieceData";
             radShowPieceData.AutoSize = true;
             radShowPieceData.Width = 80;
-            radShowPieceData.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            radShowPieceData.CheckAlign = ContentAlignment.MiddleLeft;
             radShowPieceData.Checked = CurrentPieceBrowserMode == PieceBrowserMode.ShowData;
             radShowPieceData.Text = "Data";
             radShowPieceData.Top = groupBoxTop;
@@ -215,7 +231,7 @@ namespace NLEditor
 
             GroupBox groupSnapToGrid = new GroupBox();
             groupSnapToGrid.Text = "Snap Pieces to Grid";
-            groupSnapToGrid.Top = 150;
+            groupSnapToGrid.Top = 180;
             groupSnapToGrid.Left = columnLeft;
             groupSnapToGrid.Width = 280;
             groupSnapToGrid.Height = 80;
@@ -272,7 +288,7 @@ namespace NLEditor
 
             GroupBox groupCustomMove = new GroupBox();
             groupCustomMove.Text = "Custom move selected pieces";
-            groupCustomMove.Top = 250;
+            groupCustomMove.Top = 280;
             groupCustomMove.Left = columnLeft;
             groupCustomMove.Width = 280;
             groupCustomMove.Height = 50;
@@ -469,6 +485,9 @@ namespace NLEditor
 
 
             // ========================== Add Controls to Form =========================== //
+
+            settingsForm.Controls.Add(labelAuthorName);
+            settingsForm.Controls.Add(textAuthorName);
 
             settingsForm.Controls.Add(groupPieceBrowserMode);
             settingsForm.Controls.Add(groupSnapToGrid);
@@ -741,6 +760,15 @@ namespace NLEditor
             CurrentTriggerAreaColor = parsedColor;
         }
 
+        private void UpdateDefaultAuthorName()
+        {
+            if (!doSaveSettings)
+                return;
+
+            if (settingsForm.Controls.Find("textDefaultAuthorName", true).FirstOrDefault() is TextBox textDefaultAuthorName)
+                DefaultAuthorName = textDefaultAuthorName.Text;
+        }
+
         private void PrepareFormForClosing()
         {
             btnCancel.Focus(); // Prevents saving values if caret is still in numUpDown
@@ -814,6 +842,11 @@ namespace NLEditor
                     FileLine line = fileLines?[0];
                     switch (line?.Key)
                     {
+                        case "DEFAULTAUTHORNAME":
+                            {
+                                DefaultAuthorName = line.Text.Trim();
+                                break;
+                            }
                         case "PIECEBROWSERMODE":
                             {
                                 var modeText = line.Text.Trim().ToUpper();
@@ -902,12 +935,12 @@ namespace NLEditor
                             }
                         case "FORM_WIDTH":
                             {
-                                FormSize = new System.Drawing.Size(line.Value, FormSize.Height);
+                                FormSize = new Size(line.Value, FormSize.Height);
                                 break;
                             }
                         case "FORM_HEIGHT":
                             {
-                                FormSize = new System.Drawing.Size(FormSize.Width, line.Value);
+                                FormSize = new Size(FormSize.Width, line.Value);
                                 break;
                             }
                         case "AUTOSTART":
@@ -948,9 +981,12 @@ namespace NLEditor
 
                 File.Create(C.AppPathSettings).Close();
 
+                UpdateDefaultAuthorName();
+
                 TextWriter settingsFile = new StreamWriter(C.AppPathSettings, true);
 
                 settingsFile.WriteLine("# NLEditor settings ");
+                settingsFile.WriteLine(" DefaultAuthorName   " + DefaultAuthorName);
                 settingsFile.WriteLine(" ValidateWhenSaving  " + (ValidateWhenSaving ? "True" : "False"));
                 settingsFile.WriteLine(" Autosave            " + AutosaveFrequency.ToString());
                 settingsFile.WriteLine(" AutosaveLimit       " + KeepAutosaveCount.ToString());

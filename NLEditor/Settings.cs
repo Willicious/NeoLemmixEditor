@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
 namespace NLEditor
@@ -66,6 +65,7 @@ namespace NLEditor
         public string DefaultAuthorName { get; private set; }
         public DefaultPlayer CurrentDefaultPlayer { get; private set; }
         public bool AutoPinOGStyles { get; set; }
+        public bool ShowRandomButton { get; set; }
         public bool PreferObjectName { get; private set; }
         public PieceBrowserMode CurrentPieceBrowserMode { get; private set; }
         public TriggerAreaColor CurrentTriggerAreaColor { get; private set; }
@@ -136,13 +136,13 @@ namespace NLEditor
         public void OpenSettingsWindow()
         {
             int formWidth = 650;
-            int formHeight = 410;
+            int formHeight = 440;
             int columnLeft = 30;
             int columnRight = 340;
             int groupBoxTop = 20;
             int groupBoxColumnLeft = 16;
             int groupBoxColumnRight = 208;
-            int buttonsTop = 360;
+            int buttonsTop = 390;
 
             settingsForm = new EscExitForm();
             settingsForm.StartPosition = FormStartPosition.CenterScreen;
@@ -222,7 +222,7 @@ namespace NLEditor
             groupPieceBrowserMode.Top = 130;
             groupPieceBrowserMode.Left = columnLeft;
             groupPieceBrowserMode.Width = 280;
-            groupPieceBrowserMode.Height = 110;
+            groupPieceBrowserMode.Height = 140;
 
             RadioButton radShowPieceData = new RadioButton();
             radShowPieceData.Name = "radShowPieceData";
@@ -269,24 +269,35 @@ namespace NLEditor
             CheckBox checkInfiniteScrolling = new CheckBox();
             checkInfiniteScrolling.Name = "checkInfiniteScrolling";
             checkInfiniteScrolling.AutoSize = true;
-            checkInfiniteScrolling.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            checkInfiniteScrolling.CheckAlign = ContentAlignment.MiddleLeft;
             checkInfiniteScrolling.Checked = InfiniteScrolling;
             checkInfiniteScrolling.Text = "Infinite Scrolling";
             checkInfiniteScrolling.Top = groupBoxTop + 60;
             checkInfiniteScrolling.Left = groupBoxColumnLeft;
             checkInfiniteScrolling.CheckedChanged += new EventHandler(checkInfiniteScrolling_CheckedChanged);
 
+            CheckBox checkShowRandomButton = new CheckBox();
+            checkShowRandomButton.Name = "checkShowRandomButton";
+            checkShowRandomButton.AutoSize = true;
+            checkShowRandomButton.CheckAlign = ContentAlignment.MiddleLeft;
+            checkShowRandomButton.Checked = ShowRandomButton;
+            checkShowRandomButton.Text = "Show Random Style Button";
+            checkShowRandomButton.Top = groupBoxTop + 90;
+            checkShowRandomButton.Left = groupBoxColumnLeft;
+            checkShowRandomButton.CheckedChanged += new EventHandler(showRandomButton_CheckedChanged);
+
             groupPieceBrowserMode.Controls.Add(radShowPiecesOnly);
             groupPieceBrowserMode.Controls.Add(radShowPieceDescriptions);
             groupPieceBrowserMode.Controls.Add(radShowPieceData);
             groupPieceBrowserMode.Controls.Add(checkPreferObjectName);
             groupPieceBrowserMode.Controls.Add(checkInfiniteScrolling);
+            groupPieceBrowserMode.Controls.Add(checkShowRandomButton);
 
             // ========================== Snap-to-Grid GroupBox ========================== //
 
             GroupBox groupSnapToGrid = new GroupBox();
             groupSnapToGrid.Text = "Snap Pieces to Grid";
-            groupSnapToGrid.Top = 260;
+            groupSnapToGrid.Top = 290;
             groupSnapToGrid.Left = columnLeft;
             groupSnapToGrid.Width = 280;
             groupSnapToGrid.Height = 80;
@@ -668,9 +679,16 @@ namespace NLEditor
             settingChanged = true;
         }
 
+        private void showRandomButton_CheckedChanged(object sender, EventArgs e)
+        {
+            ShowRandomButton = ((sender as CheckBox).CheckState == CheckState.Checked);
+            editorForm.MoveControlsOnFormResize();
+            settingChanged = true;
+        }
+
         private void checkUseGrid_CheckedChanged(object sender, EventArgs e)
         {
-            UseGridForPieces = ((sender as CheckBox).CheckState == CheckState.Checked);
+            UseGridForPieces = (sender as CheckBox).CheckState == CheckState.Checked;
 
             if (settingsForm.Controls.Find("numGridSize", true).FirstOrDefault() is NumericUpDown numGridSize)
                 numGridSize.Enabled = UseGridForPieces;
@@ -891,6 +909,7 @@ namespace NLEditor
             ReadSettingsFromFile();
 
             editorForm.ToggleSnapToGrid();
+            editorForm.MoveControlsOnFormResize();
             editorForm.LoadPiecesIntoPictureBox();
 
             WriteSettingsToFile();
@@ -959,6 +978,11 @@ namespace NLEditor
                         case "INFINITESCROLLING":
                             {
                                 InfiniteScrolling = (line.Text.Trim().ToUpper() == "TRUE");
+                                break;
+                            }
+                        case "SHOWRANDOMBUTTON":
+                            {
+                                ShowRandomButton = (line.Text.Trim().ToUpper() == "TRUE");
                                 break;
                             }
                         case "GRIDSIZE":
@@ -1083,6 +1107,7 @@ namespace NLEditor
                 settingsFile.WriteLine(" AutoPinOGStyles     " + (AutoPinOGStyles ? "True" : "False"));
                 settingsFile.WriteLine(" PreferObjectName    " + (PreferObjectName ? "True" : "False"));
                 settingsFile.WriteLine(" InfiniteScrolling   " + (InfiniteScrolling ? "True" : "False"));
+                settingsFile.WriteLine(" ShowRandomButton    " + (ShowRandomButton ? "True" : "False"));
                 settingsFile.WriteLine(" GridSize            " + GridSize.ToString());
                 settingsFile.WriteLine(" GridColor           " + (GridColor == Color.Empty ? "(Invisible)" : ColorTranslator.ToHtml(GridColor)));
                 settingsFile.WriteLine(" TriggerAreaColor    " + CurrentTriggerAreaColor.ToString());

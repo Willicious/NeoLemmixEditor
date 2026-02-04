@@ -6,8 +6,11 @@ namespace NLEditor
 {
     public partial class FormAboutNLEditor : Form
     {
-        public FormAboutNLEditor()
+        private Settings curSettings;
+        internal FormAboutNLEditor(Settings settings)
         {
+            curSettings = settings;
+
             int GetCenter(Control component)
             {
                 return (this.ClientSize.Width - component.Width) / 2;
@@ -53,13 +56,13 @@ namespace NLEditor
 
             check_ShowThisWindow.Top = linkLF.Bottom + padding;
             check_ShowThisWindow.Left = GetCenter(check_ShowThisWindow);
-            check_ShowThisWindow.Checked = Properties.Settings.Default.ShowAboutNLWindowAtStartup;
+            check_ShowThisWindow.Checked = curSettings.ShowAboutAtStartup;
         }
 
         private void Check_ShowThisWindow_CheckedChanged(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ShowAboutNLWindowAtStartup = check_ShowThisWindow.Checked;
-            Properties.Settings.Default.Save();
+            curSettings.ShowAboutAtStartup = check_ShowThisWindow.Checked;
+            curSettings.WriteSettingsToFile();
         }
 
         private void FormAboutNLEditor_KeyDown(object sender, KeyEventArgs e)

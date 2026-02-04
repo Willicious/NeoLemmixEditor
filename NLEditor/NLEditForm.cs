@@ -1520,11 +1520,17 @@ namespace NLEditor
         {
             SetHotkeys();
 
-            if (Properties.Settings.Default.ShowAboutNLWindowAtStartup)
-                ShowAboutNLEditor();
+            if (curSettings.AllTabsExpanded)
+                ExpandAllTabs();
 
-            if (Properties.Settings.Default.LevelArrangerIsOpen)
+            if (curSettings.LevelArranger.IsOpen)
                 OpenLevelArrangerWindow();
+
+            if (curSettings.PieceBrowser.IsOpen)
+                OpenPieceBrowserWindow();
+
+            if (curSettings.ShowAboutAtStartup)
+                ShowAboutNLEditor();
 
             SetMetaDataPanel();
         }

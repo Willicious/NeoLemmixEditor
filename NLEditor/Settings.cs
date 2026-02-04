@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Windows.Forms;
 
 namespace NLEditor
@@ -55,7 +56,15 @@ namespace NLEditor
             ShowData,
         }
 
+        public enum DefaultPlayer
+        {
+            Auto,
+            NeoLemmix,
+            NeoLemmixCE
+        }
+
         public string DefaultAuthorName { get; private set; }
+        public DefaultPlayer CurrentDefaultPlayer { get; private set; }
         public bool AutoPinOGStyles { get; set; }
         public bool PreferObjectName { get; private set; }
         public PieceBrowserMode CurrentPieceBrowserMode { get; private set; }
@@ -89,6 +98,7 @@ namespace NLEditor
         public void SetDefault()
         {
             DefaultAuthorName = string.Empty;
+            CurrentDefaultPlayer = DefaultPlayer.Auto;
             CurrentPieceBrowserMode = PieceBrowserMode.ShowData;
             CurrentTriggerAreaColor = TriggerAreaColor.Pink;
             AutoPinOGStyles = true;
@@ -126,13 +136,13 @@ namespace NLEditor
         public void OpenSettingsWindow()
         {
             int formWidth = 650;
-            int formHeight = 400;
+            int formHeight = 410;
             int columnLeft = 30;
             int columnRight = 340;
             int groupBoxTop = 20;
             int groupBoxColumnLeft = 16;
             int groupBoxColumnRight = 208;
-            int buttonsTop = 350;
+            int buttonsTop = 360;
 
             settingsForm = new EscExitForm();
             settingsForm.StartPosition = FormStartPosition.CenterScreen;
@@ -160,11 +170,56 @@ namespace NLEditor
             textAuthorName.Left = labelAuthorName.Right + 10;
             textAuthorName.Width = 170;
 
+            // ======================= Default Player GroupBox ======================== //
+
+            GroupBox groupDefaultPlayer = new GroupBox();
+            groupDefaultPlayer.Text = "Default Player";
+            groupDefaultPlayer.Top = 60;
+            groupDefaultPlayer.Left = columnLeft;
+            groupDefaultPlayer.Width = 280;
+            groupDefaultPlayer.Height = 50;
+
+            RadioButton radPlayerAuto = new RadioButton();
+            radPlayerAuto.Name = "radPlayerAuto";
+            radPlayerAuto.AutoSize = true;
+            radPlayerAuto.Width = 80;
+            radPlayerAuto.CheckAlign = ContentAlignment.MiddleLeft;
+            radPlayerAuto.Checked = CurrentDefaultPlayer == DefaultPlayer.Auto;
+            radPlayerAuto.Text = "Auto";
+            radPlayerAuto.Top = groupBoxTop;
+            radPlayerAuto.Left = groupBoxColumnLeft;
+            radPlayerAuto.CheckedChanged += new EventHandler(DefaultPlayer_CheckedChanged);
+
+            RadioButton radNeoLemmix = new RadioButton();
+            radNeoLemmix.Name = "radNeoLemmix";
+            radNeoLemmix.AutoSize = true;
+            radNeoLemmix.Width = 80;
+            radNeoLemmix.CheckAlign = ContentAlignment.MiddleLeft;
+            radNeoLemmix.Checked = CurrentDefaultPlayer == DefaultPlayer.NeoLemmix;
+            radNeoLemmix.Text = "NeoLemmix";
+            radNeoLemmix.Top = groupBoxTop;
+            radNeoLemmix.Left = groupBoxColumnLeft + radPlayerAuto.Width - 16;
+            radNeoLemmix.CheckedChanged += new EventHandler(DefaultPlayer_CheckedChanged);
+
+            RadioButton radNeoLemmixCE = new RadioButton();
+            radNeoLemmixCE.Name = "radNeoLemmixCE";
+            radNeoLemmixCE.AutoSize = true;
+            radNeoLemmixCE.CheckAlign = ContentAlignment.MiddleLeft;
+            radNeoLemmixCE.Checked = CurrentDefaultPlayer == DefaultPlayer.NeoLemmixCE;
+            radNeoLemmixCE.Text = "NeoLemmix CE";
+            radNeoLemmixCE.Top = groupBoxTop;
+            radNeoLemmixCE.Left = groupBoxColumnLeft + radPlayerAuto.Width + radNeoLemmix.Width;
+            radNeoLemmixCE.CheckedChanged += new EventHandler(DefaultPlayer_CheckedChanged);
+
+            groupDefaultPlayer.Controls.Add(radPlayerAuto);
+            groupDefaultPlayer.Controls.Add(radNeoLemmix);
+            groupDefaultPlayer.Controls.Add(radNeoLemmixCE);
+
             // ======================= Piece Browser Mode GroupBox ======================== //
 
             GroupBox groupPieceBrowserMode = new GroupBox();
             groupPieceBrowserMode.Text = "Piece Browser";
-            groupPieceBrowserMode.Top = 50;
+            groupPieceBrowserMode.Top = 130;
             groupPieceBrowserMode.Left = columnLeft;
             groupPieceBrowserMode.Width = 280;
             groupPieceBrowserMode.Height = 110;
@@ -184,7 +239,7 @@ namespace NLEditor
             radShowPieceDescriptions.Name = "radShowPieceDescriptions";
             radShowPieceDescriptions.AutoSize = true;
             radShowPieceDescriptions.Width = 80;
-            radShowPieceDescriptions.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            radShowPieceDescriptions.CheckAlign = ContentAlignment.MiddleLeft;
             radShowPieceDescriptions.Checked = CurrentPieceBrowserMode == PieceBrowserMode.ShowDescriptions;
             radShowPieceDescriptions.Text = "Descriptions";
             radShowPieceDescriptions.Top = groupBoxTop;
@@ -194,7 +249,7 @@ namespace NLEditor
             RadioButton radShowPiecesOnly = new RadioButton();
             radShowPiecesOnly.Name = "radShowPiecesOnly";
             radShowPiecesOnly.AutoSize = true;
-            radShowPiecesOnly.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            radShowPiecesOnly.CheckAlign = ContentAlignment.MiddleLeft;
             radShowPiecesOnly.Checked = CurrentPieceBrowserMode == PieceBrowserMode.ShowPiecesOnly;
             radShowPiecesOnly.Text = "Pieces Only";
             radShowPiecesOnly.Top = groupBoxTop;
@@ -204,7 +259,7 @@ namespace NLEditor
             CheckBox checkPreferObjectName = new CheckBox();
             checkPreferObjectName.Name = "checkPreferObjectName";
             checkPreferObjectName.AutoSize = true;
-            checkPreferObjectName.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            checkPreferObjectName.CheckAlign = ContentAlignment.MiddleLeft;
             checkPreferObjectName.Checked = PreferObjectName;
             checkPreferObjectName.Text = "Prefer piece name to object type";
             checkPreferObjectName.Top = groupBoxTop + 30;
@@ -231,7 +286,7 @@ namespace NLEditor
 
             GroupBox groupSnapToGrid = new GroupBox();
             groupSnapToGrid.Text = "Snap Pieces to Grid";
-            groupSnapToGrid.Top = 180;
+            groupSnapToGrid.Top = 260;
             groupSnapToGrid.Left = columnLeft;
             groupSnapToGrid.Width = 280;
             groupSnapToGrid.Height = 80;
@@ -239,7 +294,7 @@ namespace NLEditor
             CheckBox checkUseGrid = new CheckBox();
             checkUseGrid.Name = "checkUseGrid";
             checkUseGrid.AutoSize = true;
-            checkUseGrid.CheckAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            checkUseGrid.CheckAlign = ContentAlignment.MiddleLeft;
             checkUseGrid.Checked = UseGridForPieces;
             checkUseGrid.Text = "Snap-to-Grid amount in pixels:";
             checkUseGrid.Top = groupBoxTop;
@@ -283,37 +338,6 @@ namespace NLEditor
             groupSnapToGrid.Controls.Add(numGridSize);
             groupSnapToGrid.Controls.Add(lblGridColor);
             groupSnapToGrid.Controls.Add(comboGridColor);
-
-            // ========================== Custom Move GroupBox =========================== //
-
-            GroupBox groupCustomMove = new GroupBox();
-            groupCustomMove.Text = "Custom move selected pieces";
-            groupCustomMove.Top = 280;
-            groupCustomMove.Left = columnLeft;
-            groupCustomMove.Width = 280;
-            groupCustomMove.Height = 50;
-
-            Label lblCustomMove = new Label();
-            lblCustomMove.Text = "Custom move amount in pixels:";
-            lblCustomMove.AutoSize = true;
-            lblCustomMove.Top = groupBoxTop;
-            lblCustomMove.Left = groupBoxColumnLeft;
-
-            NumericUpDown numCustomMove = new NumericUpDown();
-            numCustomMove.Name = "numCustomMove";
-            numCustomMove.AutoSize = true;
-            numCustomMove.TextAlign = HorizontalAlignment.Center;
-            numCustomMove.Minimum = 2;
-            numCustomMove.Maximum = 3200;
-            numCustomMove.Value = customMove;
-            numCustomMove.Top = lblCustomMove.Top - 2;
-            numCustomMove.Left = groupBoxColumnRight;
-            numCustomMove.Width = 48;
-            numCustomMove.ValueChanged += new EventHandler(numCustomMove_ValueChanged);
-            numCustomMove.KeyDown += new KeyEventHandler(numUpDown_KeyDown);
-
-            groupCustomMove.Controls.Add(lblCustomMove);
-            groupCustomMove.Controls.Add(numCustomMove);
 
             // =========================== Saving Options GroupBox =========================== //
 
@@ -461,6 +485,37 @@ namespace NLEditor
             groupSpawnInterval.Controls.Add(radUseSpawnInterval);
             groupSpawnInterval.Controls.Add(radUseReleaseRate);
 
+            // ========================== Custom Move GroupBox =========================== //
+
+            GroupBox groupCustomMove = new GroupBox();
+            groupCustomMove.Text = "Custom move selected pieces";
+            groupCustomMove.Top = 290;
+            groupCustomMove.Left = columnRight;
+            groupCustomMove.Width = 280;
+            groupCustomMove.Height = 50;
+
+            Label lblCustomMove = new Label();
+            lblCustomMove.Text = "Custom move amount in pixels:";
+            lblCustomMove.AutoSize = true;
+            lblCustomMove.Top = groupBoxTop;
+            lblCustomMove.Left = groupBoxColumnLeft;
+
+            NumericUpDown numCustomMove = new NumericUpDown();
+            numCustomMove.Name = "numCustomMove";
+            numCustomMove.AutoSize = true;
+            numCustomMove.TextAlign = HorizontalAlignment.Center;
+            numCustomMove.Minimum = 2;
+            numCustomMove.Maximum = 3200;
+            numCustomMove.Value = customMove;
+            numCustomMove.Top = lblCustomMove.Top - 2;
+            numCustomMove.Left = groupBoxColumnRight;
+            numCustomMove.Width = 48;
+            numCustomMove.ValueChanged += new EventHandler(numCustomMove_ValueChanged);
+            numCustomMove.KeyDown += new KeyEventHandler(numUpDown_KeyDown);
+
+            groupCustomMove.Controls.Add(lblCustomMove);
+            groupCustomMove.Controls.Add(numCustomMove);
+
             // ========================== Save And Close Button ========================== //
 
             btnSaveAndClose = new Button();
@@ -489,6 +544,7 @@ namespace NLEditor
             settingsForm.Controls.Add(labelAuthorName);
             settingsForm.Controls.Add(textAuthorName);
 
+            settingsForm.Controls.Add(groupDefaultPlayer);
             settingsForm.Controls.Add(groupPieceBrowserMode);
             settingsForm.Controls.Add(groupSnapToGrid);
             settingsForm.Controls.Add(groupCustomMove);
@@ -525,6 +581,27 @@ namespace NLEditor
             doSaveSettings = false;
             settingChanged = false;
             settingsForm.Close();
+        }
+
+        private void DefaultPlayer_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender is RadioButton rb && rb.Checked)
+            {
+                switch (rb.Name)
+                {
+                    case "radPlayerAuto":
+                        CurrentDefaultPlayer = DefaultPlayer.Auto;
+                        break;
+                    case "radNeoLemmix":
+                        CurrentDefaultPlayer = DefaultPlayer.NeoLemmix;
+                        break;
+                    case "radNeoLemmixCE":
+                        CurrentDefaultPlayer = DefaultPlayer.NeoLemmixCE;
+                        break;
+                }
+            }
+
+            settingChanged = true;
         }
 
         private void PieceBrowserMode_CheckedChanged(object sender, EventArgs e)
@@ -847,6 +924,17 @@ namespace NLEditor
                                 DefaultAuthorName = line.Text.Trim();
                                 break;
                             }
+                        case "DEFAULTPLAYER":
+                            {
+                                var modeText = line.Text.Trim().ToUpper();
+                                if (modeText == "NEOLEMMIXCE")
+                                    CurrentDefaultPlayer = DefaultPlayer.NeoLemmixCE;
+                                else if (modeText == "NEOLEMMIX")
+                                    CurrentDefaultPlayer = DefaultPlayer.NeoLemmix;
+                                else // Default to Auto
+                                    CurrentDefaultPlayer = DefaultPlayer.Auto;
+                                break;
+                            }
                         case "PIECEBROWSERMODE":
                             {
                                 var modeText = line.Text.Trim().ToUpper();
@@ -987,6 +1075,7 @@ namespace NLEditor
 
                 settingsFile.WriteLine("# NLEditor settings ");
                 settingsFile.WriteLine(" DefaultAuthorName   " + DefaultAuthorName);
+                settingsFile.WriteLine(" DefaultPlayer       " + CurrentDefaultPlayer.ToString());
                 settingsFile.WriteLine(" ValidateWhenSaving  " + (ValidateWhenSaving ? "True" : "False"));
                 settingsFile.WriteLine(" Autosave            " + AutosaveFrequency.ToString());
                 settingsFile.WriteLine(" AutosaveLimit       " + KeepAutosaveCount.ToString());

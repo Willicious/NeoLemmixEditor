@@ -1306,15 +1306,44 @@ Digger=20";
             string enginePath;
             string engineName;
 
-            if (File.Exists(C.AppPathNeoLemmixCE))
+            if (curSettings.CurrentDefaultPlayer == Settings.DefaultPlayer.NeoLemmixCE)
             {
-                enginePath = C.AppPathNeoLemmixCE;
-                engineName = "NeoLemmixCE.exe";
+                if (File.Exists(C.AppPathNeoLemmixCE))
+                {
+                    enginePath = C.AppPathNeoLemmixCE;
+                    engineName = "NeoLemmixCE.exe";
+                }
+                else
+                {
+                    MessageBox.Show("Could not find NeoLemmixCE.exe in app directory");
+                    return;
+                }
             }
-            else
+            else if (curSettings.CurrentDefaultPlayer == Settings.DefaultPlayer.NeoLemmix)
             {
-                enginePath = C.AppPathNeoLemmix;
-                engineName = "NeoLemmix.exe";
+                if (File.Exists(C.AppPathNeoLemmix))
+                {
+                    enginePath = C.AppPathNeoLemmix;
+                    engineName = "NeoLemmix.exe";
+                }
+                else
+                {
+                    MessageBox.Show("Could not find NeoLemmix.exe in app directory");
+                    return;
+                }
+            }
+            else // Auto
+            {
+                if (File.Exists(C.AppPathNeoLemmixCE))
+                {
+                    enginePath = C.AppPathNeoLemmixCE;
+                    engineName = "NeoLemmixCE.exe";
+                }
+                else
+                {
+                    enginePath = C.AppPathNeoLemmix;
+                    engineName = "NeoLemmix.exe";
+                }
             }
 
             if (!System.IO.File.Exists(enginePath))

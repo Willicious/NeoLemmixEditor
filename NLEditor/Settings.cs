@@ -1184,7 +1184,6 @@ namespace NLEditor
                             }
                     }
                 }
-
                 parser.DisposeStreamReader();
             }
             catch (Exception Ex)

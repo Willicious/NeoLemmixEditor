@@ -109,9 +109,29 @@ namespace NLEditor
             // =======================
 
             WriteBoldText(richTextBox, $"================ Version {C.Version} Updates ================\n");
+
+            WriteBoldText(richTextBox, "\n• Piece Browser\n");
+            richTextBox.AppendText(" • Added a 'Random' button to the Piece Browser which, when clicked, randomized the piece style selection. It's possible to specify which styles are Randomized in the Style Manager; if no styles are specified, the entire list is randomized\n");
+
+            WriteBoldText(richTextBox, "\n• Default Author Name\n");
+            richTextBox.AppendText(" • Added a setting which automatically applies a default author name when a new level is created\n");
+
+            WriteBoldText(richTextBox, "\n• Default Playtest Player\n");
+            richTextBox.AppendText(" • Added a setting to choose between NeoLemmixCE.exe, NeoLemmix.exe, or Auto (checks for both) when playtesting a level\n");
+
+            WriteBoldText(richTextBox, "\n• Bugfixes\n");
+            richTextBox.AppendText(" • No Overwrite checkbox is once again available for all pieces (except Rulers)\n");
+            richTextBox.AppendText(" • Fixed incremental indenting of terrain pieces in level file\n");
+            richTextBox.AppendText(" • All settings are now externalized to SLXEditorSettings.ini\n");
+
+            // =======================
+            // All Features
+            // =======================
+            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
+
             WriteBoldText(richTextBox, "\n• 'Sketches' are now 'Rulers'\n");
             richTextBox.AppendText(" • Rulers are drawn to their own layer and with their own selection rectangle colour for easier identification. The layer can be toggled on/off via hotkey/menu item. Full backwards compatibility with existing Sketches is preserved (NOTE: the 'sketches' folder is auto-renamed to 'rulers' if the rulers folder is not found).\n");
-            
+
             WriteBoldText(richTextBox, "\n• UI\n");
             richTextBox.AppendText(" • Improved Entrance Hatch arrow rendering\n");
             richTextBox.AppendText(" • Steel now has its own selection rectangle colour\n");
@@ -123,11 +143,6 @@ namespace NLEditor
             richTextBox.AppendText(" • Cursor is correctly reset when clicking status bar buttons\n");
             richTextBox.AppendText(" • The Editor now closes if the 'styles' folder cannot be found\n");
             richTextBox.AppendText(" • Many other general improvements, tweaks and typo fixes\n");
-
-            // =======================
-            // All Features
-            // =======================
-            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
 
             // =======================
             // Piece Browser

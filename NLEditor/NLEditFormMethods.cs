@@ -1193,7 +1193,7 @@ Digger=20";
             }
         }
 
-        private void ShowCleanseLevelsDialog()
+        private async void ShowCleanseLevelsDialog()
         {
             using (var folderBrowserDialog = new FolderBrowserDialog())
             {
@@ -1214,7 +1214,7 @@ Digger=20";
 
                     if (confirmResult == DialogResult.Yes)
                     {
-                        CleanseLevels(targetFolder);
+                        await CleanseLevels(targetFolder);
                     }
                 }
             }
@@ -1230,7 +1230,7 @@ Digger=20";
         /// <summary>
         /// Opens and saves all .nxlv files in a directory in order to ensure compatibility and update the file
         /// </summary>
-        private async void CleanseLevels(String targetFolder)
+        private async Task CleanseLevels(String targetFolder)
         {
             if (string.IsNullOrEmpty(targetFolder))
             {
@@ -1253,7 +1253,7 @@ Digger=20";
             using (FormProgress progressForm = new FormProgress())
             {
                 progressForm.ProgressBar.Maximum = files.Length;
-                progressForm.Show();
+                progressForm.Show(this);
 
                 foreach (string file in files)
                 {

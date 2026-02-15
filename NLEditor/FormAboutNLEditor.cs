@@ -110,6 +110,15 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, $"================ Version {C.Version} Updates ================\n");
 
+            WriteBoldText(richTextBox, "\n• Cleanse Levels\n");
+            richTextBox.AppendText(" • Bugfix - Progress form is linked to main form and kept on top. This is to prevent unhandled exceptions when focusing a different app during a cleanse\n");
+            richTextBox.AppendText(" • Highlight erasers/groups is disabled when cleansing (it must be manually re-enabled afterwards if necessary)\n");
+
+            WriteBoldText(richTextBox, "\n• Bugfixes\n");
+            richTextBox.AppendText(" • 'Save As Image' sanitizes invalid characters when saving\n");
+
+            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
+
             WriteBoldText(richTextBox, "\n• Piece Browser\n");
             richTextBox.AppendText(" • Added a 'Random' button to the Piece Browser which, when clicked, randomized the piece style selection. It's possible to specify which styles are Randomized in the Style Manager; if no styles are specified, the entire list is randomized\n");
 
@@ -127,7 +136,7 @@ namespace NLEditor
             // =======================
             // All Features
             // =======================
-            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
+            WriteBoldText(richTextBox, $"\n\n================ NLEditor 1.42 -> NLEditor 1.44 Updates ================\n");
 
             WriteBoldText(richTextBox, "\n• 'Sketches' are now 'Rulers'\n");
             richTextBox.AppendText(" • Rulers are drawn to their own layer and with their own selection rectangle colour for easier identification. The layer can be toggled on/off via hotkey/menu item. Full backwards compatibility with existing Sketches is preserved (NOTE: the 'sketches' folder is auto-renamed to 'rulers' if the rulers folder is not found).\n");

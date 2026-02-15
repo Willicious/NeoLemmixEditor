@@ -1240,6 +1240,10 @@ Digger=20";
 
             cleansingLevels = true;
 
+            // Disable group/eraser highlighting
+            BmpModify.HighlightErasers = false;
+            BmpModify.HighlightGroups = false;
+
             // Initialise list
             levelsWithMissingPieces.Clear();
             levelsWithDeprecatedPieces.Clear();

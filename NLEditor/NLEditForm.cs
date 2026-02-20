@@ -280,11 +280,16 @@ namespace NLEditor
             PullFocusFromTextInputs();
         }
 
-        private void textbox_Leave(object sender, EventArgs e)
+        private void CommitLevelChanges()
         {
             if (_IsWritingToForm) return;
             ReadLevelInfoFromForm(true);
             SaveChangesToOldLevelList();
+        }
+
+        private void textbox_Leave(object sender, EventArgs e)
+        {
+            CommitLevelChanges();
         }
 
         private void textbox_Modify(object sender, EventArgs e)
@@ -898,6 +903,20 @@ namespace NLEditor
                     break;
             }
 
+            // Handle Enter/Esc for crop
+            if (curRenderer.CropTool.Active)
+            {
+                switch (e.KeyCode)
+                {
+                    case Keys.Enter:
+                        ApplyLevelCrop();
+                        break;
+                    case Keys.Escape:
+                        HandleCropLevel();
+                        break;
+                }
+            }
+
             /// <summary>
             /// Determines if a key is used for text input.
             /// </summary>
@@ -1042,6 +1061,13 @@ namespace NLEditor
 
         private void HandleMouseInput(object sender, MouseEventArgs e)
         {
+            if (curRenderer.CropTool.Active)
+            {
+                curRenderer.CropTool.MouseDown(e.Location);
+                pic_Level.SetImage(curRenderer.GetScreenImage());
+                return;
+            }
+
             mutexMouseDown.WaitOne();
 
             ReadLevelInfoFromForm(true);
@@ -1116,6 +1142,13 @@ namespace NLEditor
 
         private void pic_Level_MouseUp(object sender, MouseEventArgs e)
         {
+            if (curRenderer.CropTool.Active)
+            {
+                curRenderer.CropTool.MouseUp();
+                pic_Level.SetImage(curRenderer.GetScreenImage());
+                return;
+            }
+
             mutexMouseUp.WaitOne();
 
             curRenderer.MouseCurPos = e.Location;
@@ -1205,6 +1238,13 @@ namespace NLEditor
 
         private void pic_Level_MouseMove(object sender, MouseEventArgs e)
         {
+            if (curRenderer.CropTool.Active)
+            {
+                curRenderer.CropTool.MouseMove(e.Location);
+                pic_Level.SetImage(curRenderer.GetScreenImage());
+                return;
+            }
+
             if (curRenderer.MouseStartPos == null)
                 return;
 
@@ -1519,6 +1559,7 @@ namespace NLEditor
         private void NLEditForm_Shown(object sender, EventArgs e)
         {
             SetHotkeys();
+            UpdateCropButtons();
 
             if (curSettings.AllTabsExpanded)
                 ExpandAllTabs();
@@ -1665,6 +1706,21 @@ namespace NLEditor
 
             if (possibleSaveCount < num_Lvl_Rescue.Value)
                 num_Lvl_Rescue.Value = possibleSaveCount;
+        }
+
+        private void but_CropLevel_Click(object sender, EventArgs e)
+        {
+            HandleCropLevel();
+        }
+
+        private void but_CancelCrop_Click(object sender, EventArgs e)
+        {
+            HandleCropLevel();
+        }
+
+        private void but_ApplyCrop_Click(object sender, EventArgs e)
+        {
+            ApplyLevelCrop();
         }
     }
 }

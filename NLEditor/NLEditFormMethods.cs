@@ -2569,6 +2569,45 @@ Digger=20";
             MessageBox.Show($"Image saved as {savedFilePath}", "Save Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public void HandleCropLevel()
+        {
+            if (curRenderer.CropTool.Active)
+                curRenderer.CropTool.Stop();
+            else
+                curRenderer.CropTool.Start();
+
+            UpdateCropButtons();
+            pic_Level.SetImage(curRenderer.GetScreenImage());
+            PullFocusFromTextInputs();
+        }
+
+        private void ApplyLevelCrop()
+        {
+            Rectangle cropRect = curRenderer.CropTool.LevelCropRect;
+            int startX = (int)num_Lvl_StartX.Value;
+            int startY = (int)num_Lvl_StartY.Value;
+
+            SelectAllPieces();
+            CurLevel.MovePieces(C.DIR.N, cropRect.Y, 1);
+            CurLevel.MovePieces(C.DIR.W, cropRect.X, 1);
+            CurLevel.UnselectAll();
+
+            num_Lvl_SizeX.Value = cropRect.Width;
+            num_Lvl_SizeY.Value = cropRect.Height;
+
+            int newStartX = startX - cropRect.X;
+            int newStartY = startY - cropRect.Y;
+
+            newStartX = Math.Max(0, Math.Min(newStartX, cropRect.Width - 1));
+            newStartY = Math.Max(0, Math.Min(newStartY, cropRect.Height - 1));
+
+            num_Lvl_StartX.Value = newStartX;
+            num_Lvl_StartY.Value = newStartY;
+
+            CommitLevelChanges();
+            HandleCropLevel();
+        }
+
         private void HighlightGroupedPieces()
         {
             BmpModify.HighlightGroups = !BmpModify.HighlightGroups;
@@ -2705,6 +2744,7 @@ Digger=20";
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenStyleManager, () => OpenStyleManager());
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyPieceSearch, () => OpenPieceSearch());
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleSnapToGrid, () => ToggleSnapToGrid(true));
+            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleCrop, () => HandleCropLevel());
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenLevelArrangerWindow, () => OpenLevelArrangerWindow());
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenPieceBrowserWindow, () => OpenPieceBrowserWindow());
             AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleAllTabs, () => ToggleExpandedTabs());

@@ -42,6 +42,8 @@ namespace NLEditor
             SetLevel(level);
             ClearLayers();
             ChangeZoom(1);
+
+            InitializeCropTool();
         }
 
         public const int AllowedGrayBorder = 10;
@@ -76,6 +78,9 @@ namespace NLEditor
 
         Point zoomMouseScreenPos;
         Point zoomMouseLevelPos;
+
+        public CropTool CropTool;
+        private Point currentLevelDrawOffset;
 
         public void Dispose()
         {
@@ -234,6 +239,16 @@ namespace NLEditor
             // Dispose the single screen bitmap
             croppedBmp.Dispose();
             screenBmp.Dispose();
+
+            // Draw the crop tool
+            currentLevelDrawOffset = levelPos;
+            if (CropTool.Active)
+            {
+                using (Graphics g = Graphics.FromImage(fullBmp))
+                {
+                    CropTool.Draw(g);
+                }
+            }
 
             return fullBmp;
         }
@@ -979,6 +994,15 @@ namespace NLEditor
             levelBmp.DrawOnRectangles(terrRects, C.NLColors[C.NLColor.SelRectTerrain]);
         }
 
+        private void InitializeCropTool()
+        {
+            CropTool = new CropTool(
+                GetPicRectFromLevelRect,
+                GetLevelPointFromPicPoint,
+                () => new Rectangle(0, 0, level.Width, level.Height),
+                () => currentLevelDrawOffset);
+        }
+
         /// <summary>
         /// Translates a rectangle in level coordinates into screen coordinates (relative to pic_Level)
         /// </summary>
@@ -1011,6 +1035,16 @@ namespace NLEditor
             return new Point(posX, posY);
         }
 
+        /// <summary>
+        /// Translates screen coordinates (relative to pic_Level) into a point in level coordinates 
+        /// </summary>
+        private Point GetLevelPointFromPicPoint(Point picPoint)
+        {
+            int levelX = ApplyUnZoom(picPoint.X) + Math.Max(ScreenPosX, 0);
+            int levelY = ApplyUnZoom(picPoint.Y) + Math.Max(ScreenPosY, 0);
+
+            return new Point(levelX, levelY);
+        }
 
         /// <summary>
         /// Draws the rectangle around the area currently selected with the mouse.

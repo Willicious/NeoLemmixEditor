@@ -2415,10 +2415,8 @@ Digger=20";
 
             snapToGridToolStripMenuItem.Checked = curSettings.UseGridForPieces;
 
-            // Draw the grid to the background layer
-            curRenderer.CreateBackgroundLayer();
+            curRenderer.CreateGridLayer();
             pic_Level.SetImage(curRenderer.CombineLayers());
-            //pic_Level.SetImage(curRenderer.GetScreenImage());
         }
 
         private const string INVALID_AUTOSAVE_NAME_CHARS = "<>:\"/\\|?*.";

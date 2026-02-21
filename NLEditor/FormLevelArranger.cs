@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Drawing;
+using System.Reflection.Emit;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NLEditor
 {
@@ -144,6 +146,8 @@ namespace NLEditor
             }
             scrollVert.Enabled = displayScrollVert;
             scrollVert.Visible = displayScrollVert;
+
+            ResetPicLevel();
         }
 
         private bool ValidateScreenSettings(Point location)

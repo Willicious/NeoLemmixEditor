@@ -85,9 +85,9 @@ namespace NLEditor
             {
                 LoadedStyles.Add(style);
 
-                if (File.Exists(C.AppPathPieces + style + C.DirSep + "alias.nxmi"))
+                if (File.Exists(C.AppPathStyles + style + C.DirSep + "alias.nxmi"))
                 {
-                    NLTextDataNode aliasFile = NLTextParser.LoadFile(C.AppPathPieces + style + C.DirSep + "alias.nxmi");
+                    NLTextDataNode aliasFile = NLTextParser.LoadFile(C.AppPathStyles + style + C.DirSep + "alias.nxmi");
 
                     foreach (NLTextDataNode entry in aliasFile.Children)
                     {

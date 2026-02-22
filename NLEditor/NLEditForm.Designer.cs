@@ -279,6 +279,11 @@
             this.txt_FocusPieceBrowser = new NLEditor.FocusTextBox();
             this.pic_DragNewPiece = new System.Windows.Forms.PictureBox();
             this.txt_Focus = new NLEditor.FocusTextBox();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.templatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.openTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic_Level)).BeginInit();
             this.tabLvlProperties.SuspendLayout();
@@ -362,12 +367,15 @@
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
             this.saveAsImageToolStripMenuItem,
-            this.exitToolStripMenuItem,
+            this.toolStripSeparator11,
+            this.templatesToolStripMenuItem,
             this.toolStripSeparator1,
             this.playLevelToolStripMenuItem,
             this.validateLevelToolStripMenuItem,
             this.toolStripSeparator9,
-            this.cleanseLevelsToolStripMenuItem});
+            this.cleanseLevelsToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
             this.fileToolStripMenuItem.Text = "File";
@@ -3356,6 +3364,39 @@
             this.txt_Focus.TabStop = false;
             this.txt_Focus.Text = "asdf";
             // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(351, 6);
+            // 
+            // templatesToolStripMenuItem
+            // 
+            this.templatesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openTemplateToolStripMenuItem,
+            this.saveAsTemplateToolStripMenuItem});
+            this.templatesToolStripMenuItem.Name = "templatesToolStripMenuItem";
+            this.templatesToolStripMenuItem.Size = new System.Drawing.Size(354, 34);
+            this.templatesToolStripMenuItem.Text = "Templates";
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(351, 6);
+            // 
+            // openTemplateToolStripMenuItem
+            // 
+            this.openTemplateToolStripMenuItem.Name = "openTemplateToolStripMenuItem";
+            this.openTemplateToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.openTemplateToolStripMenuItem.Text = "Open Template";
+            this.openTemplateToolStripMenuItem.Click += new System.EventHandler(this.openTemplateToolStripMenuItem_Click);
+            // 
+            // saveAsTemplateToolStripMenuItem
+            // 
+            this.saveAsTemplateToolStripMenuItem.Name = "saveAsTemplateToolStripMenuItem";
+            this.saveAsTemplateToolStripMenuItem.Size = new System.Drawing.Size(270, 34);
+            this.saveAsTemplateToolStripMenuItem.Text = "Save As Template";
+            this.saveAsTemplateToolStripMenuItem.Click += new System.EventHandler(this.saveAsTemplateToolStripMenuItem_Click);
+            // 
             // NLEditForm
             // 
             this.AllowDrop = true;
@@ -3716,6 +3757,11 @@
         private System.Windows.Forms.Button but_CropLevel;
         private System.Windows.Forms.Button but_CancelCrop;
         private System.Windows.Forms.Button but_ApplyCrop;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
+        private System.Windows.Forms.ToolStripMenuItem templatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
     }
 }
 

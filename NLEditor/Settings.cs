@@ -81,6 +81,7 @@ namespace NLEditor
         public PieceBrowserState PieceBrowser { get; set; } = new PieceBrowserState();
 
         public string DefaultAuthorName { get; private set; }
+        public string DefaultTemplate { get; set; }
         public DefaultPlayer CurrentDefaultPlayer { get; private set; }
         public bool AutoPinOGStyles { get; set; }
         public bool ShowRandomButton { get; set; }
@@ -118,6 +119,7 @@ namespace NLEditor
         public void SetDefault()
         {
             DefaultAuthorName = string.Empty;
+            DefaultTemplate = string.Empty;
             CurrentDefaultPlayer = DefaultPlayer.Auto;
             CurrentPieceBrowserMode = PieceBrowserMode.ShowData;
             CurrentTriggerAreaColor = TriggerAreaColor.Pink;
@@ -981,6 +983,11 @@ namespace NLEditor
                                 DefaultAuthorName = line.Text.Trim();
                                 break;
                             }
+                        case "DEFAULTTEMPLATE":
+                            {
+                                DefaultTemplate = line.Text.Trim();
+                                break;
+                            }
                         case "DEFAULTPLAYER":
                             {
                                 var modeText = line.Text.Trim().ToUpper();
@@ -1216,6 +1223,7 @@ namespace NLEditor
 
                 settingsFile.WriteLine("# NLEditor settings ");
                 settingsFile.WriteLine(" DefaultAuthorName      " + DefaultAuthorName);
+                settingsFile.WriteLine(" DefaultTemplate        " + DefaultTemplate);
                 settingsFile.WriteLine(" DefaultPlayer          " + CurrentDefaultPlayer.ToString());
                 settingsFile.WriteLine(" ValidateWhenSaving     " + (ValidateWhenSaving ? "True" : "False"));
                 settingsFile.WriteLine(" Autosave               " + AutosaveFrequency.ToString());

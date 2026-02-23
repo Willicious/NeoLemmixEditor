@@ -31,3 +31,4 @@ NLEditor/NLEditor_TemporaryKey.pfx
 .vs/
 NLEditor/NLEditor.csproj.user
 *.json
+UpdateReleaseEXE.bat

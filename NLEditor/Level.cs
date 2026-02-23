@@ -613,7 +613,6 @@ namespace NLEditor
         /// <summary>
         /// Finds the last index of a non-selected piece that when moved to bottom past all selected pieces changes output.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         private int GetMoveTopEndIndex<T>(List<T> pieceList) where T : LevelPiece
         {
             for (int i = 0; i < pieceList.Count; i++)
@@ -635,7 +634,6 @@ namespace NLEditor
         /// <summary>
         /// Moves all selected pieces to bottom in the range starting from startIndex.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         private List<T> MoveSelectedAllToBottom<T>(List<T> pieceList, int startIndex) where T : LevelPiece
         {
             return pieceList.GetRange(0, startIndex)
@@ -647,7 +645,6 @@ namespace NLEditor
         /// <summary>
         /// Moves all selected pieces to top in the range ending with endIndex.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         private List<T> MoveSelectedAllToTop<T>(List<T> pieceList, int endIndex) where T : LevelPiece
         {
             return pieceList.GetRange(0, endIndex + 1).FindAll(item => !item.IsSelected)

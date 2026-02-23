@@ -438,6 +438,9 @@ Digger=20";
         /// </summary>
         private void ReadLevelInfoFromForm(bool allowWriteBack)
         {
+            if (CurLevel == null)
+                return;
+
             CurLevel.Author = txt_LevelAuthor.Text;
             CurLevel.Title = txt_LevelTitle.Text;
             CurLevel.MusicFile = Path.ChangeExtension(combo_Music.Text, null);
@@ -2095,6 +2098,9 @@ Digger=20";
         /// </summary>
         private void SaveChangesToOldLevelList()
         {
+            if (oldLevelList == null)
+                return;
+
             if (CurLevel.Equals(oldLevelList[curOldLevelIndex]))
                 return;
 

@@ -1504,7 +1504,7 @@ namespace NLEditor
         {
             if (_IsWritingToForm) return;
             textbox_Leave(sender, e);
-            pic_Level.SetImage(curRenderer.GetScreenImage());
+            pic_Level.SetImage(curRenderer?.GetScreenImage());
         }
 
         private void showMissingPiecesStatusBarMenuItem_Click(object sender, EventArgs e)

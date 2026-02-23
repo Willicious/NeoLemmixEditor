@@ -654,7 +654,7 @@ namespace NLEditor
 
             if (!foundSelectPieces)
             {
-                invalidKey = "HotkeySelectPieces is missing from SLXEditorHotkeys.ini";
+                invalidKey = "HotkeySelectPieces is missing from NLEditorHotkeys.ini";
                 return true;
             }
 
@@ -676,7 +676,7 @@ namespace NLEditor
             if (ValidateHotkeyIniFile(lines, out string invalidKey))
             {
                 MessageBox.Show(
-                    $"Invalid or duplicate key detected in SLXEditorHotkeys.ini\n\n" +
+                    $"Invalid or duplicate key detected in NLEditorHotkeys.ini\n\n" +
                     $"{invalidKey}\n\n" +
                     $"The default hotkeys will be loaded instead",
                     "Hotkey Error",

@@ -131,7 +131,7 @@ namespace NLEditor
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
             richTextBox.AppendText(" • No Overwrite checkbox is once again available for all pieces (except Rulers)\n");
             richTextBox.AppendText(" • Fixed incremental indenting of terrain pieces in level file\n");
-            richTextBox.AppendText(" • All settings are now externalized to SLXEditorSettings.ini\n");
+            richTextBox.AppendText(" • All settings are now externalized to NLEditorSettings.ini\n");
 
             // =======================
             // All Features

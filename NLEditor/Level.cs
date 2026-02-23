@@ -14,7 +14,6 @@ namespace NLEditor
         /// <summary>
         /// Creates a new level with the default values.
         /// </summary>
-        /// <param name="mainStyle"></param>
         public Level(Style mainStyle = null)
         {
             this.Title = "";
@@ -167,7 +166,6 @@ namespace NLEditor
         /// <summary>
         /// Compares two Levels for equality.
         /// </summary>
-        /// <param name="otherLevel"></param>
         public bool Equals(Level otherLevel)
         {
             if (otherLevel == null
@@ -240,7 +238,6 @@ namespace NLEditor
         /// <summary>
         /// Returns the theme color as specified by the main style.
         /// </summary>
-        /// <param name="styleColor"></param>
         public Color GetThemeColor(C.StyleColor styleColor)
         {
             return MainStyle?.GetColor(styleColor) ?? C.NLColors[styleColor.ToNLColor()];
@@ -249,7 +246,6 @@ namespace NLEditor
         /// <summary>
         /// Adds a list of pieces to the level.
         /// </summary>
-        /// <param name="pieces"></param>
         public void AddMultiplePieces(IEnumerable<LevelPiece> pieces)
         {
             if (pieces == null)
@@ -277,8 +273,6 @@ namespace NLEditor
         /// <summary>
         /// Creates a new piece and adds it to the level. 
         /// </summary>
-        /// <param name="pieceKey"></param>
-        /// <param name="centerPos"></param>
         public void AddPiece(string pieceKey, Point centerPos, int gridSize)
         {
             int piecePosX = (centerPos.X - ImageLibrary.GetWidth(pieceKey) / 2).RoundToMultiple(gridSize);
@@ -308,9 +302,6 @@ namespace NLEditor
         /// <summary>
         /// Determines the piece to select.
         /// </summary>
-        /// <param name="pos"></param>
-        /// <param name="isUnselected"></param>
-        /// <param name="doPriorityInvert"></param>
         private LevelPiece GetOnePiece(Point pos, bool isUnselected, bool doPriorityInvert)
         {
             LevelPiece selectedPiece = null;
@@ -348,8 +339,6 @@ namespace NLEditor
         /// <summary>
         /// Select all pieces that intersect with a given area.
         /// </summary>
-        /// <param name="rectangle"></param>
-        /// <param name="isAdded"></param>
         public void SelectAreaPiece(Rectangle rectangle, bool isAdded)
         {
             if (DisplaySettings.IsDisplayed(C.DisplayType.Terrain))
@@ -404,7 +393,6 @@ namespace NLEditor
         /// <summary>
         /// Returns whether there is a selected terrain piece at a point.
         /// </summary>
-        /// <param name="pos"></param>
         public bool HasSelectionAtPos(Point pos)
         {
             return SelectionList().Exists(item => item.ImageRectangle.Contains(pos));
@@ -413,7 +401,6 @@ namespace NLEditor
         /// <summary>
         /// Returns whether there is any terrain or object piece at this point.
         /// </summary>
-        /// <param name="pos"></param>
         public bool HasPieceAtPos(Point pos)
         {
             return TerrainList.Exists(item => item.ImageRectangle.Contains(pos))
@@ -424,8 +411,6 @@ namespace NLEditor
         /// <summary>
         /// Moves all selected pieces a given number of pixels into a given direction. 
         /// </summary>
-        /// <param name="direction"></param>
-        /// <param name="step"></param>
         public void MovePieces(C.DIR direction, int step, int gridSize)
         {
             SelectionList().ForEach(item => item.Move(direction, step, gridSize));
@@ -434,7 +419,6 @@ namespace NLEditor
         /// <summary>
         /// Moves all selected pieces to the target position. 
         /// </summary>
-        /// <param name="targetPos">Location of the rectangle spanning all selected pieces.</param>
         public void MovePieces(Point targetPos, int gridSize)
         {
             Point referencePos = SelectionRectangle().Location;
@@ -501,7 +485,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the NoOverwrite flag for all objects and terrain pieces.
         /// </summary>
-        /// <param name="doAdd"></param>
         public void SetNoOverwrite(bool doAdd)
         {
             TerrainList.FindAll(ter => ter.IsSelected)
@@ -513,7 +496,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the Erase flag for all terrain pieces.
         /// </summary>
-        /// <param name="doAdd"></param>
         public void SetErase(bool doAdd)
         {
             TerrainList.FindAll(ter => ter.IsSelected)
@@ -523,7 +505,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the OnlyOnTerrain flag for all objects.
         /// </summary>
-        /// <param name="doAdd"></param>
         public void SetOnlyOnTerrain(bool doAdd)
         {
             GadgetList.FindAll(gad => gad.IsSelected)
@@ -533,7 +514,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the OneWay flag for all terrain pieces.
         /// </summary>
-        /// <param name="doAdd"></param>
         public void SetOneWay(bool doAdd)
         {
             TerrainList.FindAll(ter => ter.IsSelected && !ter.IsSteel)
@@ -543,7 +523,6 @@ namespace NLEditor
         /// <summary>
         /// Adds or removes a skill flag from all selected objects 
         /// </summary>
-        /// <param name="skill"></param>
         public void SetSkillForObjects(C.Skill skill, bool doAdd)
         {
             GadgetList.FindAll(gad => gad.IsSelected)
@@ -553,8 +532,6 @@ namespace NLEditor
         /// <summary>
         /// Changes the index of all selected pieces.
         /// </summary>
-        /// <param name="toTop"></param>
-        /// <param name="onlyOneStep"></param>
         public void MoveSelectedPieces(bool toTop, bool onlyOneStep)
         {
             if (onlyOneStep && toTop)
@@ -574,7 +551,6 @@ namespace NLEditor
         /// <summary>
         /// Moves all selected pieces to the beginning or the end of their respective lists.
         /// </summary>
-        /// <param name="toTop"></param>
         private void MoveSelectedMaximally(bool toTop)
         {
             if (toTop)
@@ -616,7 +592,6 @@ namespace NLEditor
         /// <summary>
         /// Finds the last index of a non-selected piece that when moved to top past all selected pieces changes output.
         /// </summary>
-        /// <param name="pieceList"></param>
         private int GetMoveBottomStartIndex<T>(List<T> pieceList) where T : LevelPiece
         {
             for (int i = pieceList.Count - 1; i >= 0; i--)
@@ -639,7 +614,6 @@ namespace NLEditor
         /// Finds the last index of a non-selected piece that when moved to bottom past all selected pieces changes output.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="pieceList"></param>
         private int GetMoveTopEndIndex<T>(List<T> pieceList) where T : LevelPiece
         {
             for (int i = 0; i < pieceList.Count; i++)
@@ -662,8 +636,6 @@ namespace NLEditor
         /// Moves all selected pieces to bottom in the range starting from startIndex.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="pieceList"></param>
-        /// <param name="startIndex"></param>
         private List<T> MoveSelectedAllToBottom<T>(List<T> pieceList, int startIndex) where T : LevelPiece
         {
             return pieceList.GetRange(0, startIndex)
@@ -676,8 +648,6 @@ namespace NLEditor
         /// Moves all selected pieces to top in the range ending with endIndex.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="pieceList"></param>
-        /// <param name="endIndex"></param>
         private List<T> MoveSelectedAllToTop<T>(List<T> pieceList, int endIndex) where T : LevelPiece
         {
             return pieceList.GetRange(0, endIndex + 1).FindAll(item => !item.IsSelected)
@@ -723,7 +693,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the pickup skill count to the first piece in the selection list.
         /// </summary>
-        /// <param name="value"></param>
         public void SetPickupSkillCount(int value)
         {
             GadgetPiece pickup = (GadgetPiece)SelectionList().First();
@@ -743,7 +712,6 @@ namespace NLEditor
         /// <summary>
         /// Removes the key-value RemoveValue from all teleporter and receiver objects.
         /// </summary>
-        /// <param name="removeValue"></param>
         private void RemovePairingValue(int removeValue)
         {
             GadgetList.FindAll(gad => gad.ObjType.In(C.OBJ.TELEPORTER, C.OBJ.RECEIVER, C.OBJ.PORTAL) && gad.Val_L == removeValue)
@@ -827,7 +795,6 @@ namespace NLEditor
         /// <summary>
         /// Ungroups a given group and inserts the single pieces into the terrain list.
         /// </summary>
-        /// <param name="group"></param>
         private void UnGroup(GroupPiece group)
         {
             int insertIndex = TerrainList.IndexOf(group);

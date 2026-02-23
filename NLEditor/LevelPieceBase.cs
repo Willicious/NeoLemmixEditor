@@ -106,8 +106,6 @@ namespace NLEditor
         /// <summary>
         /// Moves the piece in the level some pixels in a given direction.
         /// </summary>
-        /// <param name="direction"></param>
-        /// <param name="step"></param>
         public void Move(C.DIR direction, int step, int gridSize)
         {
             switch (direction)
@@ -130,7 +128,6 @@ namespace NLEditor
         /// <summary>
         /// Moves the piece in the level to the target position and rounds it to the grid.
         /// </summary>
-        /// <param name="targetPos"></param>
         public void Move(Point targetPos, int gridSize)
         {
             PosX = targetPos.X.RoundToMultiple(gridSize);
@@ -145,7 +142,6 @@ namespace NLEditor
         /// <summary>
         /// Compares two LevelPieces for equality.
         /// </summary>
-        /// <param name="piece"></param>
         public virtual bool Equals(LevelPiece piece)
         {
             return this.PosX == piece.PosX
@@ -184,7 +180,6 @@ namespace NLEditor
         /// <summary>
         /// Rotates the piece around the center of a specified rectangle, if allowed for this piece.
         /// </summary>
-        /// <param name="borderRect"></param>
         public virtual void RotateInRect(Rectangle borderRect)
         {
             if (!MayRotate())
@@ -200,7 +195,6 @@ namespace NLEditor
         /// <summary>
         /// Inverts the piece wrt. a specified rectangle, if allowed for this piece.
         /// </summary>
-        /// <param name="borderRect"></param>
         public virtual void InvertInRect(Rectangle borderRect)
         {
             PosY = borderRect.Top + borderRect.Bottom - PosY - Height;
@@ -211,7 +205,6 @@ namespace NLEditor
         /// <summary>
         /// Flips the piece wrt. a specified rectangle, if allowed for this piece.
         /// </summary>
-        /// <param name="borderRect"></param>
         public virtual void FlipInRect(Rectangle borderRect, bool isHatch = false)
         {
             PosX = borderRect.Left + borderRect.Right - PosX - Width;

@@ -72,7 +72,6 @@ namespace NLEditor
         /// Reads style colors from a .nxtm file.
         /// <para> Color 0: Background (default: black) </para>
         /// </summary>
-        /// <param name="styleName"></param>
         public static Dictionary<C.StyleColor, Color> StyleColors(string styleName)
         {
             var colorDict = new Dictionary<C.StyleColor, Color>();
@@ -136,7 +135,6 @@ namespace NLEditor
         /// <summary>
         /// Reads the styles.ini file and orders and renames styles accordingly.
         /// </summary>
-        /// <param name="styleList"></param>
         public static List<Style> OrderAndRenameStyles(List<Style> styleList, Settings settings)
         {
             string filePath = C.AppPath + "styles" + C.DirSep + "styles.ini";
@@ -311,7 +309,6 @@ namespace NLEditor
         /// <summary>
         /// Loads a .png image or null if the image could not be loaded.
         /// </summary>
-        /// <param name="imageKey"></param>
         public static Bitmap Image(string imageKey)
         {
             string imagePath;

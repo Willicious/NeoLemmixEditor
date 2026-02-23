@@ -66,7 +66,6 @@ namespace NLEditor
         /// <summary>
         /// Compares two GadgetPieces for equality.
         /// </summary>
-        /// <param name="piece"></param>
         public bool Equals(GadgetPiece piece)
         {
             return base.Equals(piece)
@@ -264,7 +263,6 @@ namespace NLEditor
         /// <summary>
         /// Rotates the piece around the center of a specified rectangle, if allowed for this piece.
         /// </summary>
-        /// <param name="borderRect"></param>
         public override void RotateInRect(Rectangle borderRect)
         {
             base.RotateInRect(borderRect);
@@ -281,8 +279,6 @@ namespace NLEditor
         /// <summary>
         /// Adjusts the flag for the specified skill, depending on the object type.
         /// </summary>
-        /// <param name="skill"></param>
-        /// <param name="doAdd"></param>
         public void SetSkillFlag(C.Skill skill, bool doAdd)
         {
             if (!MayReceiveSkill(skill))
@@ -325,7 +321,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the width of resizable objects taking rotation into account.
         /// </summary>
-        /// <param name="newWidth"></param>
         public void SetSpecWidth(int newWidth)
         {
             if (MayResizeHoriz())
@@ -335,7 +330,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the height of resizable objects taking rotation into account.
         /// </summary>
-        /// <param name="newHeight"></param>
         public void SetSpecHeight(int newHeight)
         {
             if (MayResizeVert())
@@ -345,7 +339,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the key-value for pairing teleporters to receivers.
         /// </summary>
-        /// <param name="newValue"></param>
         public void SetTeleporterValue(int newValue)
         {
             System.Diagnostics.Debug.Assert(ObjType.In(C.OBJ.TELEPORTER, C.OBJ.RECEIVER, C.OBJ.PORTAL), "Teleporter pairing key set for object, that is neither teleporter nor receiver.");
@@ -355,7 +348,6 @@ namespace NLEditor
         /// <summary>
         /// Sets the number of skills a pick-up skill gives the player.
         /// </summary>
-        /// <param name="newValue"></param>
         public void SetPickupSkillCount(int newValue)
         {
             System.Diagnostics.Debug.Assert(ObjType == C.OBJ.PICKUP, "Pickup skill count set for object of another type.");
@@ -371,7 +363,6 @@ namespace NLEditor
         /// <summary>
         /// Adds the Pickup skill number to the base image
         /// </summary>
-        /// <param name="baseImage"></param>
         private Bitmap AddPickupSkillNumber(Bitmap baseImage)
         {
             Bitmap image = (Bitmap)baseImage.Clone();

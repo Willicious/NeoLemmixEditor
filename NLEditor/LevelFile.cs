@@ -17,7 +17,6 @@ namespace NLEditor
         /// Opens file browser and creates level from a .nxlv file.
         /// <para> Returns null if process is aborted or file is corrupt. </para>
         /// </summary>
-        /// <param name="styleList"></param>
         static public Level LoadLevel(List<Style> styleList, BackgroundList backgrounds, string levelDirectory)
         {
             var openFileDialog = new OpenFileDialog();
@@ -459,7 +458,6 @@ namespace NLEditor
         /// <summary>
         /// Ensures that all level parameters are within sensible limits.
         /// </summary>
-        /// <param name="newLevel"></param>
         static private void SanitizeInput(Level newLevel)
         {
             // Level size
@@ -486,7 +484,6 @@ namespace NLEditor
         /// <summary>
         /// Opens file browser and saves the current level to a .nxlv file.
         /// </summary>
-        /// <param name="curLevel"></param>
         static public void SaveLevel(Level curLevel, string levelDirectory)
         {
             var saveFileDialog = new SaveFileDialog();
@@ -535,8 +532,6 @@ namespace NLEditor
         /// <summary>
         /// Saves a level at the specified file path.
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="curLevel"></param>
         static public void SaveLevelToFile(string filePath, Level curLevel)
         {
             // Create new empty file
@@ -753,8 +748,6 @@ namespace NLEditor
         /// <summary>
         /// Returns whether the skill is in the skill set or available as a pickup skill. 
         /// </summary>
-        /// <param name="curLevel"></param>
-        /// <param name="skillNum"></param>
         static public bool IsSkillRequired(Level curLevel, C.Skill skill)
         {
             return (curLevel.SkillSet[skill] > 0)
@@ -772,8 +765,6 @@ namespace NLEditor
         /// <summary>
         /// Writes all object infos in a text file.
         /// </summary>
-        /// <param name="textFile"></param>
-        /// <param name="gadget"></param>
         static private void WriteObject(TextWriter textFile, GadgetPiece gadget)
         {
             if (gadget == null)
@@ -904,8 +895,6 @@ namespace NLEditor
         /// <summary>
         /// Writes all terrain piece infos in a text file.
         /// </summary>
-        /// <param name="textFile"></param>
-        /// <param name="terrain"></param>
         static private void WriteTerrain(TextWriter textFile, TerrainPiece terrain, int index, int extraIndent = 0)
         {
             string prefix = new string(' ', extraIndent * 2);
@@ -960,8 +949,6 @@ namespace NLEditor
         /// <summary>
         /// Writes aa talisman in a text file.
         /// </summary>
-        /// <param name="textFile"></param>
-        /// <param name="talisman"></param>
         static private void WriteTalisman(TextWriter textFile, Talisman talisman)
         {
             textFile.WriteLine(" $TALISMAN ");
@@ -986,7 +973,6 @@ namespace NLEditor
         /// <summary>
         /// Returns the name of the skill as a string.
         /// </summary>
-        /// <param name="skill"></param>
         static string SkillString(C.Skill skill)
         {
             return Enum.GetName(typeof(C.Skill), skill).ToUpper();
@@ -996,7 +982,6 @@ namespace NLEditor
         /// <summary>
         /// Returns the name of the skill as a string, padded to length 12.
         /// </summary>
-        /// <param name="skill"></param>
         static string PaddedSkillString(C.Skill skill)
         {
             return "   " + SkillString(skill) + " ";
@@ -1007,7 +992,6 @@ namespace NLEditor
         /// Not currently used, but the code remains here because it may be useful for an auto-cleanse feature in the future.
         /// <para> This calls NeoLemmix.exe written in Delphi. </para>
         /// </summary>
-        /// <param name="filePath"></param>
         static bool ConvertWithNeoLemmix(string filePath)
         {
             if (!File.Exists(C.AppPathNeoLemmix))

@@ -1443,7 +1443,6 @@ Digger=20";
         /// <summary>
         /// Returns a style with the requested name, or null if none such is found. 
         /// </summary>
-        /// <param name="styleName"></param>
         private Style ValidateStyleName(string styleName)
         {
             return StyleList?.Find(sty => sty.NameInEditor == styleName);
@@ -1492,7 +1491,6 @@ Digger=20";
         /// <summary>
         /// Moves the screen start position to the given level coordinates.
         /// </summary>
-        /// <param name="newCenter"></param>
         private void MoveScreenStartPosition(Point newCenter)
         {
             // Ensure that the new center position is within the correct bounds.
@@ -1519,7 +1517,6 @@ Digger=20";
         /// <summary>
         /// Moves the current screen start position by 8 pixels in the given direction.
         /// </summary>
-        /// <param name="direction"></param>
         private void MoveScreenStartPosition(C.DIR direction)
         {
             Point newCenter;
@@ -1549,7 +1546,6 @@ Digger=20";
         /// <summary>
         /// Displays new pieces on the piece selection bar.
         /// </summary>
-        /// <param name="movement"></param>
         public void MoveTerrPieceSelection(int movement)
         {       
             List<string> pieceNameList;
@@ -1631,7 +1627,6 @@ Digger=20";
         /// <summary>
         /// Changes the style for newly added pieces and displays the new pieces.
         /// </summary>
-        /// <param name="movement"></param>
         private void ChangeNewPieceStyleSelection(int movement)
         {
             if (StyleList == null || StyleList.Count == 0)
@@ -1781,7 +1776,6 @@ Digger=20";
         /// <summary>
         /// Gets the key from the index of the clicked PieceBox.
         /// </summary>
-        /// <param name="picPieceIndex"></param>
         private string GetPieceKeyFromIndex(int picPieceIndex)
         {
             List<string> pieceList;
@@ -1834,7 +1828,6 @@ Digger=20";
         /// <summary>
         /// Adds a new piece to the level and displays the result to the user.
         /// </summary>
-        /// <param name="picPieceIndex"></param>
         private void AddNewPieceToLevel(int picPieceIndex)
         {
             ReadLevelInfoFromForm(true);
@@ -1868,8 +1861,6 @@ Digger=20";
         /// <summary>
         /// Adds a new piece to the level and displays the result to the user.
         /// </summary>
-        /// <param name="pieceKey"></param>
-        /// <param name="centerPosition"></param>
         public void AddNewPieceToLevel(string pieceKey, Point centerPosition)
         {
             CurLevel.UnselectAll();
@@ -1951,8 +1942,6 @@ Digger=20";
         /// <summary>
         /// Moves all selected pieces of the level and displays the result.
         /// </summary>
-        /// <param name="direction"></param>
-        /// <param name="step"></param>
         private void HandleMovement(C.DIR direction, int step = 1)
         {
             movementActionPerformed = true;
@@ -2034,7 +2023,6 @@ Digger=20";
         /// <summary>
         /// Sets the NoOverwrite flag for all selected pieces and displays the result.
         /// </summary>
-        /// <param name="doAdd"></param>
         private void SetNoOverwrite(bool doAdd)
         {
             CurLevel.SetNoOverwrite(doAdd);
@@ -2046,7 +2034,6 @@ Digger=20";
         /// <summary>
         /// Sets the Erase flag for all selected pieces and displays the result.
         /// </summary>
-        /// <param name="doAdd"></param>
         private void SetErase(bool doAdd)
         {
             CurLevel.SetErase(doAdd);
@@ -2058,7 +2045,6 @@ Digger=20";
         /// <summary>
         /// Sets the OnlyOnTerrain flag for all selected pieces and displays the result.
         /// </summary>
-        /// <param name="doAdd"></param>
         private void SetOnlyOnTerrain(bool doAdd)
         {
             CurLevel.SetOnlyOnTerrain(doAdd);
@@ -2070,7 +2056,6 @@ Digger=20";
         /// <summary>
         /// Sets the OneWayAdmissible flag for all selected pieces and displays the result.
         /// </summary>
-        /// <param name="doAdd"></param>
         private void SetOneWay(bool doAdd)
         {
             CurLevel.SetOneWay(doAdd);
@@ -2082,8 +2067,6 @@ Digger=20";
         /// <summary>
         /// Sets skill flags for all selected objects.
         /// </summary>
-        /// <param name="skill"></param>
-        /// <param name="doAdd"></param>
         private void SetSkillForObjects(C.Skill skill, bool doAdd)
         {
             CurLevel.SetSkillForObjects(skill, doAdd);
@@ -2099,8 +2082,6 @@ Digger=20";
         /// <summary>
         /// Changes the index of all selected pieces and displays the result.
         /// </summary>
-        /// <param name="toFront"></param>
-        /// <param name="onlyOneStep"></param>
         private void MovePieceIndex(bool toFront, bool onlyOneStep)
         {
             CurLevel.MoveSelectedPieces(toFront, onlyOneStep);
@@ -2354,7 +2335,6 @@ Digger=20";
         /// <summary>
         /// Centers the collection of pieces around the cursor.
         /// </summary>
-        /// <param name="clipPieces"></param>
         private IEnumerable<LevelPiece> CenterPiecesAtCursor(IEnumerable<LevelPiece> clipPieces)
         {
             Point mousePos = curRenderer.GetMousePosInLevel(pic_Level.PointToClient(Cursor.Position));
@@ -2765,7 +2745,7 @@ Digger=20";
 
         private void SetHotkeys()
         {
-            HotkeyConfig.GetDefaultHotkeys();
+            GetDefaultHotkeys();
 
             if (File.Exists(C.AppPathHotkeys))
             {
@@ -2793,110 +2773,110 @@ Digger=20";
                     }
                 }
 
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCreateNewLevel, () => CreateNewLevelAndRenderer());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyLoadLevel, () => LoadNewLevel());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySaveLevel, () => SaveLevel());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySaveLevelAs, () => SaveLevelAsNewFile());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySaveLevelAsImage, () => SaveLevelAsImage());
+            AddHotkey(HotkeyName.HotkeyCreateNewLevel, () => CreateNewLevelAndRenderer());
+            AddHotkey(HotkeyName.HotkeyLoadLevel, () => LoadNewLevel());
+            AddHotkey(HotkeyName.HotkeySaveLevel, () => SaveLevel());
+            AddHotkey(HotkeyName.HotkeySaveLevelAs, () => SaveLevelAsNewFile());
+            AddHotkey(HotkeyName.HotkeySaveLevelAsImage, () => SaveLevelAsImage());
             AddHotkey(HotkeyName.HotkeyOpenTemplate, () => OpenTemplatesLoader());
             AddHotkey(HotkeyName.HotkeySaveLevelAsTemplate, () => SaveLevelAsTemplate());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyPlaytestLevel, () => PlaytestLevel());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyValidateLevel, () => ValidateLevel(false, false));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCleanseLevels, () => ShowCleanseLevelsDialog());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyHighlightGroupedPieces, () => HighlightGroupedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyHighlightEraserPieces, () => HighlightEraserPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleClearPhysics, () => ToggleClearPhysics());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleTerrain, () => ToggleTerrain());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleObjects, () => ToggleObjects());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleTriggerAreas, () => ToggleTriggerAreas());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleRulers, () => ToggleRulers());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleScreenStart, () => ToggleScreenStart());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleBackground, () => ToggleBackground());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleDeprecatedPieces, () => ToggleDeprecatedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowMissingPieces, () => ShowMissingPiecesDialog());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyRefreshStyles, () => RefreshStyles());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenStyleManager, () => OpenStyleManager());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyPieceSearch, () => OpenPieceSearch());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleSnapToGrid, () => ToggleSnapToGrid(true));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleCrop, () => HandleCropLevel());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenLevelArrangerWindow, () => OpenLevelArrangerWindow());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenPieceBrowserWindow, () => OpenPieceBrowserWindow());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyToggleAllTabs, () => ToggleExpandedTabs());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenSettings, () => settingsToolStripMenuItem_Click(null, null));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenConfigHotkeys, () => hotkeysToolStripMenuItem_Click(null, null));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOpenAboutNL, () => ShowAboutNLEditor());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySelectPieces, () => {/* deliberately does nothing */});
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDragToScroll, () => dragToScrollPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDragHorizontally, () => dragHorizontallyPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDragVertically, () => dragVerticallyPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyMoveScreenStart, () => dragScreenStartPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySetScreenStartToCursor, () => SetScreenStartToCursor());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyRemovePiecesAtCursor, () => removeAllPiecesAtCursorPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddRemoveSinglePiece, () => addOrRemoveSinglePiecePressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySelectPiecesBelow, () => selectPiecesBelowPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyZoomIn, () => ZoomIn());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyZoomOut, () => ZoomOut());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyScrollHorizontally, () => scrollHorizontallyPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyScrollVertically, () => scrollVerticallyPressed = true);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowPreviousPiece, () => MoveTerrPieceSelection(-1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowNextPiece, () => MoveTerrPieceSelection(1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowPreviousGroup, () => MoveTerrPieceSelection(-13));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowNextGroup, () => MoveTerrPieceSelection(13));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowPreviousStyle, () => ChangeNewPieceStyleSelection(-1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyShowNextStyle, () => ChangeNewPieceStyleSelection(1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCycleBrowser, () => CyclePieceBrowser());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece1, () => AddPieceViaHotkey(1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece2, () => AddPieceViaHotkey(2));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece3, () => AddPieceViaHotkey(3));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece4, () => AddPieceViaHotkey(4));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece5, () => AddPieceViaHotkey(5));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece6, () => AddPieceViaHotkey(6));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece7, () => AddPieceViaHotkey(7));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece8, () => AddPieceViaHotkey(8));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece9, () => AddPieceViaHotkey(9));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece10, () => AddPieceViaHotkey(10));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece11, () => AddPieceViaHotkey(11));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece12, () => AddPieceViaHotkey(12));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAddPiece13, () => AddPieceViaHotkey(13));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyUndo, () => UndoLastChange());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyRedo, () => CancelLastUndo());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeySelectAll, () => SelectAllPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCut, () => DeleteSelectedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCopy, () => WriteToClipboard());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyPaste, () => AddFromClipboard(true));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyPasteInPlace, () => AddFromClipboard(false));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDuplicate, () => DuplicateSelectedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDuplicateUp, () => DuplicateSelectedPieces(C.DIR.N));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDuplicateDown, () => DuplicateSelectedPieces(C.DIR.S));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDuplicateLeft, () => DuplicateSelectedPieces(C.DIR.W));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDuplicateRight, () => DuplicateSelectedPieces(C.DIR.E));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDelete, () => DeleteSelectedPieces(false));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyMoveUp, () => HandleMovement(C.DIR.N, 1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyMoveDown, () => HandleMovement(C.DIR.S, 1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyMoveLeft, () => HandleMovement(C.DIR.W, 1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyMoveRight, () => HandleMovement(C.DIR.E, 1));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyGridMoveUp, () => HandleMovement(C.DIR.N, gridMoveAmount));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyGridMoveDown, () => HandleMovement(C.DIR.S, gridMoveAmount));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyGridMoveLeft, () => HandleMovement(C.DIR.W, gridMoveAmount));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyGridMoveRight, () => HandleMovement(C.DIR.E, gridMoveAmount));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCustomMoveUp, () => HandleMovement(C.DIR.N, customMove));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCustomMoveDown, () => HandleMovement(C.DIR.S, customMove));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCustomMoveLeft, () => HandleMovement(C.DIR.W, customMove));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCustomMoveRight, () => HandleMovement(C.DIR.E, customMove));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyRotate, () => RotateLevelPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyFlip, () => FlipLevelPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyInvert, () => InvertLevelPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyGroup, () => GroupSelectedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyUngroup, () => UngroupSelectedPieces());
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyErase, () => check_Pieces_Erase.Checked = !check_Pieces_Erase.Checked);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyNoOverwrite, () => check_Pieces_NoOv.Checked = !check_Pieces_NoOv.Checked);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyOnlyOnTerrain, () => check_Pieces_OnlyOnTerrain.Checked = !check_Pieces_OnlyOnTerrain.Checked);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyAllowOneWay, () => check_Pieces_OneWay.Checked = !check_Pieces_OneWay.Checked);
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDrawLast, () => MovePieceIndex(true, false));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDrawSooner, () => MovePieceIndex(true, true));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDrawLater, () => MovePieceIndex(false, true));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyDrawFirst, () => MovePieceIndex(false, false));
-            AddHotkey(HotkeyConfig.HotkeyName.HotkeyCloseEditor, () => Application.Exit());
+            AddHotkey(HotkeyName.HotkeyPlaytestLevel, () => PlaytestLevel());
+            AddHotkey(HotkeyName.HotkeyValidateLevel, () => ValidateLevel(false, false));
+            AddHotkey(HotkeyName.HotkeyCleanseLevels, () => ShowCleanseLevelsDialog());
+            AddHotkey(HotkeyName.HotkeyHighlightGroupedPieces, () => HighlightGroupedPieces());
+            AddHotkey(HotkeyName.HotkeyHighlightEraserPieces, () => HighlightEraserPieces());
+            AddHotkey(HotkeyName.HotkeyToggleClearPhysics, () => ToggleClearPhysics());
+            AddHotkey(HotkeyName.HotkeyToggleTerrain, () => ToggleTerrain());
+            AddHotkey(HotkeyName.HotkeyToggleObjects, () => ToggleObjects());
+            AddHotkey(HotkeyName.HotkeyToggleTriggerAreas, () => ToggleTriggerAreas());
+            AddHotkey(HotkeyName.HotkeyToggleRulers, () => ToggleRulers());
+            AddHotkey(HotkeyName.HotkeyToggleScreenStart, () => ToggleScreenStart());
+            AddHotkey(HotkeyName.HotkeyToggleBackground, () => ToggleBackground());
+            AddHotkey(HotkeyName.HotkeyToggleDeprecatedPieces, () => ToggleDeprecatedPieces());
+            AddHotkey(HotkeyName.HotkeyShowMissingPieces, () => ShowMissingPiecesDialog());
+            AddHotkey(HotkeyName.HotkeyRefreshStyles, () => RefreshStyles());
+            AddHotkey(HotkeyName.HotkeyOpenStyleManager, () => OpenStyleManager());
+            AddHotkey(HotkeyName.HotkeyPieceSearch, () => OpenPieceSearch());
+            AddHotkey(HotkeyName.HotkeyToggleSnapToGrid, () => ToggleSnapToGrid(true));
+            AddHotkey(HotkeyName.HotkeyToggleCrop, () => HandleCropLevel());
+            AddHotkey(HotkeyName.HotkeyOpenLevelArrangerWindow, () => OpenLevelArrangerWindow());
+            AddHotkey(HotkeyName.HotkeyOpenPieceBrowserWindow, () => OpenPieceBrowserWindow());
+            AddHotkey(HotkeyName.HotkeyToggleAllTabs, () => ToggleExpandedTabs());
+            AddHotkey(HotkeyName.HotkeyOpenSettings, () => settingsToolStripMenuItem_Click(null, null));
+            AddHotkey(HotkeyName.HotkeyOpenConfigHotkeys, () => hotkeysToolStripMenuItem_Click(null, null));
+            AddHotkey(HotkeyName.HotkeyOpenAboutNL, () => ShowAboutNLEditor());
+            AddHotkey(HotkeyName.HotkeySelectPieces, () => {/* deliberately does nothing */});
+            AddHotkey(HotkeyName.HotkeyDragToScroll, () => dragToScrollPressed = true);
+            AddHotkey(HotkeyName.HotkeyDragHorizontally, () => dragHorizontallyPressed = true);
+            AddHotkey(HotkeyName.HotkeyDragVertically, () => dragVerticallyPressed = true);
+            AddHotkey(HotkeyName.HotkeyMoveScreenStart, () => dragScreenStartPressed = true);
+            AddHotkey(HotkeyName.HotkeySetScreenStartToCursor, () => SetScreenStartToCursor());
+            AddHotkey(HotkeyName.HotkeyRemovePiecesAtCursor, () => removeAllPiecesAtCursorPressed = true);
+            AddHotkey(HotkeyName.HotkeyAddRemoveSinglePiece, () => addOrRemoveSinglePiecePressed = true);
+            AddHotkey(HotkeyName.HotkeySelectPiecesBelow, () => selectPiecesBelowPressed = true);
+            AddHotkey(HotkeyName.HotkeyZoomIn, () => ZoomIn());
+            AddHotkey(HotkeyName.HotkeyZoomOut, () => ZoomOut());
+            AddHotkey(HotkeyName.HotkeyScrollHorizontally, () => scrollHorizontallyPressed = true);
+            AddHotkey(HotkeyName.HotkeyScrollVertically, () => scrollVerticallyPressed = true);
+            AddHotkey(HotkeyName.HotkeyShowPreviousPiece, () => MoveTerrPieceSelection(-1));
+            AddHotkey(HotkeyName.HotkeyShowNextPiece, () => MoveTerrPieceSelection(1));
+            AddHotkey(HotkeyName.HotkeyShowPreviousGroup, () => MoveTerrPieceSelection(-13));
+            AddHotkey(HotkeyName.HotkeyShowNextGroup, () => MoveTerrPieceSelection(13));
+            AddHotkey(HotkeyName.HotkeyShowPreviousStyle, () => ChangeNewPieceStyleSelection(-1));
+            AddHotkey(HotkeyName.HotkeyShowNextStyle, () => ChangeNewPieceStyleSelection(1));
+            AddHotkey(HotkeyName.HotkeyCycleBrowser, () => CyclePieceBrowser());
+            AddHotkey(HotkeyName.HotkeyAddPiece1, () => AddPieceViaHotkey(1));
+            AddHotkey(HotkeyName.HotkeyAddPiece2, () => AddPieceViaHotkey(2));
+            AddHotkey(HotkeyName.HotkeyAddPiece3, () => AddPieceViaHotkey(3));
+            AddHotkey(HotkeyName.HotkeyAddPiece4, () => AddPieceViaHotkey(4));
+            AddHotkey(HotkeyName.HotkeyAddPiece5, () => AddPieceViaHotkey(5));
+            AddHotkey(HotkeyName.HotkeyAddPiece6, () => AddPieceViaHotkey(6));
+            AddHotkey(HotkeyName.HotkeyAddPiece7, () => AddPieceViaHotkey(7));
+            AddHotkey(HotkeyName.HotkeyAddPiece8, () => AddPieceViaHotkey(8));
+            AddHotkey(HotkeyName.HotkeyAddPiece9, () => AddPieceViaHotkey(9));
+            AddHotkey(HotkeyName.HotkeyAddPiece10, () => AddPieceViaHotkey(10));
+            AddHotkey(HotkeyName.HotkeyAddPiece11, () => AddPieceViaHotkey(11));
+            AddHotkey(HotkeyName.HotkeyAddPiece12, () => AddPieceViaHotkey(12));
+            AddHotkey(HotkeyName.HotkeyAddPiece13, () => AddPieceViaHotkey(13));
+            AddHotkey(HotkeyName.HotkeyUndo, () => UndoLastChange());
+            AddHotkey(HotkeyName.HotkeyRedo, () => CancelLastUndo());
+            AddHotkey(HotkeyName.HotkeySelectAll, () => SelectAllPieces());
+            AddHotkey(HotkeyName.HotkeyCut, () => DeleteSelectedPieces());
+            AddHotkey(HotkeyName.HotkeyCopy, () => WriteToClipboard());
+            AddHotkey(HotkeyName.HotkeyPaste, () => AddFromClipboard(true));
+            AddHotkey(HotkeyName.HotkeyPasteInPlace, () => AddFromClipboard(false));
+            AddHotkey(HotkeyName.HotkeyDuplicate, () => DuplicateSelectedPieces());
+            AddHotkey(HotkeyName.HotkeyDuplicateUp, () => DuplicateSelectedPieces(C.DIR.N));
+            AddHotkey(HotkeyName.HotkeyDuplicateDown, () => DuplicateSelectedPieces(C.DIR.S));
+            AddHotkey(HotkeyName.HotkeyDuplicateLeft, () => DuplicateSelectedPieces(C.DIR.W));
+            AddHotkey(HotkeyName.HotkeyDuplicateRight, () => DuplicateSelectedPieces(C.DIR.E));
+            AddHotkey(HotkeyName.HotkeyDelete, () => DeleteSelectedPieces(false));
+            AddHotkey(HotkeyName.HotkeyMoveUp, () => HandleMovement(C.DIR.N, 1));
+            AddHotkey(HotkeyName.HotkeyMoveDown, () => HandleMovement(C.DIR.S, 1));
+            AddHotkey(HotkeyName.HotkeyMoveLeft, () => HandleMovement(C.DIR.W, 1));
+            AddHotkey(HotkeyName.HotkeyMoveRight, () => HandleMovement(C.DIR.E, 1));
+            AddHotkey(HotkeyName.HotkeyGridMoveUp, () => HandleMovement(C.DIR.N, gridMoveAmount));
+            AddHotkey(HotkeyName.HotkeyGridMoveDown, () => HandleMovement(C.DIR.S, gridMoveAmount));
+            AddHotkey(HotkeyName.HotkeyGridMoveLeft, () => HandleMovement(C.DIR.W, gridMoveAmount));
+            AddHotkey(HotkeyName.HotkeyGridMoveRight, () => HandleMovement(C.DIR.E, gridMoveAmount));
+            AddHotkey(HotkeyName.HotkeyCustomMoveUp, () => HandleMovement(C.DIR.N, customMove));
+            AddHotkey(HotkeyName.HotkeyCustomMoveDown, () => HandleMovement(C.DIR.S, customMove));
+            AddHotkey(HotkeyName.HotkeyCustomMoveLeft, () => HandleMovement(C.DIR.W, customMove));
+            AddHotkey(HotkeyName.HotkeyCustomMoveRight, () => HandleMovement(C.DIR.E, customMove));
+            AddHotkey(HotkeyName.HotkeyRotate, () => RotateLevelPieces());
+            AddHotkey(HotkeyName.HotkeyFlip, () => FlipLevelPieces());
+            AddHotkey(HotkeyName.HotkeyInvert, () => InvertLevelPieces());
+            AddHotkey(HotkeyName.HotkeyGroup, () => GroupSelectedPieces());
+            AddHotkey(HotkeyName.HotkeyUngroup, () => UngroupSelectedPieces());
+            AddHotkey(HotkeyName.HotkeyErase, () => check_Pieces_Erase.Checked = !check_Pieces_Erase.Checked);
+            AddHotkey(HotkeyName.HotkeyNoOverwrite, () => check_Pieces_NoOv.Checked = !check_Pieces_NoOv.Checked);
+            AddHotkey(HotkeyName.HotkeyOnlyOnTerrain, () => check_Pieces_OnlyOnTerrain.Checked = !check_Pieces_OnlyOnTerrain.Checked);
+            AddHotkey(HotkeyName.HotkeyAllowOneWay, () => check_Pieces_OneWay.Checked = !check_Pieces_OneWay.Checked);
+            AddHotkey(HotkeyName.HotkeyDrawLast, () => MovePieceIndex(true, false));
+            AddHotkey(HotkeyName.HotkeyDrawSooner, () => MovePieceIndex(true, true));
+            AddHotkey(HotkeyName.HotkeyDrawLater, () => MovePieceIndex(false, true));
+            AddHotkey(HotkeyName.HotkeyDrawFirst, () => MovePieceIndex(false, false));
+            AddHotkey(HotkeyName.HotkeyCloseEditor, () => Application.Exit());
         }
 
         /// <summary>
@@ -2906,19 +2886,19 @@ Digger=20";
         private void UpdateMenuShortcutKeyDisplayStrings()
         {           
             newToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyCreateNewLevel);
+                FormatHotkeyString(HotkeyName.HotkeyCreateNewLevel);
 
             loadToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyLoadLevel);
+                FormatHotkeyString(HotkeyName.HotkeyLoadLevel);
 
             saveToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeySaveLevel);
+                FormatHotkeyString(HotkeyName.HotkeySaveLevel);
 
             saveAsToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeySaveLevelAs);
+                FormatHotkeyString(HotkeyName.HotkeySaveLevelAs);
 
             saveAsImageToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeySaveLevelAsImage);
+                FormatHotkeyString(HotkeyName.HotkeySaveLevelAsImage);
 
             openTemplateToolStripMenuItem.ShortcutKeyDisplayString =
                 FormatHotkeyString(HotkeyName.HotkeyOpenTemplate);
@@ -2927,109 +2907,109 @@ Digger=20";
                 FormatHotkeyString(HotkeyName.HotkeySaveLevelAsTemplate);
 
             exitToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyCloseEditor);
+                FormatHotkeyString(HotkeyName.HotkeyCloseEditor);
 
             playLevelToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName .HotkeyPlaytestLevel);
+                FormatHotkeyString(HotkeyName .HotkeyPlaytestLevel);
 
             validateLevelToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyValidateLevel);
+                FormatHotkeyString(HotkeyName.HotkeyValidateLevel);
 
             cleanseLevelsToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyCleanseLevels);
+                FormatHotkeyString(HotkeyName.HotkeyCleanseLevels);
 
             undoToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyUndo);
+                FormatHotkeyString(HotkeyName.HotkeyUndo);
 
             redoToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyRedo);
+                FormatHotkeyString(HotkeyName.HotkeyRedo);
 
             selectAllToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeySelectAll);
+                FormatHotkeyString(HotkeyName.HotkeySelectAll);
 
             cutToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyCut);
+                FormatHotkeyString(HotkeyName.HotkeyCut);
 
             copyToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyCopy);
+                FormatHotkeyString(HotkeyName.HotkeyCopy);
 
             pasteToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyPaste);
+                FormatHotkeyString(HotkeyName.HotkeyPaste);
 
             pasteInPlaceToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyPasteInPlace);
+                FormatHotkeyString(HotkeyName.HotkeyPasteInPlace);
 
             duplicateToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyDuplicate);
+                FormatHotkeyString(HotkeyName.HotkeyDuplicate);
 
             groupToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyGroup);
+                FormatHotkeyString(HotkeyName.HotkeyGroup);
 
             ungroupToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyUngroup);
+                FormatHotkeyString(HotkeyName.HotkeyUngroup);
 
             highlightGroupedPiecesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyHighlightGroupedPieces);
+                FormatHotkeyString(HotkeyName.HotkeyHighlightGroupedPieces);
 
             highlightEraserPiecesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyHighlightEraserPieces);
+                FormatHotkeyString(HotkeyName.HotkeyHighlightEraserPieces);
 
             clearPhysicsToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleClearPhysics);
+                FormatHotkeyString(HotkeyName.HotkeyToggleClearPhysics);
 
             terrainToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleTerrain);
+                FormatHotkeyString(HotkeyName.HotkeyToggleTerrain);
 
             objectToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleObjects);
+                FormatHotkeyString(HotkeyName.HotkeyToggleObjects);
 
             triggerAreasToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleTriggerAreas);
+                FormatHotkeyString(HotkeyName.HotkeyToggleTriggerAreas);
 
             rulersToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleRulers);
+                FormatHotkeyString(HotkeyName.HotkeyToggleRulers);
 
             screenStartToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleScreenStart);
+                FormatHotkeyString(HotkeyName.HotkeyToggleScreenStart);
 
             backgroundToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleBackground);
+                FormatHotkeyString(HotkeyName.HotkeyToggleBackground);
 
             deprecatedPiecesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleDeprecatedPieces);
+                FormatHotkeyString(HotkeyName.HotkeyToggleDeprecatedPieces);
 
             showMissingPiecesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyShowMissingPieces);
+                FormatHotkeyString(HotkeyName.HotkeyShowMissingPieces);
 
             refreshStylesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyRefreshStyles);
+                FormatHotkeyString(HotkeyName.HotkeyRefreshStyles);
 
             styleManagerToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenStyleManager);
+                FormatHotkeyString(HotkeyName.HotkeyOpenStyleManager);
 
             searchPiecesToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyPieceSearch);
+                FormatHotkeyString(HotkeyName.HotkeyPieceSearch);
 
             snapToGridToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleSnapToGrid);
+                FormatHotkeyString(HotkeyName.HotkeyToggleSnapToGrid);
 
             openLevelWindowToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenLevelArrangerWindow);
+                FormatHotkeyString(HotkeyName.HotkeyOpenLevelArrangerWindow);
 
             openPieceBrowserWindowToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenPieceBrowserWindow);
+                FormatHotkeyString(HotkeyName.HotkeyOpenPieceBrowserWindow);
 
             expandAllTabsToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyToggleAllTabs);
+                FormatHotkeyString(HotkeyName.HotkeyToggleAllTabs);
 
             settingsToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenSettings);
+                FormatHotkeyString(HotkeyName.HotkeyOpenSettings);
 
             hotkeysToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenConfigHotkeys);
+                FormatHotkeyString(HotkeyName.HotkeyOpenConfigHotkeys);
 
             aboutToolStripMenuItem.ShortcutKeyDisplayString =
-                HotkeyConfig.FormatHotkeyString(HotkeyName.HotkeyOpenAboutNL);
+                FormatHotkeyString(HotkeyName.HotkeyOpenAboutNL);
         }
     }
 }

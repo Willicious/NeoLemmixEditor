@@ -148,8 +148,6 @@ namespace NLEditor
         /// <summary>
         /// Adds a new requirement to the talisman.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void butRequirementAdd_Click(object sender, EventArgs e)
         {
             string reqText = cmbRequirementTypes.Text;
@@ -183,8 +181,6 @@ namespace NLEditor
         /// <summary>
         /// Deltes the selected requirements.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void butRequirementDelete_Click(object sender, EventArgs e)
         {
             foreach (var listItem in listRequirements.SelectedItems)
@@ -199,8 +195,6 @@ namespace NLEditor
         /// <summary>
         /// Saves the talisman.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void butTalismanSave_Click(object sender, EventArgs e)
         {
             if (talisman.Requirements.Count == 0)
@@ -230,8 +224,6 @@ namespace NLEditor
         /// <summary>
         /// // Exit talisman creation form without saving
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void butTalismanCancel_Click(object sender, EventArgs e)
         {
             askToSave = false;
@@ -285,8 +277,6 @@ namespace NLEditor
         /// <summary>
         /// Update other controls, depending on the selected requirement type.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void cmbRequirementTypes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!C.TalismanReqText.ContainsValue(cmbRequirementTypes.Text))

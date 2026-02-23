@@ -929,7 +929,7 @@
             // 
             // but_CancelCrop
             // 
-            this.but_CancelCrop.Location = new System.Drawing.Point(252, 228);
+            this.but_CancelCrop.Location = new System.Drawing.Point(252, 224);
             this.but_CancelCrop.Name = "but_CancelCrop";
             this.but_CancelCrop.Size = new System.Drawing.Size(100, 34);
             this.but_CancelCrop.TabIndex = 37;
@@ -940,7 +940,7 @@
             // but_ApplyCrop
             // 
             this.but_ApplyCrop.ForeColor = System.Drawing.Color.Blue;
-            this.but_ApplyCrop.Location = new System.Drawing.Point(143, 228);
+            this.but_ApplyCrop.Location = new System.Drawing.Point(143, 224);
             this.but_ApplyCrop.Name = "but_ApplyCrop";
             this.but_ApplyCrop.Size = new System.Drawing.Size(100, 34);
             this.but_ApplyCrop.TabIndex = 36;
@@ -950,7 +950,7 @@
             // 
             // but_CropLevel
             // 
-            this.but_CropLevel.Location = new System.Drawing.Point(37, 228);
+            this.but_CropLevel.Location = new System.Drawing.Point(37, 224);
             this.but_CropLevel.Name = "but_CropLevel";
             this.but_CropLevel.Size = new System.Drawing.Size(100, 34);
             this.but_CropLevel.TabIndex = 35;
@@ -983,7 +983,7 @@
             // chk_Lvl_AutoStart
             // 
             this.chk_Lvl_AutoStart.AutoSize = true;
-            this.chk_Lvl_AutoStart.Location = new System.Drawing.Point(37, 320);
+            this.chk_Lvl_AutoStart.Location = new System.Drawing.Point(37, 328);
             this.chk_Lvl_AutoStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chk_Lvl_AutoStart.Name = "chk_Lvl_AutoStart";
             this.chk_Lvl_AutoStart.Size = new System.Drawing.Size(163, 24);
@@ -1038,7 +1038,7 @@
             // lbStartY
             // 
             this.lbStartY.AutoSize = true;
-            this.lbStartY.Location = new System.Drawing.Point(214, 286);
+            this.lbStartY.Location = new System.Drawing.Point(214, 294);
             this.lbStartY.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStartY.Name = "lbStartY";
             this.lbStartY.Size = new System.Drawing.Size(59, 20);
@@ -1049,7 +1049,7 @@
             // lbStartX
             // 
             this.lbStartX.AutoSize = true;
-            this.lbStartX.Location = new System.Drawing.Point(33, 286);
+            this.lbStartX.Location = new System.Drawing.Point(33, 294);
             this.lbStartX.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbStartX.Name = "lbStartX";
             this.lbStartX.Size = new System.Drawing.Size(59, 20);
@@ -1060,7 +1060,7 @@
             // lbSizeH
             // 
             this.lbSizeH.AutoSize = true;
-            this.lbSizeH.Location = new System.Drawing.Point(214, 196);
+            this.lbSizeH.Location = new System.Drawing.Point(214, 192);
             this.lbSizeH.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSizeH.Name = "lbSizeH";
             this.lbSizeH.Size = new System.Drawing.Size(56, 20);
@@ -1071,7 +1071,7 @@
             // lbSizeW
             // 
             this.lbSizeW.AutoSize = true;
-            this.lbSizeW.Location = new System.Drawing.Point(33, 196);
+            this.lbSizeW.Location = new System.Drawing.Point(33, 192);
             this.lbSizeW.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbSizeW.Name = "lbSizeW";
             this.lbSizeW.Size = new System.Drawing.Size(50, 20);
@@ -1240,7 +1240,7 @@
             0,
             0,
             0});
-            this.num_Lvl_StartY.Location = new System.Drawing.Point(282, 284);
+            this.num_Lvl_StartY.Location = new System.Drawing.Point(282, 292);
             this.num_Lvl_StartY.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.num_Lvl_StartY.Maximum = new decimal(new int[] {
             159,
@@ -1266,7 +1266,7 @@
             0,
             0,
             0});
-            this.num_Lvl_StartX.Location = new System.Drawing.Point(120, 284);
+            this.num_Lvl_StartX.Location = new System.Drawing.Point(120, 292);
             this.num_Lvl_StartX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.num_Lvl_StartX.Maximum = new decimal(new int[] {
             319,
@@ -1292,7 +1292,7 @@
             0,
             0,
             0});
-            this.num_Lvl_SizeY.Location = new System.Drawing.Point(282, 194);
+            this.num_Lvl_SizeY.Location = new System.Drawing.Point(282, 190);
             this.num_Lvl_SizeY.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.num_Lvl_SizeY.Maximum = new decimal(new int[] {
             1600,
@@ -1323,7 +1323,7 @@
             0,
             0,
             0});
-            this.num_Lvl_SizeX.Location = new System.Drawing.Point(120, 194);
+            this.num_Lvl_SizeX.Location = new System.Drawing.Point(120, 190);
             this.num_Lvl_SizeX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.num_Lvl_SizeX.Maximum = new decimal(new int[] {
             3200,
@@ -1425,7 +1425,7 @@
             // 
             // num_Lvl_SI
             // 
-            this.num_Lvl_SI.Location = new System.Drawing.Point(282, 497);
+            this.num_Lvl_SI.Location = new System.Drawing.Point(282, 515);
             this.num_Lvl_SI.Maximum = new decimal(new int[] {
             102,
             0,

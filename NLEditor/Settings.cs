@@ -962,7 +962,7 @@ namespace NLEditor
         {
             SetDefault();
 
-            if (!File.Exists(C.AppPathSettings))
+            if (!File.Exists(C.AppPathEditorSettings))
                 return;
 
             // Reset background display to false
@@ -970,7 +970,7 @@ namespace NLEditor
 
             try
             {
-                FileParser parser = new FileParser(C.AppPathSettings);
+                FileParser parser = new FileParser(C.AppPathEditorSettings);
 
                 List<FileLine> fileLines;
                 while ((fileLines = parser.GetNextLines()) != null)
@@ -1196,7 +1196,7 @@ namespace NLEditor
             catch (Exception Ex)
             {
                 MessageBox.Show("Warning: Could not read editor options from "
-                            + Path.GetFileName(C.AppPathSettings) + ". Editor uses the default settings.", "File not found");
+                            + Path.GetFileName(C.AppPathEditorSettings) + ". Editor uses the default settings.", "File not found");
                 Utility.LogException(Ex);
             }
             settingChanged = false;
@@ -1209,17 +1209,17 @@ namespace NLEditor
         {
             try
             {
-                string settingsDirectory = Path.GetDirectoryName(C.AppPathSettings);
+                string settingsDirectory = Path.GetDirectoryName(C.AppPathEditorSettings);
                 if (!Directory.Exists(settingsDirectory))
                 {
                     Directory.CreateDirectory(settingsDirectory);
                 }
 
-                File.Create(C.AppPathSettings).Close();
+                File.Create(C.AppPathEditorSettings).Close();
 
                 UpdateDefaultAuthorName();
 
-                TextWriter settingsFile = new StreamWriter(C.AppPathSettings, true);
+                TextWriter settingsFile = new StreamWriter(C.AppPathEditorSettings, true);
 
                 settingsFile.WriteLine("# NLEditor settings ");
                 settingsFile.WriteLine(" DefaultAuthorName      " + DefaultAuthorName);
@@ -1277,7 +1277,7 @@ namespace NLEditor
             catch (Exception Ex)
             {
                 Utility.LogException(Ex);
-                MessageBox.Show("Error: Could not save settings to " + Path.GetFileName(C.AppPathSettings) + ".", "Could not save");
+                MessageBox.Show("Error: Could not save settings to " + Path.GetFileName(C.AppPathEditorSettings) + ".", "Could not save");
                 return;
             }
         }

@@ -1597,6 +1597,8 @@ namespace NLEditor
                 ShowAboutNLEditor();
 
             SetMetaDataPanel();
+            MoveControlsOnFormResize();
+            UpdateMissingPiecesMenuItems();
         }
 
         private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)

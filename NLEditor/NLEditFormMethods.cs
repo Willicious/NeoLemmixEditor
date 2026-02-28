@@ -777,13 +777,20 @@ Digger=20";
             UpdatePieceMetaData();
         }
 
+        private void UpdateMissingPiecesMenuItems()
+        {
+            bool hasMissingPieces = missingPieces.Count > 0;
+            showMissingPiecesToolStripMenuItem.Visible = hasMissingPieces;
+            sepMissingPieces.Visible = hasMissingPieces;
+        }
+
         /// <summary>
-        /// Performs actions before checking for missing pieces
+        /// Initialise lists, menu items and status bar before checking for missing pieces
         /// </summary>
         private void PrepareForPieceValidation()
         {
-            // Initialise missingPieces list and status bar
             missingPieces.Clear();
+            UpdateMissingPiecesMenuItems();
             UpdateStatusBar();
         }
 
@@ -797,6 +804,7 @@ Digger=20";
 
             PrepareForPieceValidation();
             UpdateMissingPiecesList();
+            UpdateMissingPiecesMenuItems();
             UpdateStatusBar();
         }
 
@@ -813,6 +821,7 @@ Digger=20";
 
             PrepareForPieceValidation();
             UpdateMissingPiecesList();
+            UpdateMissingPiecesMenuItems();
             UpdateStatusBar();
 
             // If cleansing, search for more piece information and populate lists

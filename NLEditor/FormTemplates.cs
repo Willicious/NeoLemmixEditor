@@ -148,7 +148,7 @@ namespace NLEditor
 
             // --- Basic Info ---
             AddLine("Author: ", level.Author);
-            AddLine("Theme: ", level.MainStyle?.NameInEditor ?? "None");
+            AddLine("Theme: ", level.ThemeStyle?.NameInEditor ?? "None");
             rtLevelData.AppendText(Environment.NewLine);
 
             // --- Size / Start ---

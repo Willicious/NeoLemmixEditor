@@ -2883,8 +2883,8 @@ Digger=20";
             btnEditPostview.Tag = "Edit onscreen text shown after the level is completed";
 
             // --- Piece Browser --- //
-            btnStyleRandom.Tag = "Open a random style in the Piece Browser (you can add styles to the randomizer in Style Manager)";
-            comboPieceStyle.Tag = "Open a style in the Piece Browser";
+            btnStyleRandom.Tag = "Load a random style into the Piece Browser (you can add styles to the randomizer in Style Manager)";
+            comboPieceStyle.Tag = "Load a style into the Piece Browser";
             btnTerrain.Tag = "Show Terrain pieces in the Piece Browser";
             btnSteel.Tag = "Show Steel pieces in the Piece Browser";
             btnObjects.Tag = "Show Objects (Entrances, Exits, Water, etc) in the Piece Browser";

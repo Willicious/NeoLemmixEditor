@@ -201,6 +201,7 @@ namespace NLEditor
         bool removeAllPiecesAtCursorPressed = false;
         bool addOrRemoveSinglePiecePressed = false;
         bool selectPiecesBelowPressed = false;
+        bool cycleSelectPiecesPressed = false;
 
         bool isShiftPressed = false;
         bool isCtrlPressed = false;
@@ -1018,6 +1019,16 @@ namespace NLEditor
                 case var key when key == HotkeyConfig.GetHotkey(HotkeyConfig.HotkeyName.HotkeySelectPiecesBelow).CurrentKeys:
                     selectPiecesBelowPressed = false;
                     break;
+                case var key when key == HotkeyConfig.GetHotkey(HotkeyConfig.HotkeyName.HotkeyCycleSelectPieces).CurrentKeys:
+                    cycleSelectPiecesPressed = false;
+                    break;
+            }
+
+            // Reset cycle selection list when Shift is released
+            if (!isShiftPressed)
+            {
+                CurLevel.CyclePieces = null;
+                CurLevel.CycleIndex = 0;
             }
 
             // Resolve movement-related actions
@@ -1134,7 +1145,7 @@ namespace NLEditor
             {
                 curRenderer.MouseCurPos = e.Location;
 
-                if (addOrRemoveSinglePiecePressed || selectPiecesBelowPressed)
+                if (addOrRemoveSinglePiecePressed || selectPiecesBelowPressed || cycleSelectPiecesPressed)
                 {
                     LevelSelectSinglePiece();
                     picLevel.SetImage(curRenderer.GetScreenImage());
@@ -1263,6 +1274,7 @@ namespace NLEditor
             removeAllPiecesAtCursorPressed = false;
             addOrRemoveSinglePiecePressed = false;
             selectPiecesBelowPressed = false;
+            cycleSelectPiecesPressed = false;
         }
 
         private void pic_Level_MouseMove(object sender, MouseEventArgs e)

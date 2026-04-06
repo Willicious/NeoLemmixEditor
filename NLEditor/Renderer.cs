@@ -54,6 +54,7 @@ namespace NLEditor
         Settings curSettings;
         bool IsClearPhysics => DisplaySettings.IsDisplayed(C.DisplayType.ClearPhysics);
         bool IsTerrainLayer => DisplaySettings.IsDisplayed(C.DisplayType.Terrain);
+        bool IsSteelLayer => DisplaySettings.IsDisplayed(C.DisplayType.Steel);
         bool IsObjectLayer => DisplaySettings.IsDisplayed(C.DisplayType.Objects);
         bool IsTriggerLayer => DisplaySettings.IsDisplayed(C.DisplayType.Triggers);
         bool IsRulerLayer => DisplaySettings.IsDisplayed(C.DisplayType.Rulers);
@@ -172,7 +173,7 @@ namespace NLEditor
                 baseLevelImage.DrawOn(layerImages[C.Layer.ObjBack]);
             }
 
-            if (IsTerrainLayer)
+            if (IsTerrainLayer || IsSteelLayer)
             {
                 baseLevelImage.DrawOn(layerImages[C.Layer.Terrain]);
             }
@@ -545,12 +546,18 @@ namespace NLEditor
         /// <summary>
         /// Renders all terrain pieces.
         /// </summary>
-        private void CreateTerrainLayer()
+        public void CreateTerrainLayer()
         {
             layerImages[C.Layer.Terrain].Clear();
 
             foreach (TerrainPiece terrPiece in level.TerrainList)
             {
+                if (terrPiece.IsSteel && !IsSteelLayer)
+                    continue;
+
+                if (!terrPiece.IsSteel && !IsTerrainLayer)
+                    continue;
+
                 C.CustDrawMode drawMode = GetDrawModeForTerrain(terrPiece);
                 layerImages[C.Layer.Terrain].DrawOn(terrPiece.Image, terrPiece.Pos, drawMode);
             }

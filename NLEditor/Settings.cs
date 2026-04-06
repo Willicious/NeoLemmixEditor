@@ -161,6 +161,7 @@ namespace NLEditor
             };
 
             DisplaySettings.SetDisplayed(C.DisplayType.Terrain, true);
+            DisplaySettings.SetDisplayed(C.DisplayType.Steel, true);
             DisplaySettings.SetDisplayed(C.DisplayType.Objects, true);
             DisplaySettings.SetDisplayed(C.DisplayType.Background, true);
             DisplaySettings.SetDisplayed(C.DisplayType.ScreenStart, false);

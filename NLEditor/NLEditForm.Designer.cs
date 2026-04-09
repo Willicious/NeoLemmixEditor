@@ -957,7 +957,7 @@
             // 
             // btnApplyCrop
             // 
-            this.btnApplyCrop.ForeColor = System.Drawing.Color.Blue;
+            this.btnApplyCrop.ForeColor = System.Drawing.Color.RoyalBlue;
             this.btnApplyCrop.Location = new System.Drawing.Point(143, 224);
             this.btnApplyCrop.Name = "btnApplyCrop";
             this.btnApplyCrop.Size = new System.Drawing.Size(100, 34);
@@ -3429,7 +3429,7 @@
             // lblHint
             // 
             this.lblHint.AutoSize = true;
-            this.lblHint.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblHint.ForeColor = System.Drawing.Color.RoyalBlue;
             this.lblHint.Location = new System.Drawing.Point(405, 13);
             this.lblHint.Name = "lblHint";
             this.lblHint.Size = new System.Drawing.Size(300, 20);

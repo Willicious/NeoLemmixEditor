@@ -215,6 +215,9 @@ namespace NLEditor
 
         private FormLevelArranger levelArrangerWindow;
         private FormPieceBrowser pieceBrowserWindow;
+        private FormPiecesList piecesListForm;
+
+        public event Action LevelChanged;
 
         private void NLEditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -1786,6 +1789,16 @@ namespace NLEditor
         private void Control_MouseLeave(object sender, EventArgs e)
         {
             UpdateControlHintLabel(false, sender);
+        }
+
+        private void openPiecesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenPiecesList();
+        }
+
+        private void btnShowPiecesList_Click(object sender, EventArgs e)
+        {
+            OpenPiecesList();
         }
     }
 }

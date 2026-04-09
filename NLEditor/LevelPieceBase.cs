@@ -77,6 +77,7 @@ namespace NLEditor
         public virtual Bitmap Image => ImageLibrary.GetImage(Key, GetRotateFlipType(), GetFrameIndex());
         public Rectangle ImageRectangle => new Rectangle(PosX, PosY, Width, Height);
         public C.OBJ ObjType => ImageLibrary.GetObjType(Key);
+        public virtual string DrawMode => "";
         protected C.Resize ResizeMode => ImageLibrary.GetResizeMode(Key);
         public bool MayResizeHoriz()
         {

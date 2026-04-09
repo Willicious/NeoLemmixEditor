@@ -110,6 +110,12 @@
     <Compile Include="FormPieceSearch.Designer.cs">
       <DependentUpon>FormPieceSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPiecesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPiecesList.Designer.cs">
+      <DependentUpon>FormPiecesList.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStyleManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,9 @@
     <EmbeddedResource Include="FormHotkeys.resx">
       <DependentUpon>FormHotkeys.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPiecesList.resx">
+      <DependentUpon>FormPiecesList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPrePostText.resx">
       <DependentUpon>FormPrePostText.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -266,13 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EditorIcon.ico" />
-    <Content Include="Editor_Icon.ico" />
+    <None Include="Resources\LemmingPreview.png" />
     <None Include="Resources\WhatsNew.png" />
     <None Include="Resources\WhatsNew.bmp" />
     <None Include="Resources\ArrowVert.png" />
     <None Include="Resources\ArrowHoriz.png" />
     <None Include="Resources\ArrowFourWay.png" />
-    <None Include="Resources\ArrowFourWay.bmp" />
     <None Include="Resources\IntroClimber.png" />
     <None Include="Resources\IntroFloater.png" />
     <None Include="Resources\LemBlocker.png" />

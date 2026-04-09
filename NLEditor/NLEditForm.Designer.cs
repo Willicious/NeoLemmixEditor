@@ -27,7 +27,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NLEditForm));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +60,7 @@
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openLevelWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openPieceBrowserWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openPiecesListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.expandAllTabsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.highlightGroupedPiecesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -127,6 +127,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.numSI = new NLEditor.NumUpDownOverwrite();
             this.tabPieces = new System.Windows.Forms.TabPage();
+            this.btnShowPiecesList = new System.Windows.Forms.Button();
             this.panelPieceMetaData = new System.Windows.Forms.Panel();
             this.lblPieceSize = new System.Windows.Forms.Label();
             this.lblPieceType = new System.Windows.Forms.Label();
@@ -245,13 +246,13 @@
             this.btnTalismanAdd = new System.Windows.Forms.Button();
             this.lblTalismans = new System.Windows.Forms.Label();
             this.lbTalismans = new System.Windows.Forms.ListBox();
-            this.toolTipPieces = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipPieces = new System.Windows.Forms.ToolTip();
             this.scrollPicLevelHoriz = new System.Windows.Forms.HScrollBar();
             this.scrollPicLevelVert = new System.Windows.Forms.VScrollBar();
-            this.toolTipButton = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipButton = new System.Windows.Forms.ToolTip();
             this.btnPieceRight = new NLEditor.RepeatButton();
             this.btnPieceLeft = new NLEditor.RepeatButton();
-            this.timerAutosave = new System.Windows.Forms.Timer(this.components);
+            this.timerAutosave = new System.Windows.Forms.Timer();
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusBarLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusBarLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -597,6 +598,7 @@
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openLevelWindowToolStripMenuItem,
             this.openPieceBrowserWindowToolStripMenuItem,
+            this.openPiecesListToolStripMenuItem,
             this.expandAllTabsToolStripMenuItem,
             this.toolStripSeparator6,
             this.highlightGroupedPiecesToolStripMenuItem,
@@ -613,6 +615,7 @@
             this.backgroundToolStripMenuItem,
             this.deprecatedPiecesToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.viewToolStripMenuItem.Text = "View";
             // 
@@ -631,6 +634,14 @@
             this.openPieceBrowserWindowToolStripMenuItem.Size = new System.Drawing.Size(406, 34);
             this.openPieceBrowserWindowToolStripMenuItem.Text = "Open Piece Browser Window";
             this.openPieceBrowserWindowToolStripMenuItem.Click += new System.EventHandler(this.openPieceBrowserWindowToolStripMenuItem_Click);
+            // 
+            // openPiecesListToolStripMenuItem
+            // 
+            this.openPiecesListToolStripMenuItem.Name = "openPiecesListToolStripMenuItem";
+            this.openPiecesListToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
+            this.openPiecesListToolStripMenuItem.Size = new System.Drawing.Size(406, 34);
+            this.openPiecesListToolStripMenuItem.Text = "Open Pieces List";
+            this.openPiecesListToolStripMenuItem.Click += new System.EventHandler(this.openPiecesListToolStripMenuItem_Click);
             // 
             // expandAllTabsToolStripMenuItem
             // 
@@ -1457,6 +1468,7 @@
             // 
             // tabPieces
             // 
+            this.tabPieces.Controls.Add(this.btnShowPiecesList);
             this.tabPieces.Controls.Add(this.panelPieceMetaData);
             this.tabPieces.Controls.Add(this.btnLoadStyle);
             this.tabPieces.Controls.Add(this.checkDigger);
@@ -1516,6 +1528,16 @@
             this.tabPieces.TabIndex = 1;
             this.tabPieces.Text = "Pieces";
             this.tabPieces.UseVisualStyleBackColor = true;
+            // 
+            // btnShowPiecesList
+            // 
+            this.btnShowPiecesList.Location = new System.Drawing.Point(13, 13);
+            this.btnShowPiecesList.Name = "btnShowPiecesList";
+            this.btnShowPiecesList.Size = new System.Drawing.Size(54, 38);
+            this.btnShowPiecesList.TabIndex = 63;
+            this.btnShowPiecesList.Text = "☰";
+            this.btnShowPiecesList.UseVisualStyleBackColor = true;
+            this.btnShowPiecesList.Click += new System.EventHandler(this.btnShowPiecesList_Click);
             // 
             // panelPieceMetaData
             // 
@@ -2149,7 +2171,7 @@
             // 
             // btnDrawFirst
             // 
-            this.btnDrawFirst.Location = new System.Drawing.Point(293, 56);
+            this.btnDrawFirst.Location = new System.Drawing.Point(289, 56);
             this.btnDrawFirst.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnDrawFirst.Name = "btnDrawFirst";
             this.btnDrawFirst.NoPaddingText = "Draw First";
@@ -2172,11 +2194,11 @@
             // 
             // btnFlip
             // 
-            this.btnFlip.Location = new System.Drawing.Point(255, 13);
+            this.btnFlip.Location = new System.Drawing.Point(275, 13);
             this.btnFlip.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnFlip.Name = "btnFlip";
             this.btnFlip.NoPaddingText = null;
-            this.btnFlip.Size = new System.Drawing.Size(117, 38);
+            this.btnFlip.Size = new System.Drawing.Size(94, 38);
             this.btnFlip.TabIndex = 2;
             this.btnFlip.Text = "Flip";
             this.btnFlip.UseVisualStyleBackColor = true;
@@ -2185,11 +2207,11 @@
             // 
             // btnInvert
             // 
-            this.btnInvert.Location = new System.Drawing.Point(128, 13);
+            this.btnInvert.Location = new System.Drawing.Point(174, 13);
             this.btnInvert.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnInvert.Name = "btnInvert";
             this.btnInvert.NoPaddingText = null;
-            this.btnInvert.Size = new System.Drawing.Size(120, 38);
+            this.btnInvert.Size = new System.Drawing.Size(94, 38);
             this.btnInvert.TabIndex = 1;
             this.btnInvert.Text = "Invert";
             this.btnInvert.UseVisualStyleBackColor = true;
@@ -2198,11 +2220,11 @@
             // 
             // btnRotate
             // 
-            this.btnRotate.Location = new System.Drawing.Point(11, 13);
+            this.btnRotate.Location = new System.Drawing.Point(74, 13);
             this.btnRotate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRotate.Name = "btnRotate";
             this.btnRotate.NoPaddingText = null;
-            this.btnRotate.Size = new System.Drawing.Size(110, 38);
+            this.btnRotate.Size = new System.Drawing.Size(94, 38);
             this.btnRotate.TabIndex = 0;
             this.btnRotate.Text = "Rotate";
             this.btnRotate.UseVisualStyleBackColor = true;
@@ -3782,6 +3804,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.Label lblHint;
         private System.Windows.Forms.ToolStripMenuItem steelToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openPiecesListToolStripMenuItem;
+        private System.Windows.Forms.Button btnShowPiecesList;
     }
 }
 

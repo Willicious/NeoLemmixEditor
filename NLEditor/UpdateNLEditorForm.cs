@@ -196,6 +196,11 @@ namespace NLEditor
         /// </summary>
         private void UpdateFlagsForPieceActions()
         {
+            bool levelHasPieces = CurLevel.TerrainList.Count > 0 || CurLevel.GadgetList.Count > 0;
+
+            btnShowPiecesList.Enabled = levelHasPieces;
+            openPiecesListToolStripMenuItem.Enabled = levelHasPieces;
+
             List<LevelPiece> selectionList = CurLevel.SelectionList();
 
             btnRotate.Enabled = selectionList.Exists(p => p.MayRotate());

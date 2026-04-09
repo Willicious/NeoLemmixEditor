@@ -54,6 +54,17 @@ namespace NLEditor
         public int LemmingCap { get; set; }
         public int CountdownLength { get; set; }
 
+        public override string DrawMode
+        {
+            get
+            {
+                string s = "";
+                if (IsNoOverwrite) s += "NoOverwrite";
+                if (IsOnlyOnTerrain) s += (s.Length > 0 ? ", " : "") + "OnlyOnTerrain";
+                return s;
+            }
+        }
+
         public override LevelPiece Clone()
         {
             int val_l = Val_L;

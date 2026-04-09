@@ -1098,6 +1098,18 @@ Digger=20";
             txtFocusPieceBrowser.Focus();
         }
 
+        private void OpenPiecesList()
+        {
+            if (piecesListForm == null || piecesListForm.IsDisposed)
+            {
+                piecesListForm = new FormPiecesList(CurLevel, this);
+                piecesListForm.Show(this);
+            }
+            else
+            {
+                piecesListForm.BringToFront();
+            }
+        }
 
         private void ToggleExpandedTabs()
         {
@@ -2096,7 +2108,7 @@ Digger=20";
         /// <summary>
         /// Changes the index of all selected pieces and displays the result.
         /// </summary>
-        private void MovePieceIndex(bool toFront, bool onlyOneStep)
+        public void MovePieceIndex(bool toFront, bool onlyOneStep)
         {
             CurLevel.MoveSelectedPieces(toFront, onlyOneStep);
             picLevel.Image = curRenderer.CreateLevelImage();
@@ -2120,6 +2132,7 @@ Digger=20";
             curOldLevelIndex = oldLevelList.Count - 1;
 
             UpdateSpecialLemmingCounter(); // KLUDGE: Could put this somewhere better.
+            LevelChanged?.Invoke();
         }
 
         private void UpdateSpecialLemmingCounter()
@@ -2146,6 +2159,7 @@ Digger=20";
             WriteLevelInfoToForm();
             UpdateFlagsForPieceActions();
             picLevel.Image = curRenderer.CreateLevelImage();
+            LevelChanged?.Invoke();
         }
 
         /// <summary>
@@ -2282,7 +2296,7 @@ Digger=20";
         /// <summary>
         /// Deletes all selected pieces, saves them in memory and displays the result.
         /// </summary>
-        private void DeleteSelectedPieces(bool doSaveSelection = true)
+        public void DeleteSelectedPieces(bool doSaveSelection = true)
         {
             if (doSaveSelection)
                 WriteToClipboard();
@@ -2965,6 +2979,7 @@ Digger=20";
             AddHotkey(HotkeyName.HotkeyToggleCrop, () => HandleCropLevel());
             AddHotkey(HotkeyName.HotkeyOpenLevelArrangerWindow, () => OpenLevelArrangerWindow());
             AddHotkey(HotkeyName.HotkeyOpenPieceBrowserWindow, () => OpenPieceBrowserWindow());
+            AddHotkey(HotkeyName.HotkeyOpenPiecesList, () => OpenPiecesList());
             AddHotkey(HotkeyName.HotkeyToggleAllTabs, () => ToggleExpandedTabs());
             AddHotkey(HotkeyName.HotkeyOpenSettings, () => settingsToolStripMenuItem_Click(null, null));
             AddHotkey(HotkeyName.HotkeyOpenConfigHotkeys, () => hotkeysToolStripMenuItem_Click(null, null));
@@ -3166,6 +3181,9 @@ Digger=20";
 
             openPieceBrowserWindowToolStripMenuItem.ShortcutKeyDisplayString =
                 FormatHotkeyString(HotkeyName.HotkeyOpenPieceBrowserWindow);
+
+            openPiecesListToolStripMenuItem.ShortcutKeyDisplayString =
+                FormatHotkeyString(HotkeyName.HotkeyOpenPiecesList);
 
             expandAllTabsToolStripMenuItem.ShortcutKeyDisplayString =
                 FormatHotkeyString(HotkeyName.HotkeyToggleAllTabs);

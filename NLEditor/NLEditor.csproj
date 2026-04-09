@@ -136,6 +136,7 @@
       <DependentUpon>FormAboutNLEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="HotkeyData.cs" />
+    <Compile Include="ImagePreview.cs" />
     <Compile Include="LevelPieceBase.cs" />
     <Compile Include="LevelPieceGadget.cs" />
     <Compile Include="LevelPieceTerrain.cs" />

@@ -110,12 +110,52 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, $"================ Version {C.Version} Updates ================\n");
 
-            WriteBoldText(richTextBox, "\n• Cleanse Levels\n");
-            richTextBox.AppendText(" • Bugfix - Progress form is linked to main form and kept on top. This is to prevent unhandled exceptions when focusing a different app during a cleanse\n");
-            richTextBox.AppendText(" • Highlight erasers/groups is disabled when cleansing (it must be manually re-enabled afterwards if necessary)\n");
+            WriteBoldText(richTextBox, "\n• Templates\n");
+            richTextBox.AppendText(" • It's now possible to create, save and load level templates.\n");
+            richTextBox.AppendText(" • From the Template Loader, choose a template to use as default. This template will then be loaded when opening the Editor or creating a new level.\n");
+            richTextBox.AppendText(" • The Template Loader is shown on startup by default. This can be toggled on/off at any time.\n");
+
+            WriteBoldText(richTextBox, "\n• Crop Level Width/Height\n");
+            richTextBox.AppendText(" • Added a new Crop rectangle which makes it much quicker and easier to adjust level width and height to fit the layout.\n");
+            richTextBox.AppendText(" • This has full hotkey support (X to toggle the Crop rectangle, Enter to apply, Esc to cancel.\n");
+            richTextBox.AppendText(" • Note that some Editor features (such as dragging pieces) become unavailable when the Crop rectangle is active.\n");
+
+            WriteBoldText(richTextBox, "\n• Cycle Select Pieces\n");
+            richTextBox.AppendText(" • Shift + LMB (by default) cycles through pieces within 16px of the cursor, so that each subsequent click grabs the piece at the next-highest index.\n");
+
+            WriteBoldText(richTextBox, "\n• Show/Hide Steel\n");
+            richTextBox.AppendText(" • Added menu item and hotkey support for Show/Hide Steel (Ctrl + F2 by default).\n");
+
+            WriteBoldText(richTextBox, "\n• Control Hints\n");
+            richTextBox.AppendText(" • When the mouse is hovered over a control, information about that control is now displayed in the status bar. This can be toggled on/off in Settings.\n");
+
+            WriteBoldText(richTextBox, "\n• Pieces List\n");
+            richTextBox.AppendText(" • Added a 'Pieces List' window which displays all pieces currently active in the level.\n");
+            richTextBox.AppendText(" • From here, pieces can be selected, moved behind/in front of other pieces, and deleted.\n");
+
+            WriteBoldText(richTextBox, "\n• Style Manager\n");
+            richTextBox.AppendText(" • Added 'Remove' button so that styles can be removed from the list.\n");
+            richTextBox.AppendText(" • Bugfix - 'Sort Alphabetically' becomes available only when multiple items are selected.\n");
+
+            WriteBoldText(richTextBox, "\n• Piece Browser - Auto-replace selected pieces\n");
+            richTextBox.AppendText(" • Pressing [Ctrl] or [Shift] whilst clicking-to-add a piece from the Piece Browser will directly replace any currently-selected piece in the Level Arranger. Note that this only works if a single piece is selected.\n");
+            richTextBox.AppendText(" • Pressing [Alt] whilst clicking-to-add a piece from the Piece Browser will add that piece to the same X/Y co-ordinates as any currently-selected piece in the Level Arranger. Again, this only works if a single piece is selected.\n");
+
+            WriteBoldText(richTextBox, "\n• Misc UI\n");
+            richTextBox.AppendText(" • Improved/fixed layout of corner text (in both docked and windowed Level Arranger).\n");
+            richTextBox.AppendText(" • Piece selection is now preserved on Undo/Redo.\n");
+            richTextBox.AppendText(" • Increased maximum number of dropdown items in Main & Piece Style combos.\n");
+            richTextBox.AppendText(" • Updated some default hotkeys (Level Arranger is now Ctrl + L, Piece Browser is Ctrl + B, Expand All Tabs is Ctrl + Space).\n");
+            richTextBox.AppendText(" • Removed support for 'classic hotkeys'.\n");
+            richTextBox.AppendText(" • 'Missing Pieces' menu item is now only shown when relevant.\n");
 
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
-            richTextBox.AppendText(" • 'Save As Image' sanitizes invalid characters when saving\n");
+            richTextBox.AppendText(" • 'Select Pieces Below' (Alt + LMB by default) re-triggers selection correctly, even if used whilst a piece is already selected.\n");
+            richTextBox.AppendText(" • Grid is now drawn to its own layer rather than the background layer (so, it's visible even if backgrounds are toggled off).\n");
+            richTextBox.AppendText(" • Enhanced support for non-English locales.\n");
+            richTextBox.AppendText(" • Fixed repeat renderings when auto-resizing the form.\n");
+            richTextBox.AppendText(" • 'Use Auto Screen Start' is now written to/from a setting object rather that directly to/from the checkbox.\n");
+
 
             WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
 
@@ -132,6 +172,9 @@ namespace NLEditor
             richTextBox.AppendText(" • No Overwrite checkbox is once again available for all pieces (except Rulers)\n");
             richTextBox.AppendText(" • Fixed incremental indenting of terrain pieces in level file\n");
             richTextBox.AppendText(" • All settings are now externalized to NLEditorSettings.ini\n");
+            richTextBox.AppendText(" • Cleanse Levels - Progress form is linked to main form and kept on top. This is to prevent unhandled exceptions when focusing a different app during a cleanse\n");
+            richTextBox.AppendText(" • Cleanse Levels - Highlight erasers/groups is disabled when cleansing (it must be manually re-enabled afterwards if necessary)\n");
+            richTextBox.AppendText(" • 'Save As Image' sanitizes invalid characters when saving\n");
 
             // =======================
             // All Features

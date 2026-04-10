@@ -1643,6 +1643,9 @@ namespace NLEditor
             if (curSettings.ShowAboutAtStartup)
                 ShowAboutNLEditor();
 
+            if (curSettings.OpenTemplatesAtStartup)
+                OpenTemplatesLoader();
+
             SetMetaDataPanel();
             MoveControlsOnFormResize();
             UpdateMissingPiecesMenuItems();

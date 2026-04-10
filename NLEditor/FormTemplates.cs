@@ -315,6 +315,7 @@ namespace NLEditor
 
         private void FormTemplates_Load(object sender, EventArgs e)
         {
+            checkOpenTemplatesAtStartup.Checked = curSettings.OpenTemplatesAtStartup;
             PopulateTemplatesList();
             PopulateTemplateDataPanel();
         }
@@ -338,6 +339,12 @@ namespace NLEditor
         private void btnSetAsDefault_Click(object sender, EventArgs e)
         {
             SetCurrentTemplateAsDefault();
+        }
+
+        private void checkOpenTemplatesAtStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            curSettings.OpenTemplatesAtStartup = checkOpenTemplatesAtStartup.Checked;
+            curSettings.WriteSettingsToFile();
         }
     }
 }

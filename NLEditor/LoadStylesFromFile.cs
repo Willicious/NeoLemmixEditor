@@ -493,6 +493,9 @@ namespace NLEditor
                                     objType = C.OBJ.FORCE_FIELD;
                                     break;
                                 case "DECORATION":
+                                case "BACKGROUND":
+                                case "ANIMATION":
+                                case "ANIMATIONONCE":
                                     objType = C.OBJ.DECORATION;
                                     break;
                                 case "PORTAL":

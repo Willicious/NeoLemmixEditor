@@ -8,6 +8,8 @@ namespace NLEditor
 {
     public static class C // for Constants
     {
+        public static string AppCaption = "  NeoLemmix Editor";
+
         public static string Version
         {
             get

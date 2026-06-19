@@ -618,7 +618,7 @@ Digger=20";
             picLevel.Image = curRenderer.CreateLevelImage();
 
             UpdateSpecialLemmingCounter();
-            this.Text = "  NeoLemmix Editor";
+            this.Text = C.AppCaption;
 
             if (curSettings.DefaultTemplate != string.Empty)
                 LoadLevelFromDefaultTemplate();
@@ -680,7 +680,7 @@ Digger=20";
             UpdateSpecialLemmingCounter();
 
             string name = Path.GetFileName(CurLevel.FilePathToSave);
-            this.Text = "  NeoLemmix Editor" +(string.IsNullOrEmpty(name) ? "" : " - " + name);
+            this.Text = C.AppCaption + (string.IsNullOrEmpty(name) ? "" : " - " + name);
         }
 
         /// <summary>

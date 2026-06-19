@@ -3501,7 +3501,7 @@
             this.MinimumSize = new System.Drawing.Size(1300, 700);
             this.Name = "NLEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "  NeoLemmix Editor";
+            this.Text = C.AppCaption;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.NLEditForm_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NLEditForm_FormClosing);

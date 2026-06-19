@@ -618,6 +618,7 @@ Digger=20";
             picLevel.Image = curRenderer.CreateLevelImage();
 
             UpdateSpecialLemmingCounter();
+            this.Text = "  NeoLemmix Editor";
 
             if (curSettings.DefaultTemplate != string.Empty)
                 LoadLevelFromDefaultTemplate();
@@ -677,6 +678,57 @@ Digger=20";
             comboPieceStyle.Text = CurLevel.ThemeStyle?.NameInEditor;
 
             UpdateSpecialLemmingCounter();
+
+            string name = Path.GetFileName(CurLevel.FilePathToSave);
+            this.Text = "  NeoLemmix Editor" +(string.IsNullOrEmpty(name) ? "" : " - " + name);
+        }
+
+        /// <summary>
+        /// Load Previous/Next Level using buttons
+        /// </summary>
+        private string GetLevelFromDirectory(int position)
+        {
+            if (CurLevel == null || string.IsNullOrEmpty(CurLevel.FilePathToSave))
+                return string.Empty;
+
+            string currentFile = Path.GetFullPath(CurLevel.FilePathToSave);
+            string directory = Path.GetDirectoryName(currentFile);
+
+            string[] levelFiles = Directory.GetFiles(directory, "*.nxlv")
+                .Select(Path.GetFullPath)
+                .OrderBy(f => f)
+                .ToArray();
+
+            int currentIndex = Array.FindIndex(levelFiles,
+                f => string.Equals(f, currentFile, StringComparison.OrdinalIgnoreCase));
+
+            if (currentIndex == -1)
+                currentIndex = 0;
+
+            int newIndex = currentIndex + position;
+
+            if (newIndex < 0)
+                newIndex = levelFiles.Length - 1;
+            else if (newIndex >= levelFiles.Length)
+                newIndex = 0;
+
+            return levelFiles[newIndex];
+        }
+
+        private void LoadPreviousLevel()
+        {
+            String file = GetLevelFromDirectory(-1);
+            if (string.IsNullOrEmpty(file))
+                return;
+            LoadNewLevel(file);
+        }
+
+        private void LoadNextLevel()
+        {
+            String file = GetLevelFromDirectory(1);
+            if (string.IsNullOrEmpty(file))
+                return;
+            LoadNewLevel(file);
         }
 
         /// <summary>
@@ -2829,6 +2881,10 @@ Digger=20";
 
         private void UpdateControlTags()
         {
+            // --- Menu Bar --- //
+            btnPreviousLevel.Tag = "Load the previous level in the current directory";
+            btnNextLevel.Tag = "Load the next level in the current directory";
+
             // --- Globals Tab --- //
             txtLevelTitle.Tag = "Enter a title for your level";
             txtLevelAuthor.Tag = "Enter an author name";
@@ -2879,7 +2935,6 @@ Digger=20";
             btnLoadStyle.Tag = "Load the style of the selected piece into the Piece Browser";
 
             // --- Skills Tab --- //
-
             foreach (Control ctrl in tabSkills.Controls)
             {
                 if (ctrl is NumericUpDown numBox && numBox != numRandomMinLimit && numBox != numRandomMaxLimit && ctrl != numAllNonZeroSkillsToN)
@@ -2899,7 +2954,6 @@ Digger=20";
             btnClearAllSkills.Tag = "Set all skills to zero";
 
             // --- Extras Tab --- //
-
             btnTalismanAdd.Tag = "Add a new Talisman (an additional challenge for the player to complete)";
             btnTalismanEdit.Tag = "Edit the currently selected Talisman";
             btnTalismanDelete.Tag = "Delete the currently selected Talisman";

@@ -29,6 +29,7 @@ namespace NLEditor
 
         public static string AppPath => System.Windows.Forms.Application.StartupPath + DirSep;
         public static string AppPathTemplates => AppPath + "templates" + DirSep;
+        public static string AppPathPlaytestReplays => AppPathReplays() + "Auto_Playtest" + DirSep;
         public static string AppPathAutosave => AppPath + "autosave" + DirSep;
         public static string AppPathStyles => AppPath + "styles" + DirSep;
         public static string AppPathRulers => AppPath + "rulers" + DirSep;
@@ -50,6 +51,12 @@ namespace NLEditor
         public static Size PicPieceSize => new Size(84, 84);
 
         public static ScreenSize ScreenSize;
+
+        public static string AppPathReplays()
+        {
+            string path = AppPath + "replays" + DirSep;
+            return System.IO.Directory.Exists(path) ? path : AppPath + "Replay" + DirSep;
+        }
 
         public enum SelectPieceType
         {

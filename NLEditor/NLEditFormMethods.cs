@@ -2505,6 +2505,30 @@ Digger=20";
             picLevel.SetImage(curRenderer.CombineLayers());
         }
 
+        /// <summary>
+        /// Delete temporary level and replay files (if they exist)
+        /// </summary>
+        public void ClearDirectory()
+        {
+            try
+            {
+                Utility.DeleteFile(C.AppPathTempLevel);
+                Utility.DeleteFile(Path.ChangeExtension(C.AppPathTempLevel, ".nxsv"));
+
+                if (Directory.Exists(C.AppPathPlaytestReplays) && !curSettings.KeepPlaytestReplays)
+                {
+                    Directory.Delete(C.AppPathPlaytestReplays, true);
+                }
+            }
+            catch
+            {
+                // Do nothing
+            }
+        }
+
+        /// <summary>
+        /// Autosaves
+        /// </summary>
         private const string INVALID_AUTOSAVE_NAME_CHARS = "<>:\"/\\|?*.";
 
         private void MakeAutoSave()

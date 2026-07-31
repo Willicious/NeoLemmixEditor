@@ -228,8 +228,7 @@ namespace NLEditor
                 curSettings.UseAutoStart = checkAutoStart.Checked;
                 curSettings.WriteSettingsToFile();
 
-                Utility.DeleteFile(C.AppPathTempLevel);
-                Utility.DeleteFile(System.IO.Path.ChangeExtension(C.AppPathTempLevel, ".nxsv"));
+                ClearDirectory();
 
                 if (e.CloseReason.In(CloseReason.UserClosing, CloseReason.ApplicationExitCall))
                 {

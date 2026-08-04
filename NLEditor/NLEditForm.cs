@@ -226,7 +226,7 @@ namespace NLEditor
             try
             {
                 curSettings.UseAutoStart = checkAutoStart.Checked;
-                curSettings.WriteSettingsToFile();
+                curSettings.SaveSettings();
 
                 ClearDirectory();
 
@@ -1708,7 +1708,7 @@ namespace NLEditor
 
                 curSettings.RecentLevels.Remove(filename);
                 UpdateRecentLevelsMenu();
-                curSettings.WriteSettingsToFile();
+                curSettings.SaveSettings();
 
                 return;
             }

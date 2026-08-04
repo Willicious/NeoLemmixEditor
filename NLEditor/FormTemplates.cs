@@ -273,7 +273,7 @@ namespace NLEditor
             if (levelIsDefault)
             {
                 curSettings.DefaultTemplate = string.Empty;
-                curSettings.WriteSettingsToFile();
+                curSettings.SaveSettings();
             }
 
             try
@@ -308,7 +308,7 @@ namespace NLEditor
             int index = listTemplates.SelectedIndex;
 
             curSettings.DefaultTemplate = templateInfo.FileName;
-            curSettings.WriteSettingsToFile();
+            curSettings.SaveSettings();
             btnSetAsDefault.Enabled = false;
             PopulateTemplatesList(index);
         }
@@ -344,7 +344,7 @@ namespace NLEditor
         private void checkOpenTemplatesAtStartup_CheckedChanged(object sender, EventArgs e)
         {
             curSettings.OpenTemplatesAtStartup = checkOpenTemplatesAtStartup.Checked;
-            curSettings.WriteSettingsToFile();
+            curSettings.SaveSettings();
         }
     }
 }

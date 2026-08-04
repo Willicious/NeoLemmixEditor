@@ -982,7 +982,7 @@ namespace NLEditor
 
                     if (result == DialogResult.Yes)
                     {
-                        WriteSettingsToFile();
+                        SaveSettings();
                     }
                     else if (result == DialogResult.No)
                     {
@@ -1000,7 +1000,7 @@ namespace NLEditor
             }
             else
             {
-                WriteSettingsToFile();
+                SaveSettings();
             }
         }
 
@@ -1012,7 +1012,7 @@ namespace NLEditor
             editorForm.MoveControlsOnFormResize();
             editorForm.LoadPiecesIntoPictureBox();
 
-            WriteSettingsToFile();
+            SaveSettings();
         }
 
         /// <summary>
@@ -1289,7 +1289,7 @@ namespace NLEditor
         /// <summary>
         /// Saves the user's current editor settings to NLEditorSettings.ini. 
         /// </summary>
-        public void WriteSettingsToFile()
+        public void SaveSettings()
         {
             try
             {

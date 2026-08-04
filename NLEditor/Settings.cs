@@ -80,6 +80,8 @@ namespace NLEditor
         }
         public PieceBrowserState PieceBrowser { get; set; } = new PieceBrowserState();
 
+        public RecentLevels RecentLevels { get; } = new RecentLevels();
+
         public string DefaultAuthorName { get; private set; }
         public string DefaultTemplate { get; set; }
         public bool OpenTemplatesAtStartup { get; set; }
@@ -176,6 +178,8 @@ namespace NLEditor
             DisplaySettings.SetDisplayed(C.DisplayType.Rulers, true);
             DisplaySettings.SetDisplayed(C.DisplayType.ClearPhysics, false);
             DisplaySettings.SetDisplayed(C.DisplayType.Deprecated, false);
+
+            RecentLevels.Clear();
 
             settingChanged = false;
         }
@@ -1260,6 +1264,15 @@ namespace NLEditor
                                 }
                                 break;
                             }
+                        case "RECENT":
+                            {
+                                string path = line.Text.Trim();
+
+                                if (File.Exists(path)) // Check the level still exists
+                                    RecentLevels.Add(path);
+
+                                break;
+                            }
                     }
                 }
                 parser.DisposeStreamReader();
@@ -1344,6 +1357,12 @@ namespace NLEditor
                     {
                         settingsFile.WriteLine(" Display                " + displayType.ToString());
                     }
+                }
+
+                settingsFile.WriteLine("");
+                foreach (string level in RecentLevels.Levels)
+                {
+                    settingsFile.WriteLine(" Recent " + level);
                 }
 
                 settingsFile.Close();

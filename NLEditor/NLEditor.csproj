@@ -192,6 +192,7 @@
     <Compile Include="FormProgress.Designer.cs">
       <DependentUpon>FormProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="RecentLevels.cs" />
     <Compile Include="ScreenSize.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="RepeatButton.cs">

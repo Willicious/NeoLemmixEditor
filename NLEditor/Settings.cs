@@ -1006,7 +1006,7 @@ namespace NLEditor
 
         public void ReloadSettings()
         {
-            ReadSettingsFromFile();
+            LoadSettings();
 
             editorForm.ToggleSnapToGrid();
             editorForm.MoveControlsOnFormResize();
@@ -1018,7 +1018,7 @@ namespace NLEditor
         /// <summary>
         /// Reads the users editor settings from NLEditorSettings.ini.
         /// </summary>
-        public void ReadSettingsFromFile()
+        public void LoadSettings()
         {
             SetDefault();
 

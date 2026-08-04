@@ -389,7 +389,11 @@ namespace NLEditor
             {
                 ToolStripMenuItem item = new ToolStripMenuItem();
 
-                item.Text = "&" + index + "   " + Path.GetFileName(level);
+                if (index <= 9)
+                    item.Text = "&" + index + "   " + Path.GetFileName(level);
+                else
+                    item.Text = "     " + Path.GetFileName(level);
+
                 item.Tag = level;
                 item.ToolTipText = level;
 

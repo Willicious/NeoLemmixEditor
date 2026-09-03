@@ -218,6 +218,7 @@
             "DeNeutralizer",
             "SkillAssigner",
             "SkillRemover",
+            "Animation",
             "Decoration",
             "Paint"});
             this.cbTriggerEffect.Location = new System.Drawing.Point(131, 180);

@@ -252,7 +252,7 @@ namespace NLEditor
                             case "ADDSKILL": triggerEffect = "SKILLASSIGNER"; break;
                             case "REMOVESKILLS": triggerEffect = "SKILLREMOVER"; break;
                             case "ANIMATIONONCE":
-                            case "ANIMATION":
+                            case "ANIMATION": triggerEffect = "ANIMATION"; break;
                             case "BACKGROUND": triggerEffect = "DECORATION"; break;
                         }
                     }

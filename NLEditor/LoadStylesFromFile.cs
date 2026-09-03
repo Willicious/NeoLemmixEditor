@@ -494,8 +494,6 @@ namespace NLEditor
                                     break;
                                 case "DECORATION":
                                 case "BACKGROUND":
-                                case "ANIMATION":
-                                case "ANIMATIONONCE":
                                     objType = C.OBJ.DECORATION;
                                     break;
                                 case "PORTAL":
@@ -518,6 +516,12 @@ namespace NLEditor
                                     break;
                                 case "SKILLASSIGNER":
                                     objType = C.OBJ.SKILL_ASSIGNER;
+                                    break;
+                                case "ANIMATION":
+                                case "ANIMATIONONCE":
+                                    objType = C.OBJ.NONE;
+                                    break;
+                                default: objType = C.OBJ.NONE;
                                     break;
                             }
                             break;

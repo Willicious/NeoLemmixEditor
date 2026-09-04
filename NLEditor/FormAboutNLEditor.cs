@@ -108,23 +108,26 @@ namespace NLEditor
             // (Delete and merge these into 'all features' below with each update)  
             // =======================
 
-            WriteBoldText(richTextBox, $"================ Version {C.Version} Updates ================\n");
+            WriteBoldText(richTextBox, $"Version {C.Version} Updates\n");
+
+            WriteBoldText(richTextBox, "\n• Keep Playtest Replays\n");
+            richTextBox.AppendText(" • Option added to keep playtest replays. If checked, replays generated when playtesting a level will be saved to the 'Auto_Playtest' folder. If unchecked, this folder will be deleted when the Editor is closed.\n");
+
+            WriteBoldText(richTextBox, "\n• Open Recent\n");
+            richTextBox.AppendText(" • Recent levels can now be opened via File > Open Recent.\n");
+
+            WriteBoldText(richTextBox, "\n• Bugfixes\n");
+            richTextBox.AppendText(" • Applying a Custom Skillset immediately commits the skillset to the active level.\n");
+            richTextBox.AppendText(" • 'Animation' objects are recognised as 'No Effect'.\n");
+
+            // =======================
+            // Previous Updates
+            // =======================
+
+            WriteBoldText(richTextBox, $"\n\nPrevious Updates\n");
 
             WriteBoldText(richTextBox, "\n• Previous/Next Level Buttons\n");
             richTextBox.AppendText(" • Added '<<' and '>>' buttons for navigating between levels in the current directory.\n");
-
-            WriteBoldText(richTextBox, "\n• Piece Search\n");
-            richTextBox.AppendText(" • 'Background' and 'Animation' objects are recognised as 'Decoration'.\n");
-            richTextBox.AppendText(" • Bugfix - Removed 'Normalizer' (SuperLemmix object).\n");
-            richTextBox.AppendText(" • Bugfix - Removed the 'Perma' prefix from Skill Assigner/Remover.\n");
-
-            WriteBoldText(richTextBox, "\n• Misc UI\n");
-            richTextBox.AppendText(" • 'Random' button is enabled by default.\n");
-
-            WriteBoldText(richTextBox, "\n• Bugfixes\n");
-            richTextBox.AppendText(" • Only ever draw 'Paint' objects on Terrain.\n");
-
-            WriteBoldText(richTextBox, $"\n\n================ Previous Updates ================\n");
 
             WriteBoldText(richTextBox, "\n• Templates\n");
             richTextBox.AppendText(" • It's now possible to create, save and load level templates.\n");
@@ -157,6 +160,9 @@ namespace NLEditor
             richTextBox.AppendText(" • Pressing [Alt] whilst clicking-to-add a piece from the Piece Browser will add that piece to the same X/Y co-ordinates as any currently-selected piece in the Level Arranger. Again, this only works if a single piece is selected.\n");
             richTextBox.AppendText(" • Added a 'Random' button to the Piece Browser which, when clicked, randomized the piece style selection. It's possible to specify which styles are Randomized in the Style Manager; if no styles are specified, the entire list is randomized\n");
 
+            WriteBoldText(richTextBox, "\n• Piece Search\n");
+            richTextBox.AppendText(" • 'Background' objects are recognised as 'Decoration'.\n");
+
             WriteBoldText(richTextBox, "\n• Default Author Name\n");
             richTextBox.AppendText(" • Added a setting which automatically applies a default author name when a new level is created\n");
 
@@ -170,6 +176,7 @@ namespace NLEditor
             richTextBox.AppendText(" • Updated some default hotkeys (Level Arranger is now Ctrl + L, Piece Browser is Ctrl + B, Expand All Tabs is Ctrl + Space).\n");
             richTextBox.AppendText(" • Removed support for 'classic hotkeys'.\n");
             richTextBox.AppendText(" • 'Missing Pieces' menu item is now only shown when relevant.\n");
+            richTextBox.AppendText(" • 'Random' button is enabled by default.\n");
 
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
             richTextBox.AppendText(" • No Overwrite checkbox is once again available for all pieces (except Rulers)\n");
@@ -183,11 +190,15 @@ namespace NLEditor
             richTextBox.AppendText(" • Enhanced support for non-English locales.\n");
             richTextBox.AppendText(" • Fixed repeat renderings when auto-resizing the form.\n");
             richTextBox.AppendText(" • 'Use Auto Screen Start' is now written to/from a setting object rather that directly to/from the checkbox.\n");
+            richTextBox.AppendText(" • Piece Search - Removed 'Normalizer' (SuperLemmix object).\n");
+            richTextBox.AppendText(" • Piece Search - Removed the 'Perma' prefix from Skill Assigner/Remover.\n");
+            richTextBox.AppendText(" • Only ever draw 'Paint' objects on Terrain.\n");
 
             // =======================
-            // All Features
+            // NLEditor 1.42 -> NLEditor 1.44 Updates
             // =======================
-            WriteBoldText(richTextBox, $"\n\n================ NLEditor 1.42 -> NLEditor 1.44 Updates ================\n");
+
+            WriteBoldText(richTextBox, $"\n\nNLEditor 1.42 -> NLEditor 1.44 Updates\n");
 
             WriteBoldText(richTextBox, "\n• 'Sketches' are now 'Rulers'\n");
             richTextBox.AppendText(" • Rulers are drawn to their own layer and with their own selection rectangle colour for easier identification. The layer can be toggled on/off via hotkey/menu item. Full backwards compatibility with existing Sketches is preserved (NOTE: the 'sketches' folder is auto-renamed to 'rulers' if the rulers folder is not found).\n");
@@ -384,10 +395,10 @@ namespace NLEditor
             // =======================
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
 
-            WriteBoldText(richTextBox, "• Bugfix - Missing Piece Handling");
+            WriteBoldText(richTextBox, "• Missing Piece Handling");
             richTextBox.AppendText(" - Levels with missing pieces no longer create multiple popups; instead, a status bar is used to inform the player that the level has missing pieces\n");
 
-            WriteBoldText(richTextBox, "• Bugfixes - UI\n");
+            WriteBoldText(richTextBox, "• UI\n");
             richTextBox.AppendText(" • All secondary windows can now be closed using the [Esc] key\n");
             richTextBox.AppendText(" • Increased minimum selectable grid size to 2px\n");
             richTextBox.AppendText(" • Settings form now stays on top when active\n");
@@ -396,13 +407,13 @@ namespace NLEditor
             richTextBox.AppendText(" • Character limits increased to NL Player UI limits: Title (62), Author (60), Talisman Title (54)\n");
             richTextBox.AppendText(" • Cursor anchor is now correctly preserved when zooming in and out\n");
 
-            WriteBoldText(richTextBox, "• Bugfix - Cursor Zoom");
+            WriteBoldText(richTextBox, "• Cursor Zoom");
             richTextBox.AppendText(" - Cursor anchor is now correctly preserved when zooming in and out\n");
 
-            WriteBoldText(richTextBox, "• Bugfix - Preview/Postview Text");
+            WriteBoldText(richTextBox, "• Preview/Postview Text");
             richTextBox.AppendText(" - Text is now displayed centred for better previewing\n");
 
-            WriteBoldText(richTextBox, "• Bugfix - Flipped/Inverted/Rotated Pieces\n");
+            WriteBoldText(richTextBox, "• Flipped/Inverted/Rotated Pieces\n");
             richTextBox.AppendText(" • Fixed trigger area repositionings for flipped/inverted/rotated objects\n");
             richTextBox.AppendText(" • When flipping a hatch horizontally, the Flip Offset value is calculated and written to the level file so the Player (NLCE Only) can match its position as seen in the Editor)\n");
         }

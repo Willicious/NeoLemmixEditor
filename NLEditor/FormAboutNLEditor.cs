@@ -110,21 +110,27 @@ namespace NLEditor
 
             WriteBoldText(richTextBox, $"Version {C.Version} Updates\n");
 
-            WriteBoldText(richTextBox, "\n• Keep Playtest Replays\n");
-            richTextBox.AppendText(" • Option added to keep playtest replays. If checked, replays generated when playtesting a level will be saved to the 'Auto_Playtest' folder. If unchecked, this folder will be deleted when the Editor is closed.\n");
-
-            WriteBoldText(richTextBox, "\n• Open Recent\n");
-            richTextBox.AppendText(" • Recent levels can now be opened via File > Open Recent.\n");
+            //WriteBoldText(richTextBox, "\n• Template Bold Text\n");
+            //richTextBox.AppendText(" • Template Text.\n");
 
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
-            richTextBox.AppendText(" • Applying a Custom Skillset immediately commits the skillset to the active level.\n");
-            richTextBox.AppendText(" • 'Animation' objects are recognised as 'No Effect'.\n");
+            richTextBox.AppendText(" • Rulers can now be fully opaque without causing an exception due to lack of alpha channel.\n");
+            richTextBox.AppendText(" • Piece data is correctly updated after adding a ruler.\n");
+            richTextBox.AppendText(" • Piece Search - Piece data is correctly updated after adding a piece.\n");
+            richTextBox.AppendText(" • Piece Search - Trigger Effect combo now fits all items, no need for scrolling.\n");
+            richTextBox.AppendText(" • Pieces tab controls are properly positioned with no overlap.\n");
 
             // =======================
             // Previous Updates
             // =======================
 
             WriteBoldText(richTextBox, $"\n\nPrevious Updates\n");
+
+            WriteBoldText(richTextBox, "\n• Keep Playtest Replays\n");
+            richTextBox.AppendText(" • Option added to keep playtest replays. If checked, replays generated when playtesting a level will be saved to the 'Auto_Playtest' folder. If unchecked, this folder will be deleted when the Editor is closed.\n");
+
+            WriteBoldText(richTextBox, "\n• Open Recent\n");
+            richTextBox.AppendText(" • Recent levels can now be opened via File > Open Recent.\n");
 
             WriteBoldText(richTextBox, "\n• Previous/Next Level Buttons\n");
             richTextBox.AppendText(" • Added '<<' and '>>' buttons for navigating between levels in the current directory.\n");
@@ -193,6 +199,8 @@ namespace NLEditor
             richTextBox.AppendText(" • Piece Search - Removed 'Normalizer' (SuperLemmix object).\n");
             richTextBox.AppendText(" • Piece Search - Removed the 'Perma' prefix from Skill Assigner/Remover.\n");
             richTextBox.AppendText(" • Only ever draw 'Paint' objects on Terrain.\n");
+            richTextBox.AppendText(" • Applying a Custom Skillset immediately commits the skillset to the active level.\n");
+            richTextBox.AppendText(" • 'Animation' objects are recognised as 'No Effect'.\n");
 
             // =======================
             // NLEditor 1.42 -> NLEditor 1.44 Updates

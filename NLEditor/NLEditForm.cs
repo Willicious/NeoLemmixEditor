@@ -1646,6 +1646,7 @@ namespace NLEditor
                 OpenTemplatesLoader();
 
             SetMetaDataPanel();
+            PositionPieceControls();
             MoveControlsOnFormResize();
             UpdateMissingPiecesMenuItems();
             LinkControlsToMouseEvents(this);

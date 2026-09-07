@@ -1057,6 +1057,7 @@ Digger=20";
                 {
                     AddNewPieceToLevel(newPiece, curRenderer.GetCenterPoint());
                     MaybeOpenPiecesTab();
+                    UpdatePieceMetaData();
                 }
                 catch (Exception ex)
                 {
@@ -1087,6 +1088,7 @@ Digger=20";
             Point pos = curRenderer.GetCenterPoint();
             AddNewPieceToLevel(pieceKey, pos);
             MaybeOpenPiecesTab();
+            UpdatePieceMetaData();
         }
 
         private void OpenLevelArrangerWindow()

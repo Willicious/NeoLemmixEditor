@@ -2619,15 +2619,6 @@ Digger=20";
             }
         }
 
-        private void SetMetaDataPanel()
-        {
-            panelPieceMetaData.ForeColor = Color.SteelBlue;
-            btnLoadStyle.Top = tabPieces.Height - btnLoadStyle.Height;
-            panelPieceMetaData.Top = btnLoadStyle.Top - panelPieceMetaData.Height;
-            panelPieceMetaData.Left = tabPieces.Left;
-            panelPieceMetaData.Width = tabPieces.Width - 5;
-        }
-
         private void SetAllSkillsToZero()
         {
             foreach (Control ctrl in tabSkills.Controls)

@@ -2951,6 +2951,7 @@ Digger=20";
             btnRandomID.Tag = "Generate a random Level ID (note that doing so will unlink any existing replays for this level)";
 
             // --- Pieces Tab --- //
+            btnShowPiecesList.Tag = "Show a list of all pieces in the level";
             btnRotate.Tag = "Rotate all selected pieces clockwise";
             btnInvert.Tag = "Invert all selected pieces";
             btnFlip.Tag = "Flip all selected pieces";

@@ -52,7 +52,7 @@ namespace NLEditor
         Bitmap baseLevelImage;
         Level level;
         Settings curSettings;
-        bool IsClearPhysics => DisplaySettings.IsDisplayed(C.DisplayType.ClearPhysics);
+        bool IsPhysicsView => DisplaySettings.IsDisplayed(C.DisplayType.PhysicsView);
         bool IsTerrainLayer => DisplaySettings.IsDisplayed(C.DisplayType.Terrain);
         bool IsSteelLayer => DisplaySettings.IsDisplayed(C.DisplayType.Steel);
         bool IsObjectLayer => DisplaySettings.IsDisplayed(C.DisplayType.Objects);
@@ -145,7 +145,7 @@ namespace NLEditor
             baseLevelImage?.Dispose();
 
             // Create new baseLevelImage
-            if (IsClearPhysics)
+            if (IsPhysicsView)
             {
                 // Always use a black background here
                 baseLevelImage = new Bitmap(level.Width, level.Height);
@@ -581,7 +581,7 @@ namespace NLEditor
 
         /// <summary>
         /// Renders all terrain pieces in the TerrPieceList.
-        /// <para> This assumes IsClearPhysics = false.</para>
+        /// <para> This assumes IsPhysicsView = false.</para>
         /// </summary>
         public Bitmap CreateTerrainGroupImage(List<TerrainPiece> terrPieces)
         {
@@ -611,14 +611,14 @@ namespace NLEditor
                 return C.CustDrawMode.Erase;
             else if (terrPiece.IsNoOverwrite)
             {
-                if (IsClearPhysics)
+                if (IsPhysicsView)
                 {
                     if (terrPiece.IsSteel)
-                        return C.CustDrawMode.ClearPhysicsSteelNoOverwrite;
+                        return C.CustDrawMode.PhysicsViewSteelNoOverwrite;
                     else if (terrPiece.IsOneWay)
-                        return C.CustDrawMode.ClearPhysicsNoOverwriteOWW;
+                        return C.CustDrawMode.PhysicsViewNoOverwriteOWW;
                     else
-                        return C.CustDrawMode.ClearPhysicsNoOverwrite;
+                        return C.CustDrawMode.PhysicsViewNoOverwrite;
                 }
                 else
                 {
@@ -632,14 +632,14 @@ namespace NLEditor
             }
             else
             {
-                if (IsClearPhysics)
+                if (IsPhysicsView)
                 {
                     if (terrPiece.IsSteel)
-                        return C.CustDrawMode.ClearPhysicsSteel;
+                        return C.CustDrawMode.PhysicsViewSteel;
                     else if (terrPiece.IsOneWay)
-                        return C.CustDrawMode.ClearPhysicsOWW;
+                        return C.CustDrawMode.PhysicsViewOWW;
                     else
-                        return C.CustDrawMode.ClearPhysics;
+                        return C.CustDrawMode.PhysicsView;
                 }
                 else
                 {

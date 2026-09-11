@@ -66,15 +66,15 @@ namespace NLEditor
         public enum DisplayType
         {
             Terrain, Steel, Objects, Triggers, Rulers,
-            ScreenStart, Background, ClearPhysics, Deprecated
+            ScreenStart, Background, PhysicsView, Deprecated
         }
 
         public enum CustDrawMode
         {
             Default, DefaultOWW, Erase, OnlyAtMask, OnlyAtOWW,
             NoOverwrite, NoOverwriteOWW,
-            ClearPhysics, ClearPhysicsOWW, ClearPhysicsSteel,
-            ClearPhysicsNoOverwrite, ClearPhysicsNoOverwriteOWW, ClearPhysicsSteelNoOverwrite,
+            PhysicsView, PhysicsViewOWW, PhysicsViewSteel,
+            PhysicsViewNoOverwrite, PhysicsViewNoOverwriteOWW, PhysicsViewSteelNoOverwrite,
             HighlightGroups,
             Custom
         }

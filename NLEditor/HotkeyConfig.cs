@@ -22,7 +22,7 @@ namespace NLEditor
             HotkeyCleanseLevels,
             HotkeyHighlightGroupedPieces,
             HotkeyHighlightEraserPieces,
-            HotkeyToggleClearPhysics,
+            HotkeyTogglePhysicsView,
             HotkeyToggleTerrain,
             HotkeyToggleSteel,
             HotkeyToggleObjects,
@@ -157,8 +157,8 @@ namespace NLEditor
             new HotkeyData(HotkeyName.HotkeyHighlightEraserPieces,
                 "Highlight Eraser Pieces",
                 Keys.Control | Keys.E),
-            new HotkeyData(HotkeyName.HotkeyToggleClearPhysics,
-                "Toggle Clear Physics",
+            new HotkeyData(HotkeyName.HotkeyTogglePhysicsView,
+                "Toggle Physics View",
                 Keys.F1),
             new HotkeyData(HotkeyName.HotkeyToggleTerrain,
                 "Toggle Terrain",
@@ -792,7 +792,7 @@ namespace NLEditor
             GetHotkey(HotkeyName.HotkeyCleanseLevels).CurrentKeys = Keys.Control | Keys.Shift | Keys.F12;
             GetHotkey(HotkeyName.HotkeyHighlightGroupedPieces).CurrentKeys = Keys.Control | Keys.G;
             GetHotkey(HotkeyName.HotkeyHighlightEraserPieces).CurrentKeys = Keys.Control | Keys.E;
-            GetHotkey(HotkeyName.HotkeyToggleClearPhysics).CurrentKeys = Keys.F1;
+            GetHotkey(HotkeyName.HotkeyTogglePhysicsView).CurrentKeys = Keys.F1;
             GetHotkey(HotkeyName.HotkeyToggleTerrain).CurrentKeys = Keys.F2;
             GetHotkey(HotkeyName.HotkeyToggleObjects).CurrentKeys = Keys.F3;
             GetHotkey(HotkeyName.HotkeyToggleTriggerAreas).CurrentKeys = Keys.F4;

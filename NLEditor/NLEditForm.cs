@@ -511,7 +511,7 @@ namespace NLEditor
         }
 
         /* -----------------------------------------------------------
-         *              Scrollbars for pic_Level
+         *              Scrollbars for picLevel
          * ----------------------------------------------------------- */
 
         private void scrollPicLevelHoriz_Scroll(object sender, ScrollEventArgs e)
@@ -1106,7 +1106,7 @@ namespace NLEditor
             mutexMouseWheel.ReleaseMutex();
         }
 
-        private void pic_Level_MouseDown(object sender, MouseEventArgs e)
+        private void picLevel_MouseDown(object sender, MouseEventArgs e)
         {
             // Convert mouse buttons to Keys
             Keys mouseButtonKey = e.Button == MouseButtons.Left ? Keys.LButton :
@@ -1209,7 +1209,7 @@ namespace NLEditor
             mutexMouseDown.ReleaseMutex();
         }
 
-        private void pic_Level_MouseUp(object sender, MouseEventArgs e)
+        private void picLevel_MouseUp(object sender, MouseEventArgs e)
         {
             if (curRenderer.CropTool.Active)
             {
@@ -1306,7 +1306,7 @@ namespace NLEditor
             cycleSelectPiecesPressed = false;
         }
 
-        private void pic_Level_MouseMove(object sender, MouseEventArgs e)
+        private void picLevel_MouseMove(object sender, MouseEventArgs e)
         {
             if (curRenderer.CropTool.Active)
             {

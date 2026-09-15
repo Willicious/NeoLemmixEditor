@@ -83,6 +83,7 @@ namespace NLEditor
             }
 
             int skipDeprecatedOffset = 0;
+            selectedPieceBrowserIndex = -1;
 
             // load correct pictures
             for (int i = 0; i < picPieceList.Count; i++)
@@ -101,6 +102,9 @@ namespace NLEditor
                     i--;
                     continue;
                 }
+
+                if (pieceKey == selectedPieceKey)
+                    selectedPieceBrowserIndex = i;
 
                 int frameIndex = (ImageLibrary.GetObjType(pieceKey).In(C.OBJ.PICKUP, C.OBJ.EXIT_LOCKED, C.OBJ.BUTTON, C.OBJ.TRAPONCE)) ? 1 : 0;
                 Bitmap pieceImage;
@@ -414,6 +418,32 @@ namespace NLEditor
             panelPieceMetaData.Top = btnLoadStyle.Top - panelPieceMetaData.Height;
             panelPieceMetaData.Left = tabPieces.Left;
             panelPieceMetaData.Width = tabPieces.Width - 5;
+        }
+
+        /// <summary>
+        /// Set & update the size & visibility of the piece highlight panel
+        /// </summary>
+        private void SetPieceHighlight()
+        {
+            lblPieceHighlight.Visible = false;
+            lblPieceHighlight.BringToFront();
+        }
+
+        private void UpdatePieceHighlight()
+        {
+            if (!lblPieceHighlight.Visible)
+                return;
+
+            if (selectedPieceBrowserIndex < 0 || selectedPieceBrowserIndex >= picPieceList.Count)
+            {
+                lblPieceHighlight.Top = -100;
+                lblPieceHighlight.Left = -100;
+            }
+            else
+            {
+                lblPieceHighlight.Top = picPieceList[selectedPieceBrowserIndex].Top - 4;
+                lblPieceHighlight.Left = picPieceList[selectedPieceBrowserIndex].Left - 4;
+            }
         }
 
         private void PositionPieceControls()

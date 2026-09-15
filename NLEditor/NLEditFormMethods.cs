@@ -1681,6 +1681,7 @@ Digger=20";
                 ScrollPieces(pieceNameList, movement);
 
             LoadPiecesIntoPictureBox();
+            UpdatePieceHighlight();
         }
 
         /// <summary>
@@ -1705,7 +1706,6 @@ Digger=20";
             if (pieceNameList.Count <= picPieceList.Count)
             {
                 pieceStartIndex = 0; // No scrolling needed
-                LoadPiecesIntoPictureBox();
                 return;
             }
 
@@ -1721,7 +1721,6 @@ Digger=20";
             if (newIndex != pieceStartIndex)
             {
                 pieceStartIndex = newIndex;
-                LoadPiecesIntoPictureBox();
             }
         }
 
@@ -1974,7 +1973,12 @@ Digger=20";
                 pieceStartIndex = Math.Max(0, Math.Min(index - middleIndex, maxIndex));
             }
 
+            selectedPieceKey = pieceKey;
             LoadPiecesIntoPictureBox();
+
+            lblPieceHighlight.Visible = true;
+            UpdatePieceHighlight();
+
             return true;
         }
 

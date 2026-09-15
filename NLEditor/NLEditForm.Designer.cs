@@ -268,6 +268,7 @@
             this.tabSkillsExp = new System.Windows.Forms.TabControl();
             this.tabExtrasExp = new System.Windows.Forms.TabControl();
             this.panelPieceBrowser = new System.Windows.Forms.Panel();
+            this.lblPieceHighlight = new System.Windows.Forms.Label();
             this.btnStyleRandom = new System.Windows.Forms.Button();
             this.picPiece7 = new System.Windows.Forms.PictureBox();
             this.btnSteel = new System.Windows.Forms.Button();
@@ -3178,6 +3179,7 @@
             // panelPieceBrowser
             // 
             this.panelPieceBrowser.BackColor = System.Drawing.Color.Transparent;
+            this.panelPieceBrowser.Controls.Add(this.lblPieceHighlight);
             this.panelPieceBrowser.Controls.Add(this.btnStyleRandom);
             this.panelPieceBrowser.Controls.Add(this.picPiece7);
             this.panelPieceBrowser.Controls.Add(this.btnSteel);
@@ -3202,6 +3204,20 @@
             this.panelPieceBrowser.Name = "panelPieceBrowser";
             this.panelPieceBrowser.Size = new System.Drawing.Size(1454, 176);
             this.panelPieceBrowser.TabIndex = 67;
+            // 
+            // lblPieceHighlight
+            // 
+            this.lblPieceHighlight.AutoSize = true;
+            this.lblPieceHighlight.BackColor = System.Drawing.Color.Lime;
+            this.lblPieceHighlight.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPieceHighlight.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPieceHighlight.Location = new System.Drawing.Point(1187, 85);
+            this.lblPieceHighlight.Name = "lblPieceHighlight";
+            this.lblPieceHighlight.Size = new System.Drawing.Size(39, 37);
+            this.lblPieceHighlight.TabIndex = 0;
+            this.lblPieceHighlight.Text = "X";
+            this.lblPieceHighlight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPieceHighlight.Click += new System.EventHandler(this.lblPieceHighlight_Click);
             // 
             // btnStyleRandom
             // 
@@ -3878,6 +3894,7 @@
         private System.Windows.Forms.ToolStripMenuItem openRecentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearRecentLevelsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator openRecentSeparator;
+        private System.Windows.Forms.Label lblPieceHighlight;
     }
 }
 

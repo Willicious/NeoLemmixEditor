@@ -113,17 +113,75 @@ namespace NLEditor
         /// </summary>
         private void SearchDirectoryForBackgrounds()
         {
+            // Load first the style-specific backgrounds
             string directoryPath = C.AppPathStyles + NameInDirectory + C.DirSep + "backgrounds";
 
             if (Directory.Exists(directoryPath))
             {
                 backgroundKeys = Directory.GetFiles(directoryPath, "*.png", SearchOption.TopDirectoryOnly)
-                                       .Select(file => ImageLibrary.CreatePieceKey(file))
-                                       .ToList();
+                    .Select(file => ImageLibrary.CreatePieceKey(file))
+                    .ToList();
             }
             else // use empty list
             {
                 backgroundKeys = new List<string>();
+            }
+
+            // Load now the special backgrounds into the list
+            string directoryPathSpecial = C.AppPathStyles + "special" + C.DirSep + "backgrounds";
+
+            if (Directory.Exists(directoryPathSpecial))
+            {
+                string[] specialBackgrounds =
+                {
+                    "amiga_blue.png",
+                    "dos_black.png"
+                };
+
+                foreach (string background in specialBackgrounds)
+                {
+                    string image = Path.Combine(directoryPathSpecial, background);
+
+                    if (File.Exists(image))
+                        backgroundKeys.Add(ImageLibrary.CreatePieceKey(image));
+                }
+            }
+
+            // Finally, add specific tiles from 'proxima_tile' to the OG styles
+            string directoryPathTiles = C.AppPathStyles + "proxima_tile" + C.DirSep + "backgrounds";
+
+            switch (NameInDirectory.ToLowerInvariant())
+            {
+                case "ohno_brick":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "red.png")));
+                    break;
+                case "ohno_bubble":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "purple.png")));
+                    break;
+                case "ohno_rock":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "olive.png")));
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "purple.png")));
+                    break;
+                case "ohno_snow":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "blue.png")));
+                    break;
+                case "orig_crystal":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "blue.png")));
+                    break;
+                case "orig_dirt":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "brown.png")));
+                    break;
+                case "orig_fire":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "red.png")));
+                    break;
+                case "orig_marble":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "indigo.png")));
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "purple.png")));
+                    break;
+                case "orig_pillar":
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "brown.png")));
+                    backgroundKeys.Add(ImageLibrary.CreatePieceKey(Path.Combine(directoryPathTiles, "olive.png")));
+                    break;
             }
         }
 

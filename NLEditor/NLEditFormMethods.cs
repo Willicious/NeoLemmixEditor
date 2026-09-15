@@ -2959,7 +2959,8 @@ Digger=20";
             foreach (Control ctrl in parent.Controls)
             {
                 if (ctrl is Button || ctrl is CheckBox || ctrl is ComboBox ||
-                    ctrl is TextBox || ctrl is RadioButton)
+                    ctrl is TextBox || ctrl is RadioButton || ctrl is PictureBox ||
+                    ctrl is Label)
                 {
                     ctrl.MouseEnter += Control_MouseEnter;
                     ctrl.MouseLeave += Control_MouseLeave;
@@ -3077,6 +3078,11 @@ Digger=20";
             btnEditPostview.Tag = "Edit onscreen text shown after the level is completed";
 
             // --- Piece Browser --- //
+            foreach (Control picPiece in panelPieceBrowser.Controls.OfType<PictureBox>())
+            {
+                picPiece.Tag = "Click or drag to add this piece to the level";
+            }
+
             btnStyleRandom.Tag = "Load a random style into the Piece Browser (you can add styles to the randomizer in Style Manager)";
             comboPieceStyle.Tag = "Load a style into the Piece Browser";
             btnTerrain.Tag = "Show Terrain pieces in the Piece Browser";
@@ -3086,6 +3092,7 @@ Digger=20";
             btnBackgrounds.Tag = "Show Background wallpapers in the Piece Browser (these are purely decorative and do not affect gameplay)";
             btnClearBackground.Tag = "Remove the currently-active background wallpaper";
             btnSearchPieces.Tag = "Search the styles collection for pieces by name, object type, and various other properties";
+            lblPieceHighlight.Tag = "Click to clear the highlight";
         }
 
         private void SetHotkeys()

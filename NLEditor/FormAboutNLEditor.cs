@@ -113,12 +113,24 @@ namespace NLEditor
             //WriteBoldText(richTextBox, "\n• Template Bold Text\n");
             //richTextBox.AppendText(" • Template Text.\n");
 
+            WriteBoldText(richTextBox, "\n• Global/Special Backgrounds\n");
+            richTextBox.AppendText(" • The background tiles from 'special' (amiga_blue and dos_black) are now available globally.\n");
+            richTextBox.AppendText(" • The background tiles from 'proxima_tile' are matched to their associated 'orig_*' and 'ohno_*' styles.\n");
+            richTextBox.AppendText(" • PLEASE NOTE - The tiles previously in CE versions of 'orig_*' and 'ohno_*' have now been removed to avoid duplication. They can still be accessed from these styles as before, but now point to the relevant background tile in 'proxima_tile'. This is to ensure cross-compatibility with the NeoLemmix styles.\n");
+
+            WriteBoldText(richTextBox, "\n• Piece Highlight\n");
+            richTextBox.AppendText(" • When loading a style from a selected piece (from the button on the Pieces tab), the piece is now highlighted in the Piece Browser.\n");
+
+            WriteBoldText(richTextBox, "\n• Piece Search\n");
+            richTextBox.AppendText(" • Added a 'Load Piece' button. When clicked, the relevant style is loaded and the selected piece is highlighted in the Piece Browser.\n");
+
+            WriteBoldText(richTextBox, "\n• Misc UI\n");
+            richTextBox.AppendText(" • Added setting for 'Always Use Auto Screen Start'.\n");
+            richTextBox.AppendText(" • Added control hints for the Piece Browser.\n");
+
             WriteBoldText(richTextBox, "\n• Bugfixes\n");
-            richTextBox.AppendText(" • Rulers can now be fully opaque without causing an exception due to lack of alpha channel.\n");
-            richTextBox.AppendText(" • Piece data is correctly updated after adding a ruler.\n");
-            richTextBox.AppendText(" • Piece Search - Piece data is correctly updated after adding a piece.\n");
-            richTextBox.AppendText(" • Piece Search - Trigger Effect combo now fits all items, no need for scrolling.\n");
-            richTextBox.AppendText(" • Pieces tab controls are properly positioned with no overlap.\n");
+            richTextBox.AppendText(" • Entrance hatches are now only ever moved by 1 index when choosing Draw Sooner / Draw Later.\n");
+            richTextBox.AppendText(" • Unknown or invalid hotkey strings are now tolerated (and ignored).\n");
 
             // =======================
             // Previous Updates
@@ -201,6 +213,11 @@ namespace NLEditor
             richTextBox.AppendText(" • Only ever draw 'Paint' objects on Terrain.\n");
             richTextBox.AppendText(" • Applying a Custom Skillset immediately commits the skillset to the active level.\n");
             richTextBox.AppendText(" • 'Animation' objects are recognised as 'No Effect'.\n");
+            richTextBox.AppendText(" • Rulers can now be fully opaque without causing an exception due to lack of alpha channel.\n");
+            richTextBox.AppendText(" • Piece data is correctly updated after adding a ruler.\n");
+            richTextBox.AppendText(" • Piece Search - Piece data is correctly updated after adding a piece.\n");
+            richTextBox.AppendText(" • Piece Search - Trigger Effect combo now fits all items, no need for scrolling.\n");
+            richTextBox.AppendText(" • Pieces tab controls are properly positioned with no overlap.\n");
 
             // =======================
             // NLEditor 1.42 -> NLEditor 1.44 Updates

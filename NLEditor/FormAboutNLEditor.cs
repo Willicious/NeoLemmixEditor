@@ -113,7 +113,7 @@ namespace NLEditor
             //WriteBoldText(richTextBox, "\n• Template Bold Text\n");
             //richTextBox.AppendText(" • Template Text.\n");
 
-            WriteBoldText(richTextBox, "\n• Global/Special Backgrounds\n");
+            WriteBoldText(richTextBox, "\n• Global/Special Backgrounds"); richTextBox.AppendText(" - (hotfixed in 2.3.1)\n");
             richTextBox.AppendText(" • The background tiles from 'special' (amiga_blue and dos_black) are now available globally.\n");
             richTextBox.AppendText(" • The background tiles from 'proxima_tile' are matched to their associated 'orig_*' and 'ohno_*' styles.\n");
             richTextBox.AppendText(" • PLEASE NOTE - The tiles previously in CE versions of 'orig_*' and 'ohno_*' have now been removed to avoid duplication. They can still be accessed from these styles as before, but now point to the relevant background tile in 'proxima_tile'. This is to ensure cross-compatibility with the NeoLemmix styles.\n");

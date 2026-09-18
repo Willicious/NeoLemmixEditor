@@ -1874,5 +1874,15 @@ namespace NLEditor
         {
             lblPieceHighlight.Visible = false;
         }
+
+        private void lblPieceHighlight_MouseEnter(object sender, EventArgs e)
+        {
+            lblPieceHighlight.BackColor = Color.RoyalBlue;
+        }
+
+        private void lblPieceHighlight_MouseLeave(object sender, EventArgs e)
+        {
+            lblPieceHighlight.BackColor = Color.Lime;
+        }
     }
 }

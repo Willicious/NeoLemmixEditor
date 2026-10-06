@@ -40,7 +40,6 @@
             this.listViewHotkeys = new System.Windows.Forms.ListView();
             this.EditorFunction = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.AssignedKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblEditingKey = new System.Windows.Forms.Label();
             this.lblActionToBeAssigned = new System.Windows.Forms.Label();
             this.btnAssignChosenKey = new System.Windows.Forms.Button();
             this.lblCurrentKey = new System.Windows.Forms.Label();
@@ -59,12 +58,14 @@
             this.focusText = new System.Windows.Forms.TextBox();
             this.btnLoadClassic = new System.Windows.Forms.Button();
             this.panelSizing = new System.Windows.Forms.Panel();
+            this.btnClearKey = new System.Windows.Forms.Button();
+            this.panelSizing.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxChooseKey
             // 
             this.comboBoxChooseKey.FormattingEnabled = true;
-            this.comboBoxChooseKey.Location = new System.Drawing.Point(865, 189);
+            this.comboBoxChooseKey.Location = new System.Drawing.Point(865, 206);
             this.comboBoxChooseKey.Name = "comboBoxChooseKey";
             this.comboBoxChooseKey.Size = new System.Drawing.Size(235, 28);
             this.comboBoxChooseKey.TabIndex = 0;
@@ -73,7 +74,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(720, 651);
+            this.btnSave.Location = new System.Drawing.Point(25, 8);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(380, 52);
             this.btnSave.TabIndex = 1;
@@ -94,7 +95,7 @@
             // lblChooseKey
             // 
             this.lblChooseKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChooseKey.Location = new System.Drawing.Point(718, 189);
+            this.lblChooseKey.Location = new System.Drawing.Point(718, 206);
             this.lblChooseKey.Name = "lblChooseKey";
             this.lblChooseKey.Size = new System.Drawing.Size(175, 28);
             this.lblChooseKey.TabIndex = 3;
@@ -102,7 +103,7 @@
             // 
             // btnListen
             // 
-            this.btnListen.Location = new System.Drawing.Point(720, 229);
+            this.btnListen.Location = new System.Drawing.Point(720, 246);
             this.btnListen.Name = "btnListen";
             this.btnListen.Size = new System.Drawing.Size(380, 52);
             this.btnListen.TabIndex = 4;
@@ -123,7 +124,7 @@
             // btnCancel
             // 
             this.btnCancel.Enabled = false;
-            this.btnCancel.Location = new System.Drawing.Point(917, 406);
+            this.btnCancel.Location = new System.Drawing.Point(917, 430);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(183, 52);
             this.btnCancel.TabIndex = 6;
@@ -133,7 +134,7 @@
             // 
             // btnClearAllKeys
             // 
-            this.btnClearAllKeys.Location = new System.Drawing.Point(720, 548);
+            this.btnClearAllKeys.Location = new System.Drawing.Point(720, 590);
             this.btnClearAllKeys.Name = "btnClearAllKeys";
             this.btnClearAllKeys.Size = new System.Drawing.Size(120, 52);
             this.btnClearAllKeys.TabIndex = 7;
@@ -143,7 +144,7 @@
             // 
             // btnLoadDefault
             // 
-            this.btnLoadDefault.Location = new System.Drawing.Point(846, 548);
+            this.btnLoadDefault.Location = new System.Drawing.Point(846, 590);
             this.btnLoadDefault.Name = "btnLoadDefault";
             this.btnLoadDefault.Size = new System.Drawing.Size(128, 52);
             this.btnLoadDefault.TabIndex = 8;
@@ -162,7 +163,7 @@
             this.listViewHotkeys.Location = new System.Drawing.Point(25, 49);
             this.listViewHotkeys.MultiSelect = false;
             this.listViewHotkeys.Name = "listViewHotkeys";
-            this.listViewHotkeys.Size = new System.Drawing.Size(664, 716);
+            this.listViewHotkeys.Size = new System.Drawing.Size(664, 760);
             this.listViewHotkeys.TabIndex = 10;
             this.listViewHotkeys.UseCompatibleStateImageBehavior = false;
             this.listViewHotkeys.View = System.Windows.Forms.View.Details;
@@ -179,31 +180,21 @@
             this.AssignedKey.Text = "Assigned Key";
             this.AssignedKey.Width = 100;
             // 
-            // lblEditingKey
-            // 
-            this.lblEditingKey.AutoSize = true;
-            this.lblEditingKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEditingKey.Location = new System.Drawing.Point(718, 48);
-            this.lblEditingKey.Name = "lblEditingKey";
-            this.lblEditingKey.Size = new System.Drawing.Size(167, 25);
-            this.lblEditingKey.TabIndex = 11;
-            this.lblEditingKey.Text = "Editing Key For:";
-            // 
             // lblActionToBeAssigned
             // 
             this.lblActionToBeAssigned.AutoSize = true;
-            this.lblActionToBeAssigned.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActionToBeAssigned.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblActionToBeAssigned.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblActionToBeAssigned.Location = new System.Drawing.Point(719, 77);
+            this.lblActionToBeAssigned.Location = new System.Drawing.Point(719, 49);
             this.lblActionToBeAssigned.Name = "lblActionToBeAssigned";
-            this.lblActionToBeAssigned.Size = new System.Drawing.Size(150, 20);
+            this.lblActionToBeAssigned.Size = new System.Drawing.Size(186, 25);
             this.lblActionToBeAssigned.TabIndex = 12;
             this.lblActionToBeAssigned.Text = "(No action selected)";
             // 
             // btnAssignChosenKey
             // 
             this.btnAssignChosenKey.Enabled = false;
-            this.btnAssignChosenKey.Location = new System.Drawing.Point(720, 406);
+            this.btnAssignChosenKey.Location = new System.Drawing.Point(720, 430);
             this.btnAssignChosenKey.Name = "btnAssignChosenKey";
             this.btnAssignChosenKey.Size = new System.Drawing.Size(183, 52);
             this.btnAssignChosenKey.TabIndex = 13;
@@ -215,7 +206,7 @@
             // 
             this.lblCurrentKey.AutoSize = true;
             this.lblCurrentKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentKey.Location = new System.Drawing.Point(718, 132);
+            this.lblCurrentKey.Location = new System.Drawing.Point(718, 86);
             this.lblCurrentKey.Name = "lblCurrentKey";
             this.lblCurrentKey.Size = new System.Drawing.Size(135, 25);
             this.lblCurrentKey.TabIndex = 14;
@@ -226,7 +217,7 @@
             this.lblChosenKey.AutoSize = true;
             this.lblChosenKey.Enabled = false;
             this.lblChosenKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChosenKey.Location = new System.Drawing.Point(719, 371);
+            this.lblChosenKey.Location = new System.Drawing.Point(719, 395);
             this.lblChosenKey.Name = "lblChosenKey";
             this.lblChosenKey.Size = new System.Drawing.Size(138, 25);
             this.lblChosenKey.TabIndex = 15;
@@ -235,7 +226,7 @@
             // checkModCtrl
             // 
             this.checkModCtrl.AutoSize = true;
-            this.checkModCtrl.Location = new System.Drawing.Point(801, 316);
+            this.checkModCtrl.Location = new System.Drawing.Point(801, 333);
             this.checkModCtrl.Name = "checkModCtrl";
             this.checkModCtrl.Size = new System.Drawing.Size(59, 24);
             this.checkModCtrl.TabIndex = 16;
@@ -247,7 +238,7 @@
             // 
             this.lblAddModifier.AutoSize = true;
             this.lblAddModifier.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddModifier.Location = new System.Drawing.Point(803, 293);
+            this.lblAddModifier.Location = new System.Drawing.Point(803, 310);
             this.lblAddModifier.Name = "lblAddModifier";
             this.lblAddModifier.Size = new System.Drawing.Size(196, 20);
             this.lblAddModifier.TabIndex = 17;
@@ -258,7 +249,7 @@
             this.lblCurrentHotkey.AutoSize = true;
             this.lblCurrentHotkey.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrentHotkey.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lblCurrentHotkey.Location = new System.Drawing.Point(859, 126);
+            this.lblCurrentHotkey.Location = new System.Drawing.Point(859, 80);
             this.lblCurrentHotkey.Name = "lblCurrentHotkey";
             this.lblCurrentHotkey.Size = new System.Drawing.Size(74, 32);
             this.lblCurrentHotkey.TabIndex = 18;
@@ -270,7 +261,7 @@
             this.lblChosenHotkey.Enabled = false;
             this.lblChosenHotkey.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChosenHotkey.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.lblChosenHotkey.Location = new System.Drawing.Point(859, 365);
+            this.lblChosenHotkey.Location = new System.Drawing.Point(859, 389);
             this.lblChosenHotkey.Name = "lblChosenHotkey";
             this.lblChosenHotkey.Size = new System.Drawing.Size(74, 32);
             this.lblChosenHotkey.TabIndex = 19;
@@ -279,7 +270,7 @@
             // checkModShift
             // 
             this.checkModShift.AutoSize = true;
-            this.checkModShift.Location = new System.Drawing.Point(875, 316);
+            this.checkModShift.Location = new System.Drawing.Point(875, 333);
             this.checkModShift.Name = "checkModShift";
             this.checkModShift.Size = new System.Drawing.Size(68, 24);
             this.checkModShift.TabIndex = 20;
@@ -290,7 +281,7 @@
             // checkModAlt
             // 
             this.checkModAlt.AutoSize = true;
-            this.checkModAlt.Location = new System.Drawing.Point(952, 316);
+            this.checkModAlt.Location = new System.Drawing.Point(952, 333);
             this.checkModAlt.Name = "checkModAlt";
             this.checkModAlt.Size = new System.Drawing.Size(54, 24);
             this.checkModAlt.TabIndex = 21;
@@ -300,7 +291,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(720, 712);
+            this.btnClose.Location = new System.Drawing.Point(25, 69);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(380, 52);
             this.btnClose.TabIndex = 22;
@@ -313,7 +304,7 @@
             this.lblDuplicateAction.AutoSize = true;
             this.lblDuplicateAction.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuplicateAction.ForeColor = System.Drawing.Color.Black;
-            this.lblDuplicateAction.Location = new System.Drawing.Point(719, 494);
+            this.lblDuplicateAction.Location = new System.Drawing.Point(719, 518);
             this.lblDuplicateAction.Name = "lblDuplicateAction";
             this.lblDuplicateAction.Size = new System.Drawing.Size(154, 20);
             this.lblDuplicateAction.TabIndex = 24;
@@ -325,7 +316,7 @@
             this.lblDuplicateDetected.AutoSize = true;
             this.lblDuplicateDetected.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDuplicateDetected.ForeColor = System.Drawing.Color.Red;
-            this.lblDuplicateDetected.Location = new System.Drawing.Point(719, 471);
+            this.lblDuplicateDetected.Location = new System.Drawing.Point(719, 495);
             this.lblDuplicateDetected.Name = "lblDuplicateDetected";
             this.lblDuplicateDetected.Size = new System.Drawing.Size(203, 20);
             this.lblDuplicateDetected.TabIndex = 23;
@@ -337,7 +328,7 @@
             this.lblEditedSaved.AutoSize = true;
             this.lblEditedSaved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEditedSaved.ForeColor = System.Drawing.Color.DarkViolet;
-            this.lblEditedSaved.Location = new System.Drawing.Point(720, 625);
+            this.lblEditedSaved.Location = new System.Drawing.Point(720, 664);
             this.lblEditedSaved.Name = "lblEditedSaved";
             this.lblEditedSaved.Size = new System.Drawing.Size(250, 20);
             this.lblEditedSaved.TabIndex = 25;
@@ -351,7 +342,7 @@
             this.lblListening.BackColor = System.Drawing.SystemColors.ControlLight;
             this.lblListening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblListening.ForeColor = System.Drawing.Color.DarkViolet;
-            this.lblListening.Location = new System.Drawing.Point(720, 293);
+            this.lblListening.Location = new System.Drawing.Point(720, 310);
             this.lblListening.Name = "lblListening";
             this.lblListening.Size = new System.Drawing.Size(326, 20);
             this.lblListening.TabIndex = 26;
@@ -360,14 +351,14 @@
             // 
             // focusText
             // 
-            this.focusText.Location = new System.Drawing.Point(988, 242);
+            this.focusText.Location = new System.Drawing.Point(988, 259);
             this.focusText.Name = "focusText";
             this.focusText.Size = new System.Drawing.Size(100, 26);
             this.focusText.TabIndex = 27;
             // 
             // btnLoadClassic
             // 
-            this.btnLoadClassic.Location = new System.Drawing.Point(980, 548);
+            this.btnLoadClassic.Location = new System.Drawing.Point(980, 590);
             this.btnLoadClassic.Name = "btnLoadClassic";
             this.btnLoadClassic.Size = new System.Drawing.Size(120, 52);
             this.btnLoadClassic.TabIndex = 28;
@@ -377,24 +368,35 @@
             // 
             // panelSizing
             // 
-            this.panelSizing.Location = new System.Drawing.Point(695, 651);
+            this.panelSizing.Controls.Add(this.btnClose);
+            this.panelSizing.Controls.Add(this.btnSave);
+            this.panelSizing.Location = new System.Drawing.Point(695, 688);
             this.panelSizing.Name = "panelSizing";
             this.panelSizing.Size = new System.Drawing.Size(434, 138);
             this.panelSizing.TabIndex = 29;
+            // 
+            // btnClearKey
+            // 
+            this.btnClearKey.Enabled = false;
+            this.btnClearKey.Location = new System.Drawing.Point(720, 117);
+            this.btnClearKey.Name = "btnClearKey";
+            this.btnClearKey.Size = new System.Drawing.Size(380, 52);
+            this.btnClearKey.TabIndex = 30;
+            this.btnClearKey.Text = "Clear Current Key";
+            this.btnClearKey.UseVisualStyleBackColor = true;
+            this.btnClearKey.Click += new System.EventHandler(this.btnClearKey_Click);
             // 
             // FormHotkeys
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(1128, 785);
+            this.ClientSize = new System.Drawing.Size(1128, 821);
+            this.Controls.Add(this.btnClearKey);
             this.Controls.Add(this.btnLoadClassic);
             this.Controls.Add(this.lblEditedSaved);
             this.Controls.Add(this.lblDuplicateDetected);
-            this.Controls.Add(this.lblEditingKey);
             this.Controls.Add(this.lblDuplicateAction);
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.comboBoxChooseKey);
             this.Controls.Add(this.checkModAlt);
             this.Controls.Add(this.checkModShift);
@@ -414,10 +416,10 @@
             this.Controls.Add(this.btnListen);
             this.Controls.Add(this.lblChooseKey);
             this.Controls.Add(this.lblAction);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblListening);
             this.Controls.Add(this.focusText);
             this.Controls.Add(this.panelSizing);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -429,6 +431,7 @@
             this.Load += new System.EventHandler(this.FormHotkeys_Load);
             this.Shown += new System.EventHandler(this.FormHotkeys_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormHotkeys_KeyDown);
+            this.panelSizing.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -448,7 +451,6 @@
         private System.Windows.Forms.ListView listViewHotkeys;
         private System.Windows.Forms.ColumnHeader EditorFunction;
         private System.Windows.Forms.ColumnHeader AssignedKey;
-        private System.Windows.Forms.Label lblEditingKey;
         private System.Windows.Forms.Label lblActionToBeAssigned;
         private System.Windows.Forms.Button btnAssignChosenKey;
         private System.Windows.Forms.Label lblCurrentKey;
@@ -467,5 +469,6 @@
         private System.Windows.Forms.TextBox focusText;
         private System.Windows.Forms.Button btnLoadClassic;
         private System.Windows.Forms.Panel panelSizing;
+        private System.Windows.Forms.Button btnClearKey;
     }
 }

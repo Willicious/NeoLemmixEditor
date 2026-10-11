@@ -12,6 +12,7 @@ namespace NLEditor
         private Keys selectedKey;
         private ListViewItem selectedItem;
         private bool DoCheckForDuplicates;
+        private bool hasUnsavedChanges;
 
         private readonly List<Keys> defaultKeyList = new List<Keys>()
         {
@@ -34,6 +35,7 @@ namespace NLEditor
         {
             InitializeComponent();
             DoCheckForDuplicates = true;
+            hasUnsavedChanges = false;
         }
 
         private void FormHotkeys_Load(object sender, EventArgs e)
@@ -55,7 +57,10 @@ namespace NLEditor
 
             // Show the "Edited" label if defaults have been loaded
             if (HotkeyConfig.DefaultHotkeysLoaded)
-                UpdateCaption();
+            {
+                hasUnsavedChanges = true;
+                UpdateEditedLabel();
+            }
         }
 
         private void listViewHotkeys_Click(object sender, EventArgs e)
@@ -249,7 +254,8 @@ namespace NLEditor
         {
             UpdateChosenKey();
             UpdateListview();
-            UpdateCaption();
+            hasUnsavedChanges = true;
+            UpdateEditedLabel();
         }
 
         private void btnClearAllKeys_Click(object sender, EventArgs e)
@@ -262,7 +268,8 @@ namespace NLEditor
             HotkeyConfig.GetDefaultHotkeys();
             LoadHotkeysToListView();
             ResetUI();
-            UpdateCaption();
+            hasUnsavedChanges = true;
+            UpdateEditedLabel();
         }
 
         private void btnLoadClassic_Click(object sender, EventArgs e)
@@ -270,7 +277,8 @@ namespace NLEditor
             HotkeyConfig.GetClassicHotkeys();
             LoadHotkeysToListView();
             ResetUI();
-            UpdateCaption();
+            hasUnsavedChanges = true;
+            UpdateEditedLabel();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -278,7 +286,8 @@ namespace NLEditor
             WriteToHotkeyConfig();
             HotkeyConfig.SaveHotkeysToIniFile();
             ResetUI();
-            UpdateCaption(true);
+            hasUnsavedChanges = false;
+            UpdateEditedLabel();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -310,21 +319,21 @@ namespace NLEditor
             Close();
         }
 
-        private void UpdateCaption(bool isSaved = false)
+        private void UpdateEditedLabel()
         {
             lblEditedSaved.Visible = true;
 
-            if (isSaved)
-            {
-                lblEditedSaved.ForeColor = Color.MediumSeaGreen;
-                lblEditedSaved.Text = "Hotkey Configuration saved successfully!";
-                this.Text = "NL Editor - Hotkey Configuration";
-            }
-            else
+            if (hasUnsavedChanges)
             {
                 lblEditedSaved.ForeColor = Color.DarkViolet;
                 lblEditedSaved.Text = "Hotkey Configuration edited...";
-                this.Text = "NL Editor - Hotkey Configuration - [Edited]";
+                Text = "SLX Editor - Hotkey Configuration - [Edited]";
+            }
+            else
+            {
+                lblEditedSaved.ForeColor = Color.MediumSeaGreen;
+                lblEditedSaved.Text = "Hotkey Configuration saved successfully!";
+                Text = "SLX Editor - Hotkey Configuration";
             }
         }
 
@@ -396,7 +405,8 @@ namespace NLEditor
                 selectedItem.SubItems[1].Text = "<Unassigned>";
                 ResetComponents();
                 ResetUI();
-                UpdateCaption();
+                hasUnsavedChanges = true;
+                UpdateEditedLabel();
             }
         }
 
@@ -412,7 +422,8 @@ namespace NLEditor
 
             ResetComponents();
             ResetUI();
-            UpdateCaption();
+            hasUnsavedChanges = true;
+            UpdateEditedLabel();
         }
 
         private void ClearHighlights()
@@ -583,8 +594,9 @@ namespace NLEditor
             lblDuplicateDetected.Visible = false;
             lblDuplicateAction.Visible = false;
             lblDuplicateAction.Text = "";
-            lblEditedSaved.Visible = false;
-            lblEditedSaved.Text = "";
+
+            if (!hasUnsavedChanges)
+                lblEditedSaved.Visible = false;
 
             // Reset buttons
             btnAssignChosenKey.Enabled = false;
@@ -618,8 +630,9 @@ namespace NLEditor
             lblDuplicateDetected.Visible = false;
             lblDuplicateAction.Visible = false;
             lblDuplicateAction.Text = "";
-            lblEditedSaved.Visible = false;
-            lblEditedSaved.Text = "";
+
+            if (!hasUnsavedChanges)
+                lblEditedSaved.Visible = false;
 
             // Set buttons
             btnAssignChosenKey.Enabled = false;

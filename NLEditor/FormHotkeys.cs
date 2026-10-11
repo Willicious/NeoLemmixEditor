@@ -33,8 +33,6 @@ namespace NLEditor
         public FormHotkeys()
         {
             InitializeComponent();
-            GetMouseMandatoryHotkeys();
-            SetItemNames();
             DoCheckForDuplicates = true;
         }
 
@@ -691,8 +689,8 @@ namespace NLEditor
                 listViewHotkeys.Focus();
             }
 
-            // Rebuild mandatory mouse items after populating
             GetMouseMandatoryHotkeys();
+            SetItemNames();
         }
 
         private void GetMouseMandatoryHotkeys()

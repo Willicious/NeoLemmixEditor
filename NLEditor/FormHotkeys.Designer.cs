@@ -446,7 +446,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NL Editor - Hotkey Configuration";
-            this.Load += new System.EventHandler(this.FormHotkeys_Load);
             this.Shown += new System.EventHandler(this.FormHotkeys_Shown);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormHotkeys_KeyDown);
             this.panelSizing.ResumeLayout(false);

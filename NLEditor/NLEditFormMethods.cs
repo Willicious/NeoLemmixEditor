@@ -601,6 +601,7 @@ Digger=20";
 
             Style themeStyle = StyleList?.Find(sty => sty.NameInEditor == comboTheme.Text);
             CurLevel = new Level(themeStyle);
+            CurLevel.Title = "Untitled";
             CurLevel.Author = GetDefaultAuthorName();
 
             // Get new renderer with the standard display options

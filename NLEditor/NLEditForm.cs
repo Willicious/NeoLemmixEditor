@@ -1653,6 +1653,7 @@ namespace NLEditor
             LinkControlsToMouseEvents(this);
             UpdateRecentLevelsMenu();
             UpdateControlTags();
+            MaybeUpdateEditor();
         }
 
         private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1883,6 +1884,11 @@ namespace NLEditor
         private void lblPieceHighlight_MouseLeave(object sender, EventArgs e)
         {
             lblPieceHighlight.BackColor = Color.Lime;
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CheckForUpdates();
         }
     }
 }

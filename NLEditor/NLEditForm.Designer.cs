@@ -84,14 +84,13 @@
             this.showMissingPiecesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sepMissingPieces = new System.Windows.Forms.ToolStripSeparator();
             this.searchPiecesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.snapToGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hotkeysToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshStylesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.styleManagerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.picLevel = new System.Windows.Forms.PictureBox();
             this.tabProperties = new System.Windows.Forms.TabControl();
             this.tabGlobals = new System.Windows.Forms.TabPage();
@@ -293,8 +292,9 @@
             this.btnNextLevel = new System.Windows.Forms.Button();
             this.lblLevel = new System.Windows.Forms.Label();
             this.txtFocus = new NLEditor.FocusTextBox();
-            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.snapToGridToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLevel)).BeginInit();
             this.tabProperties.SuspendLayout();
@@ -646,7 +646,9 @@
             this.rulersToolStripMenuItem,
             this.screenStartToolStripMenuItem,
             this.backgroundToolStripMenuItem,
-            this.deprecatedPiecesToolStripMenuItem});
+            this.deprecatedPiecesToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.snapToGridToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+P";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
@@ -811,14 +813,11 @@
             this.showMissingPiecesToolStripMenuItem,
             this.sepMissingPieces,
             this.searchPiecesToolStripMenuItem,
-            this.snapToGridToolStripMenuItem,
             this.settingsToolStripMenuItem,
             this.hotkeysToolStripMenuItem,
             this.toolStripSeparator5,
             this.refreshStylesToolStripMenuItem,
-            this.styleManagerToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.aboutToolStripMenuItem});
+            this.styleManagerToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
             this.optionsToolStripMenuItem.Text = "Tools";
@@ -827,36 +826,28 @@
             // 
             this.showMissingPiecesToolStripMenuItem.Name = "showMissingPiecesToolStripMenuItem";
             this.showMissingPiecesToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F8";
-            this.showMissingPiecesToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.showMissingPiecesToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.showMissingPiecesToolStripMenuItem.Text = "Show Missing Pieces";
             this.showMissingPiecesToolStripMenuItem.Click += new System.EventHandler(this.showMissingPiecesToolStripMenuItem_Click);
             // 
             // sepMissingPieces
             // 
             this.sepMissingPieces.Name = "sepMissingPieces";
-            this.sepMissingPieces.Size = new System.Drawing.Size(392, 6);
+            this.sepMissingPieces.Size = new System.Drawing.Size(344, 6);
             // 
             // searchPiecesToolStripMenuItem
             // 
             this.searchPiecesToolStripMenuItem.Name = "searchPiecesToolStripMenuItem";
             this.searchPiecesToolStripMenuItem.ShortcutKeyDisplayString = "F8";
-            this.searchPiecesToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.searchPiecesToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.searchPiecesToolStripMenuItem.Text = "Search Pieces";
             this.searchPiecesToolStripMenuItem.Click += new System.EventHandler(this.searchPiecesToolStripMenuItem_Click);
-            // 
-            // snapToGridToolStripMenuItem
-            // 
-            this.snapToGridToolStripMenuItem.Name = "snapToGridToolStripMenuItem";
-            this.snapToGridToolStripMenuItem.ShortcutKeyDisplayString = "F9";
-            this.snapToGridToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
-            this.snapToGridToolStripMenuItem.Text = "Snap to Grid";
-            this.snapToGridToolStripMenuItem.Click += new System.EventHandler(this.snapToGridToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.ShortcutKeyDisplayString = "F10";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.settingsToolStripMenuItem.Text = "Settings";
             this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
@@ -864,20 +855,20 @@
             // 
             this.hotkeysToolStripMenuItem.Name = "hotkeysToolStripMenuItem";
             this.hotkeysToolStripMenuItem.ShortcutKeyDisplayString = "F11";
-            this.hotkeysToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.hotkeysToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.hotkeysToolStripMenuItem.Text = "Configure Hotkeys";
             this.hotkeysToolStripMenuItem.Click += new System.EventHandler(this.hotkeysToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(392, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(344, 6);
             // 
             // refreshStylesToolStripMenuItem
             // 
             this.refreshStylesToolStripMenuItem.Name = "refreshStylesToolStripMenuItem";
             this.refreshStylesToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Shift+F8";
-            this.refreshStylesToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.refreshStylesToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.refreshStylesToolStripMenuItem.Text = "Refresh Styles";
             this.refreshStylesToolStripMenuItem.Click += new System.EventHandler(this.refreshStylesToolStripMenuItem_Click);
             // 
@@ -885,22 +876,25 @@
             // 
             this.styleManagerToolStripMenuItem.Name = "styleManagerToolStripMenuItem";
             this.styleManagerToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Alt+F8";
-            this.styleManagerToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.styleManagerToolStripMenuItem.Size = new System.Drawing.Size(347, 34);
             this.styleManagerToolStripMenuItem.Text = "Style Manager";
             this.styleManagerToolStripMenuItem.Click += new System.EventHandler(this.styleManagerToolStripMenuItem_Click);
             // 
-            // toolStripSeparator2
+            // helpToolStripMenuItem
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(392, 6);
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.checkForUpdatesToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // checkForUpdatesToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F11";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
-            this.aboutToolStripMenuItem.Text = "About NeoLemmix Editor";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates...";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // picLevel
             // 
@@ -3521,20 +3515,26 @@
             this.txtFocus.TabStop = false;
             this.txtFocus.Text = "asdf";
             // 
-            // helpToolStripMenuItem
+            // aboutToolStripMenuItem
             // 
-            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.checkForUpdatesToolStripMenuItem});
-            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+F11";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(395, 34);
+            this.aboutToolStripMenuItem.Text = "About NeoLemmix Editor";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // checkForUpdatesToolStripMenuItem
+            // toolStripSeparator2
             // 
-            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
-            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(272, 34);
-            this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates...";
-            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(403, 6);
+            // 
+            // snapToGridToolStripMenuItem
+            // 
+            this.snapToGridToolStripMenuItem.Name = "snapToGridToolStripMenuItem";
+            this.snapToGridToolStripMenuItem.ShortcutKeyDisplayString = "F9";
+            this.snapToGridToolStripMenuItem.Size = new System.Drawing.Size(406, 34);
+            this.snapToGridToolStripMenuItem.Text = "Snap to Grid";
+            this.snapToGridToolStripMenuItem.Click += new System.EventHandler(this.snapToGridToolStripMenuItem_Click);
             // 
             // NLEditForm
             // 
@@ -3669,7 +3669,6 @@
         private System.Windows.Forms.ToolStripMenuItem deprecatedPiecesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem screenStartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
@@ -3817,11 +3816,9 @@
         private System.Windows.Forms.CheckBox checkSlider;
         private System.Windows.Forms.Label lblSlider;
         private NumUpDownOverwrite numSlider;
-        private System.Windows.Forms.ToolStripMenuItem snapToGridToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem playLevelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem validateLevelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         public System.Windows.Forms.CheckBox checkAutoStart;
         private System.Windows.Forms.StatusStrip statusBar;
         private System.Windows.Forms.ToolStripStatusLabel statusBarLabel1;
@@ -3917,6 +3914,9 @@
         private System.Windows.Forms.Label lblPieceHighlight;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem snapToGridToolStripMenuItem;
     }
 }
 

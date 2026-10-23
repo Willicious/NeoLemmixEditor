@@ -1656,11 +1656,6 @@ namespace NLEditor
             MaybeUpdateEditor();
         }
 
-        private void whatsNewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ShowAboutNLEditor();
-        }
-
         private void btnSearchPieces_Click(object sender, EventArgs e)
         {
             OpenPieceSearch();

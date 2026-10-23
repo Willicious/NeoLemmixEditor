@@ -324,13 +324,13 @@ namespace NLEditor
             {
                 lblEditedSaved.ForeColor = Color.DarkViolet;
                 lblEditedSaved.Text = "Hotkey Configuration edited...";
-                Text = "SLX Editor - Hotkey Configuration - [Edited]";
+                Text = "NL Editor - Hotkey Configuration - [Edited]";
             }
             else
             {
                 lblEditedSaved.ForeColor = Color.MediumSeaGreen;
                 lblEditedSaved.Text = "Hotkey Configuration saved successfully!";
-                Text = "SLX Editor - Hotkey Configuration";
+                Text = "NL Editor - Hotkey Configuration";
             }
         }
 
